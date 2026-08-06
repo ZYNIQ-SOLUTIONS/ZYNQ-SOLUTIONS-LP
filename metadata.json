@@ -1,0 +1,6 @@
+{
+  "name": "ZYNIQ Solutions - AI-Driven Software Factory",
+  "description": "High-fidelity interactive platform landing page featuring interactive particle backgrounds, symbolic compilation pipelines, use-case log consoles, and a live step-by-step agent execution sandbox.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
