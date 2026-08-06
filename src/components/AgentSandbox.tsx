@@ -304,7 +304,7 @@ export default function AgentSandbox() {
   };
 
   return (
-    <div id="agent-sandbox" className="relative bg-[#141414] border border-white/10 rounded-none overflow-hidden backdrop-blur-md p-6 lg:p-8">
+    <div id="agent-sandbox" className="relative bg-surface border border-white/10 rounded-none overflow-hidden backdrop-blur-md p-6 lg:p-8">
       {/* Background radial highlight */}
       <div className="absolute top-0 right-0 w-80 h-80 bg-brand-accent/5 rounded-none filter blur-3xl pointer-events-none" />
 
@@ -533,7 +533,7 @@ export default function AgentSandbox() {
                       {step.metadata && isCompleted && (
                         <div className="mt-1.5 flex flex-wrap gap-1">
                           {Object.entries(step.metadata).map(([key, val]) => (
-                            <span key={key} className="text-[9px] font-mono bg-[#141414] border border-white/10 text-white/50 px-1.5 py-0.5 rounded-none">
+                            <span key={key} className="text-[9px] font-mono bg-surface border border-white/10 text-white/50 px-1.5 py-0.5 rounded-none">
                               {key}: <span className="text-white/80">{val}</span>
                             </span>
                           ))}
@@ -549,7 +549,7 @@ export default function AgentSandbox() {
           {/* Terminal Logs Component */}
           <div className="flex-1 min-h-[220px] bg-black border border-white/10 rounded-none flex flex-col overflow-hidden font-mono text-xs">
             {/* Terminal Header */}
-            <div className="bg-[#141414] border-b border-white/10 px-4 py-2 flex items-center justify-between shrink-0">
+            <div className="bg-surface border-b border-white/10 px-4 py-2 flex items-center justify-between shrink-0">
               <div className="flex items-center space-x-2">
                 <Terminal className="w-3.5 h-3.5 text-brand-accent" />
                 <span className="text-white/60 font-mono text-[11px] font-bold uppercase tracking-wide">// realtime_cognitive_logs.log</span>

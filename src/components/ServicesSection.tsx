@@ -216,7 +216,7 @@ export function ServicesSection() {
                 className={`flex items-center justify-between w-full text-left p-4 border transition-all rounded-none cursor-pointer group ${
                   activeServiceId === service.id 
                     ? 'bg-brand-accent text-white border-brand-accent' 
-                    : 'bg-[#141414] text-zinc-500 border-white/10 hover:border-white/30 hover:text-white'
+                    : 'bg-surface text-zinc-500 border-white/10 hover:border-white/30 hover:text-white'
                 }`}
               >
                 <div className="flex items-center space-x-4">
@@ -242,7 +242,7 @@ export function ServicesSection() {
                   animate={{ opacity: 1, x: 0 }}
                   exit={{ opacity: 0, x: -20 }}
                   transition={{ duration: 0.2 }}
-                  className="bg-[#141414] border border-white/10 rounded-none p-8 sm:p-10 flex flex-col h-full relative overflow-hidden"
+                  className="bg-surface border border-white/10 rounded-none p-8 sm:p-10 flex flex-col h-full relative overflow-hidden"
                 >
                   {/* Background Accent */}
                   <div className="absolute -right-20 -top-20 opacity-5 pointer-events-none">

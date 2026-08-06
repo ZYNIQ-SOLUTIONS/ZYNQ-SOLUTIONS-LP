@@ -1,5 +1,4 @@
 @import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;500;600;700;800&display=swap');
-
 @import "tailwindcss";
 
 @theme {
@@ -7,18 +6,39 @@
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
   --font-display: "Syne", sans-serif;
 
-  --color-brand-bg: #000000;
-  --color-brand-card: #000000;
-  --color-brand-border: #333333;
+  --color-black: var(--theme-black);
+  --color-white: var(--theme-white);
+  --color-surface: var(--theme-surface);
+  
+  --color-brand-bg: var(--theme-black);
+  --color-brand-card: var(--theme-surface);
+  --color-brand-border: var(--theme-border);
   --color-brand-accent: #EA2323;
-  --color-brand-text-muted: #777777;
+  --color-brand-text-muted: var(--theme-text-muted);
+}
+
+:root {
+  --theme-black: #000000;
+  --theme-white: #ffffff;
+  --theme-surface: #141414;
+  --theme-border: #333333;
+  --theme-text-muted: #777777;
+}
+
+:root.light {
+  --theme-black: #ffffff;
+  --theme-white: #000000;
+  --theme-surface: #f5f5f5;
+  --theme-border: #e5e5e5;
+  --theme-text-muted: #71717a;
 }
 
 body {
-  background-color: var(--color-brand-bg);
-  color: #ffffff;
+  background-color: var(--theme-black);
+  color: var(--theme-white);
   font-family: var(--font-sans);
   overflow-x: hidden;
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
 /* Elegant scrollbar styling */
@@ -26,17 +46,13 @@ body {
   width: 6px;
   height: 6px;
 }
-
 ::-webkit-scrollbar-track {
-  background: var(--color-brand-bg);
+  background: var(--theme-black);
 }
-
 ::-webkit-scrollbar-thumb {
-  background: var(--color-brand-border);
+  background: var(--theme-border);
   border-radius: 0px;
 }
-
 ::-webkit-scrollbar-thumb:hover {
   background: var(--color-brand-accent);
 }
-

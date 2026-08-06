@@ -68,8 +68,8 @@ export default function PillarsSection() {
               onClick={() => handlePillarClick(pillar.id)}
               className={`text-left p-6 rounded-none border transition-all relative flex flex-col justify-between min-h-[220px] group overflow-hidden ${
                 isActive
-                  ? 'bg-[#141414] border-brand-accent shadow-[0_0_20px_rgba(217,255,0,0.06)]'
-                  : 'bg-[#141414]/45 border-white/10 hover:border-white/30 hover:bg-[#141414]'
+                  ? 'bg-surface border-brand-accent shadow-[0_0_20px_rgba(217,255,0,0.06)]'
+                  : 'bg-surface/45 border-white/10 hover:border-white/30 hover:bg-surface'
               }`}
             >
               {/* Subtle top edge bar for active state */}
@@ -97,7 +97,7 @@ export default function PillarsSection() {
       </div>
 
       {/* Under-the-hood Pipeline Explainer Area */}
-      <div id="pillar-details-panel" className="bg-[#141414] border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden">
+      <div id="pillar-details-panel" className="bg-surface border border-white/10 rounded-none p-6 lg:p-8 relative overflow-hidden">
         {/* Subtle dot pattern inside the explainer */}
         <div className="absolute inset-0 bg-[radial-gradient(#222_1px,transparent_1px)] [background-size:16px_16px] opacity-30 pointer-events-none" />
 
@@ -150,14 +150,14 @@ export default function PillarsSection() {
                   </div>
                   
                   <div className="space-y-2 font-mono text-xs">
-                    <div className="bg-[#141414] border border-white/10 rounded-none p-2.5 flex items-start gap-3">
+                    <div className="bg-surface border border-white/10 rounded-none p-2.5 flex items-start gap-3">
                       <div className="bg-brand-accent/10 text-brand-accent text-[9px] px-1.5 py-0.5 rounded-none font-bold uppercase mt-0.5">Session 14</div>
                       <div className="flex-1">
                         <div className="text-white font-bold">Cached API Token Header Key</div>
                         <div className="text-[10px] text-white/50 mt-0.5">token: "Bearer jwt_prod_7a1e..." (re-assigned: 2 mins ago)</div>
                       </div>
                     </div>
-                    <div className="bg-[#141414] border border-white/10 rounded-none p-2.5 flex items-start gap-3">
+                    <div className="bg-surface border border-white/10 rounded-none p-2.5 flex items-start gap-3">
                       <div className="bg-brand-accent/10 text-brand-accent text-[9px] px-1.5 py-0.5 rounded-none font-bold uppercase mt-0.5">Session 03</div>
                       <div className="flex-1">
                         <div className="text-white font-bold">User Preferences Matrix</div>
@@ -181,7 +181,7 @@ export default function PillarsSection() {
                     <span className="text-brand-accent uppercase font-bold">OPENAPI v3.0</span>
                   </div>
 
-                  <div className="bg-[#141414] border border-white/10 rounded-none p-3 font-mono text-xs text-white/70 space-y-1.5 overflow-x-auto">
+                  <div className="bg-surface border border-white/10 rounded-none p-3 font-mono text-xs text-white/70 space-y-1.5 overflow-x-auto">
                     <div><span className="text-brand-accent font-bold uppercase">POST</span> <span className="text-white">/api/v1/ledger-write</span></div>
                     <div className="text-white/40 pl-4">"description": "Post audited ledger transaction entry"</div>
                     <div className="pl-4">"parameters": &#123;</div>
@@ -240,7 +240,7 @@ export default function PillarsSection() {
 
                   <div className="flex justify-around items-center h-24 relative">
                     {/* Visual API schema realignment */}
-                    <div className="text-center p-2 rounded-none bg-[#141414] border border-white/10 w-24">
+                    <div className="text-center p-2 rounded-none bg-surface border border-white/10 w-24">
                       <span className="text-[10px] font-mono text-white/40 block">SOURCE SCHEMA</span>
                       <span className="text-xs font-mono font-bold text-white mt-1 block">id: "string"</span>
                     </div>
@@ -252,7 +252,7 @@ export default function PillarsSection() {
                       </div>
                     </div>
 
-                    <div className="text-center p-2 rounded-none bg-[#141414] border border-white/10 w-28">
+                    <div className="text-center p-2 rounded-none bg-surface border border-white/10 w-28">
                       <span className="text-[10px] font-mono text-white/40 block">EVOLVED DEST</span>
                       <span className="text-xs font-mono font-bold text-white mt-1 block">entity_id: "uuid"</span>
                     </div>

@@ -128,8 +128,8 @@ export default function UseCasesSection() {
               key={uc.id}
               className={`rounded-none border transition-all duration-300 overflow-hidden ${
                 isOpen
-                  ? 'bg-[#141414] border-brand-accent shadow-[0_0_20px_rgba(217,255,0,0.06)]'
-                  : 'bg-[#141414]/45 border-white/10 hover:border-white/30'
+                  ? 'bg-surface border-brand-accent shadow-[0_0_20px_rgba(217,255,0,0.06)]'
+                  : 'bg-surface/45 border-white/10 hover:border-white/30'
               }`}
             >
               <button
@@ -183,7 +183,7 @@ export default function UseCasesSection() {
 
       {/* Right Visual Console Workspace Column */}
       <div className="w-full lg:w-1/2 flex flex-col">
-        <div className="bg-[#141414] border border-white/10 rounded-none p-5 lg:p-6 flex-1 flex flex-col justify-between overflow-hidden relative">
+        <div className="bg-surface border border-white/10 rounded-none p-5 lg:p-6 flex-1 flex flex-col justify-between overflow-hidden relative">
           
           {/* Subtle decoration elements */}
           <div className="absolute -top-12 -right-12 w-48 h-48 bg-brand-accent/5 rounded-none filter blur-2xl pointer-events-none" />
