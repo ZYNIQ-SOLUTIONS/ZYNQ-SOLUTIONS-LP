@@ -168,7 +168,7 @@ export default function AgentSandbox() {
     symbolicGuard: true,
   });
 
-  const terminalEndRef = useRef<HTMLDivElement | null>(null);
+  const terminalContainerRef = useRef<HTMLDivElement | null>(null);
 
   // Initialize steps when preset changes
   useEffect(() => {
@@ -186,8 +186,8 @@ export default function AgentSandbox() {
 
   // Handle auto-scroll of logs
   useEffect(() => {
-    if (terminalEndRef.current) {
-      terminalEndRef.current.scrollIntoView({ behavior: 'smooth' });
+    if (terminalContainerRef.current) {
+      terminalContainerRef.current.scrollTop = terminalContainerRef.current.scrollHeight;
     }
   }, [logs]);
 
@@ -562,7 +562,7 @@ export default function AgentSandbox() {
             </div>
 
             {/* Terminal Body */}
-            <div className="flex-1 overflow-y-auto p-4 space-y-1.5 max-h-[260px] text-white/80">
+            <div ref={terminalContainerRef} className="flex-1 overflow-y-auto p-4 space-y-1.5 max-h-[260px] text-white/80">
               {logs.map((log, index) => {
                 let textClass = 'text-white/80';
                 if (log.startsWith('[System]')) {
@@ -586,7 +586,6 @@ export default function AgentSandbox() {
                   <span>Agent is actively executing logical operations...</span>
                 </div>
               )}
-              <div ref={terminalEndRef} />
             </div>
           </div>
 
