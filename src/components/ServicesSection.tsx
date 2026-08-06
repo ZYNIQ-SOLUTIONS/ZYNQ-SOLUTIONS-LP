@@ -187,7 +187,7 @@ export function ServicesSection() {
   };
 
   return (
-    <section id="services-section" className="relative z-10 py-24 lg:py-32 bg-black border-t border-b border-white/10">
+    <section id="services-section" className="relative z-10 py-16 sm:py-24 lg:py-32 bg-black border-t border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
         
         {/* Header */}
@@ -196,7 +196,7 @@ export function ServicesSection() {
             <Crosshair className="w-3.5 h-3.5" />
             <span>// A MENU OF POWER</span>
           </div>
-          <h2 className="text-4xl sm:text-5xl font-display font-black uppercase text-white tracking-tighter leading-none italic">
+          <h2 className="text-3xl sm:text-5xl font-display font-black uppercase text-white tracking-tighter leading-none">
             OPERATIONAL DIRECTIVES
           </h2>
           <p className="text-brand-text-muted text-sm leading-relaxed font-sans font-medium">
@@ -223,7 +223,7 @@ export function ServicesSection() {
                   <span className={`font-mono text-xs font-bold ${activeServiceId === service.id ? 'text-black' : 'text-zinc-600 group-hover:text-zinc-400'}`}>
                     [{service.number}]
                   </span>
-                  <span className={`font-display font-black uppercase italic tracking-wide text-sm sm:text-base ${activeServiceId === service.id ? 'text-white' : ''}`}>
+                  <span className={`font-display font-black uppercase tracking-wide text-sm sm:text-base ${activeServiceId === service.id ? 'text-white' : ''}`}>
                     {service.title}
                   </span>
                 </div>
@@ -259,7 +259,7 @@ export function ServicesSection() {
                         <span className="text-xs font-mono text-brand-accent font-bold uppercase tracking-widest block mb-1">
                           // DIRECTIVE {activeService.number}
                         </span>
-                        <h3 className="text-2xl sm:text-3xl font-display font-black text-white uppercase italic tracking-tight leading-none">
+                        <h3 className="text-2xl sm:text-3xl font-display font-black text-white uppercase tracking-tight leading-none">
                           {activeService.subtitle}
                         </h3>
                       </div>

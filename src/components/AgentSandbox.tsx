@@ -318,7 +318,7 @@ export default function AgentSandbox() {
               <span>// ZYNIQ Commander Sandbox v2.4</span>
             </div>
 
-            <h3 className="text-2xl font-display font-black uppercase tracking-tight text-white leading-none italic">
+            <h3 className="text-2xl font-display font-black uppercase tracking-tight text-white leading-none">
               Test the Commander and Crews System
             </h3>
             <p className="text-brand-text-muted text-sm mt-2 leading-relaxed font-sans">
@@ -383,7 +383,7 @@ export default function AgentSandbox() {
                               // {preset.category}
                             </span>
                           </div>
-                          <h4 className="text-sm font-black uppercase tracking-tight mt-1.5 italic">{preset.name}</h4>
+                          <h4 className="text-sm font-black uppercase tracking-tight mt-1.5">{preset.name}</h4>
                           <p className="text-xs text-brand-text-muted mt-1 line-clamp-1 font-sans">
                             {preset.objective}
                           </p>

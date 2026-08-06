@@ -79,7 +79,7 @@ export default function PillarsSection() {
                 <span className="text-xs font-mono text-brand-accent tracking-wider block font-bold uppercase">
                   // {pillar.number.replace('[', '').replace(']', '')}
                 </span>
-                <h4 className="text-lg font-display font-black uppercase tracking-tight text-white group-hover:text-brand-accent transition-colors italic">
+                <h4 className="text-lg font-display font-black uppercase tracking-tight text-white group-hover:text-brand-accent transition-colors">
                   {pillar.title}
                 </h4>
                 <p className="text-brand-text-muted text-xs leading-relaxed line-clamp-3 font-sans">
@@ -118,7 +118,7 @@ export default function PillarsSection() {
                 </span>
                 <div className="h-px bg-white/10 flex-1" />
               </div>
-              <h4 className="text-2xl font-display font-black uppercase tracking-tight text-white italic">
+              <h4 className="text-2xl font-display font-black uppercase tracking-tight text-white">
                 {activePillar.detailTitle}
               </h4>
               <p className="text-brand-text-muted text-sm leading-relaxed font-sans">

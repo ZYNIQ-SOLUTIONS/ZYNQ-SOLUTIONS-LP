@@ -141,7 +141,7 @@ export default function UseCasesSection() {
                   <div className="flex items-center space-x-2">
                     <span className="text-[10px] font-mono text-white/40 uppercase tracking-widest font-bold">// {uc.category}</span>
                   </div>
-                  <h4 className={`text-base font-display font-black uppercase mt-1 transition-colors italic ${isOpen ? 'text-brand-accent' : 'text-white group-hover:text-brand-accent'}`}>
+                  <h4 className={`text-base font-display font-black uppercase mt-1 transition-colors ${isOpen ? 'text-brand-accent' : 'text-white group-hover:text-brand-accent'}`}>
                     {uc.title}
                   </h4>
                 </div>
@@ -164,11 +164,11 @@ export default function UseCasesSection() {
                       </p>
 
                       {/* Performance Indicators Grid */}
-                      <div className="grid grid-cols-3 gap-2.5 pt-2">
+                      <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5 pt-2">
                         {uc.metrics.map((m, i) => (
                           <div key={i} className="bg-black border border-white/10 p-2.5 rounded-none text-center">
                             <span className="text-[10px] font-mono text-white/40 uppercase block tracking-tight font-bold">{m.label}</span>
-                            <span className="text-sm font-black font-display text-white mt-0.5 block italic">{m.value}</span>
+                            <span className="text-sm font-black font-display text-white mt-0.5 block">{m.value}</span>
                           </div>
                         ))}
                       </div>

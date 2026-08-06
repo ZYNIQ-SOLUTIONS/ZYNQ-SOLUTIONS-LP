@@ -2,11 +2,11 @@ import { ArrowUpRight } from 'lucide-react';
 
 export function ConsultationSection() {
   return (
-    <section id="consultation-section" className="relative z-10 py-24 lg:py-32 bg-[#141414]/30 border-t border-b border-white/10">
+    <section id="consultation-section" className="relative z-10 py-16 sm:py-24 lg:py-32 bg-surface/30 border-t border-b border-white/10">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mx-auto text-center space-y-4 mb-12">
           <span className="text-xs font-mono text-brand-accent block uppercase tracking-widest font-bold">// INITIATE SEQUENCE</span>
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase text-white tracking-tight italic">
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase text-white tracking-tight">
             Get Free Consultation
           </h2>
           <p className="text-brand-text-muted text-sm max-w-xl mx-auto font-sans leading-relaxed">

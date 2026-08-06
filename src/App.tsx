@@ -24,7 +24,9 @@ import {
   ChevronRight,
   Code2,
   Terminal,
-  Play
+  Play,
+  Menu,
+  X
 } from 'lucide-react';
 import ParticleGrid from './components/ParticleGrid';
 import PillarsSection from './components/PillarsSection';
@@ -53,8 +55,10 @@ const BRANDS: Brand[] = [
 
 export default function App() {
   const [selectedBrand, setSelectedBrand] = useState<Brand | null>(null);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   const handleSmoothScroll = (id: string) => {
+    setIsMobileMenuOpen(false);
     const element = document.getElementById(id);
     if (element) {
       element.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -103,14 +107,47 @@ export default function App() {
           </nav>
 
           {/* CTAs */}
-          <div className="flex items-center space-x-4">
+          <div className="flex items-center space-x-2 md:space-x-4">
             <ThemeToggle />
+            <button 
+              className="md:hidden p-2 text-white/60 hover:text-white"
+              onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+            >
+              {isMobileMenuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
+            </button>
           </div>
         </div>
+
+        {/* Mobile Menu Panel */}
+        <AnimatePresence>
+          {isMobileMenuOpen && (
+            <motion.div 
+              initial={{ opacity: 0, height: 0 }}
+              animate={{ opacity: 1, height: 'auto' }}
+              exit={{ opacity: 0, height: 0 }}
+              className="md:hidden absolute top-16 left-0 right-0 bg-black/95 border-b border-white/10 overflow-hidden"
+            >
+              <div className="px-4 py-6 flex flex-col space-y-6 text-sm font-bold uppercase tracking-wider text-white/60">
+                <button onClick={() => handleSmoothScroll('pillars-section')} className="text-left hover:text-brand-accent transition-colors">
+                  Our Sectors
+                </button>
+                <button onClick={() => handleSmoothScroll('services-section')} className="text-left hover:text-brand-accent transition-colors">
+                  Services
+                </button>
+                <button onClick={() => handleSmoothScroll('usecases-section')} className="text-left hover:text-brand-accent transition-colors">
+                  Use Cases
+                </button>
+                <button onClick={() => handleSmoothScroll('consultation-section')} className="text-left hover:text-brand-accent transition-colors">
+                  Get Free Consultation
+                </button>
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
       </header>
 
       {/* HERO SECTION */}
-      <section className="relative z-10 pt-20 pb-24 lg:pt-32 lg:pb-36 overflow-hidden">
+      <section className="relative z-10 pt-12 sm:pt-20 pb-16 sm:pb-24 lg:pt-32 lg:pb-36 overflow-hidden">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-8">
           
           <div className="inline-flex items-center space-x-2 bg-brand-accent/10 border border-brand-accent/25 text-brand-accent px-4 py-2 rounded-none text-xs font-mono tracking-wider font-bold">
@@ -118,7 +155,7 @@ export default function App() {
             <span>// AI-DRIVEN SOFTWARE FACTORY & INNOVATION LAB</span>
           </div>
 
-          <h1 className="max-w-4xl mx-auto text-4xl sm:text-5xl lg:text-7xl font-display font-black tracking-tighter text-white leading-tight uppercase italic">
+          <h1 className="max-w-4xl mx-auto text-3xl sm:text-5xl lg:text-7xl font-display font-black tracking-tighter text-white leading-tight uppercase">
             THE FUTURE IS <br className="hidden sm:block" />
             <span className="text-transparent bg-clip-text bg-gradient-to-r from-white via-neutral-100 to-brand-accent pr-2 pb-1">
               CODED BY US
@@ -159,13 +196,13 @@ export default function App() {
 
           {/* Interactive Marquee Container */}
           <div className="mt-6 relative">
-            <div className="flex flex-wrap items-center justify-center gap-x-12 gap-y-6">
+            <div className="flex flex-wrap items-center justify-center gap-x-6 sm:gap-x-12 gap-y-4 sm:gap-y-6">
               {BRANDS.map((brand) => (
                 <button
                   id={`brand-tag-${brand.name.toLowerCase()}`}
                   key={brand.name}
                   onClick={() => setSelectedBrand(brand)}
-                  className="group font-display text-base font-black uppercase italic text-white/50 hover:text-brand-accent transition-all relative py-1 cursor-pointer"
+                  className="group font-display text-base font-black uppercase text-white/50 hover:text-brand-accent transition-all relative py-1 cursor-pointer"
                 >
                   <span className="tracking-tight">{brand.name}</span>
                   <span className="absolute bottom-0 left-0 right-0 h-[2px] bg-brand-accent scale-x-0 group-hover:scale-x-100 transition-transform origin-left" />
@@ -202,14 +239,14 @@ export default function App() {
       </section>
 
       {/* STATISTICS SECTION */}
-      <section className="relative z-10 py-24 lg:py-32 bg-black">
+      <section className="relative z-10 py-16 sm:py-24 lg:py-32 bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
             {/* Left Header */}
             <div className="lg:col-span-5 xl:col-span-5 space-y-4 pr-0 xl:pr-4">
               <span className="text-xs font-mono text-brand-accent block uppercase tracking-widest font-bold">// THE ASSEMBLY LINE</span>
-              <h2 className="text-4xl md:text-5xl lg:text-4xl xl:text-5xl font-display font-black uppercase tracking-tight text-white leading-tight italic">
+              <h2 className="text-3xl md:text-5xl lg:text-4xl xl:text-5xl font-display font-black uppercase tracking-tight text-white leading-tight">
                 Architecting Synthetic Brains
               </h2>
               <p className="text-brand-text-muted text-sm leading-relaxed font-sans font-medium max-w-lg">
@@ -229,7 +266,7 @@ export default function App() {
             {/* Right Statistics Grid */}
             <div className="lg:col-span-7 xl:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
                          <div className="bg-surface border border-white/10 rounded-none p-6 hover:border-brand-accent transition-all group flex flex-col justify-center overflow-hidden">
-                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors italic truncate">
+                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors truncate">
                   97%
                 </div>
                 <h4 className="text-[10px] font-mono text-white/40 mt-3 font-bold uppercase tracking-wider block truncate">
@@ -240,7 +277,7 @@ export default function App() {
                 </p>
               </div>
               <div className="bg-surface border border-white/10 rounded-none p-6 hover:border-brand-accent transition-all group flex flex-col justify-center overflow-hidden">
-                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors italic truncate">
+                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors truncate">
                   88%
                 </div>
                 <h4 className="text-[10px] font-mono text-white/40 mt-3 font-bold uppercase tracking-wider block truncate">
@@ -251,7 +288,7 @@ export default function App() {
                 </p>
               </div>
               <div className="bg-surface border border-white/10 rounded-none p-6 hover:border-brand-accent transition-all group flex flex-col justify-center overflow-hidden">
-                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors italic truncate">
+                <div className="text-4xl lg:text-4xl xl:text-5xl font-display font-black text-brand-accent tracking-tighter group-hover:text-white transition-colors truncate">
                   3X
                 </div>
                 <h4 className="text-[10px] font-mono text-white/40 mt-3 font-bold uppercase tracking-wider block truncate">
@@ -268,12 +305,12 @@ export default function App() {
       </section>
 
       {/* DEPARTMENTS SECTION */}
-      <section id="pillars-section" className="relative z-10 py-20 bg-surface/30 border-t border-b border-white/10">
+      <section id="pillars-section" className="relative z-10 py-12 sm:py-20 lg:py-24 bg-surface/30 border-t border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="text-center max-w-xl mx-auto space-y-3">
             <span className="text-xs font-mono text-brand-accent block uppercase tracking-widest font-bold">// OUR CORE SECTORS</span>
-            <h2 className="text-3xl font-display font-black uppercase text-white tracking-tight leading-none italic">
+            <h2 className="text-3xl font-display font-black uppercase text-white tracking-tight leading-none">
               The Software Factory of the Next Era
             </h2>
             <p className="text-brand-text-muted text-sm leading-relaxed font-sans">
@@ -286,12 +323,12 @@ export default function App() {
       </section>
 
       {/* MANIFESTO / STATEMENT SECTION */}
-      <section className="relative z-10 py-24 lg:py-32 overflow-hidden bg-black">
+      <section className="relative z-10 py-16 sm:py-24 lg:py-32 overflow-hidden bg-black">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
             
             <div className="lg:col-span-8">
-              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase italic text-white leading-tight tracking-tight">
+              <h3 className="text-3xl sm:text-4xl lg:text-5xl font-display font-black uppercase text-white leading-tight tracking-tight">
                 "At ZYNIQ, we believe the human mind was meant to explore, not just execute."
               </h3>
             </div>
@@ -313,12 +350,12 @@ export default function App() {
       <ServicesSection />
 
       {/* USE CASES SECTION */}
-      <section id="usecases-section" className="relative z-10 py-20 bg-surface/30 border-t border-b border-white/10">
+      <section id="usecases-section" className="relative z-10 py-12 sm:py-20 lg:py-24 bg-surface/30 border-t border-b border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           
           <div className="max-w-xl space-y-3">
             <span className="text-xs font-mono text-brand-accent block uppercase tracking-widest font-bold">// INDUSTRY USE CASE</span>
-            <h2 className="text-3xl font-display font-black uppercase text-white tracking-tight leading-none italic">
+            <h2 className="text-3xl font-display font-black uppercase text-white tracking-tight leading-none">
               Boosting Capabilities Beyond Limits
             </h2>
             <p className="text-brand-text-muted text-sm leading-relaxed font-sans">
