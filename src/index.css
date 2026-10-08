@@ -1,58 +1,116 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Syne:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Big+Shoulders+Display:wght@700;800;900&family=Inter+Tight:wght@400;500;600&family=JetBrains+Mono:wght@400;500;600&display=swap');
 @import "tailwindcss";
 
 @theme {
-  --font-sans: "Plus Jakarta Sans", ui-sans-serif, system-ui, sans-serif;
+  --font-sans: "Inter Tight", ui-sans-serif, system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, monospace;
-  --font-display: "Syne", sans-serif;
+  --font-display: "Big Shoulders Display", "Arial Narrow", sans-serif;
 
-  --color-black: var(--theme-black);
-  --color-white: var(--theme-white);
-  --color-surface: var(--theme-surface);
-  
-  --color-brand-bg: var(--theme-black);
-  --color-brand-card: var(--theme-surface);
-  --color-brand-border: var(--theme-border);
-  --color-brand-accent: #EA2323;
-  --color-brand-text-muted: var(--theme-text-muted);
+  --color-paper: var(--paper);
+  --color-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-grid: var(--grid);
+  --color-red: #EA2323;
 }
 
+/* Dark is the base; light is the default theme via the .light class on <html>. */
 :root {
-  --theme-black: #000000;
-  --theme-white: #ffffff;
-  --theme-surface: #141414;
-  --theme-border: #333333;
-  --theme-text-muted: #777777;
+  --paper: #101214;
+  --paper-raised: #181B1E;
+  --ink: #ECE8DD;
+  --ink-muted: #8F8B80;
+  --rule: rgba(236, 232, 221, 0.16);
+  --grid: rgba(236, 232, 221, 0.05);
+  --red: #EA2323;
+  /* Used by the logo SVGs */
+  --theme-white: var(--ink);
 }
 
 :root.light {
-  --theme-black: #ffffff;
-  --theme-white: #000000;
-  --theme-surface: #f5f5f5;
-  --theme-border: #e5e5e5;
-  --theme-text-muted: #71717a;
+  --paper: #F2EEE4;
+  --paper-raised: #FAF7F0;
+  --ink: #15140F;
+  --ink-muted: #6B675C;
+  --rule: rgba(21, 20, 15, 0.16);
+  --grid: rgba(21, 20, 15, 0.06);
+}
+
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background-color: var(--theme-black);
-  color: var(--theme-white);
+  background-color: var(--paper);
+  color: var(--ink);
   font-family: var(--font-sans);
   overflow-x: hidden;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
-/* Elegant scrollbar styling */
+section[id] {
+  scroll-margin-top: 5rem;
+}
+
+:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+::selection {
+  background: var(--red);
+  color: #fff;
+}
+
+/* Drafting grid: 24px minor lines, 120px major lines */
+.bp-grid {
+  background-image:
+    linear-gradient(var(--rule) 1px, transparent 1px),
+    linear-gradient(90deg, var(--rule) 1px, transparent 1px),
+    linear-gradient(var(--grid) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+  background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
+}
+
+/* Small mono annotation used for sheet numbers, labels and captions */
+.bp-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  line-height: 1.4;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+}
+
+@keyframes bp-marquee {
+  to {
+    transform: translateX(-50%);
+  }
+}
+
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
 }
 ::-webkit-scrollbar-track {
-  background: var(--theme-black);
+  background: var(--paper);
 }
 ::-webkit-scrollbar-thumb {
-  background: var(--theme-border);
-  border-radius: 0px;
+  background: var(--ink-muted);
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-brand-accent);
+  background: var(--red);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
+  }
+  *,
+  *::before,
+  *::after {
+    animation: none !important;
+    transition-duration: 0.01ms !important;
+  }
 }

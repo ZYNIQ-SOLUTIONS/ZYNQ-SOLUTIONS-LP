@@ -1,19 +1,14 @@
-export interface AgentStep {
-  id: string;
-  type: 'thought' | 'action' | 'callout' | 'success' | 'warning' | 'info';
-  title: string;
-  description: string;
-  timestamp: string;
-  duration?: number; // in ms
-  metadata?: Record<string, string | number | boolean>;
+export interface Brand {
+  name: string;
+  useCase: string;
 }
 
-export interface AgentPreset {
-  id: string;
-  name: string;
-  category: string;
-  objective: string;
-  initialSteps: AgentStep[];
+export interface Stat {
+  value: number;
+  suffix: string;
+  fill: number; // 0..1, how far the gauge arc is drawn
+  label: string;
+  note: string;
 }
 
 export interface Pillar {
@@ -23,6 +18,15 @@ export interface Pillar {
   description: string;
   detailTitle: string;
   detailExplanation: string;
+}
+
+export interface Service {
+  id: string;
+  number: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  deliverables: string[];
 }
 
 export interface UseCase {
@@ -40,4 +44,10 @@ export interface UseCase {
     allowedTools: string[];
     sampleLogs: { time: string; text: string; type: 'system' | 'action' | 'success' }[];
   };
+}
+
+export interface StationDef {
+  id: string;
+  number: string;
+  label: string;
 }
