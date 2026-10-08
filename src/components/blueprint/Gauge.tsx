@@ -56,7 +56,7 @@ export function Gauge({ value, suffix, fill }: Pick<Stat, 'value' | 'suffix' | '
       </span>
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-[38%] text-center font-display font-black text-6xl leading-none tabular-nums"
+        className="absolute inset-x-0 top-[38%] text-center font-display font-black text-[2.1rem] md:text-6xl leading-none tabular-nums"
       >
         {Math.round(value * progress)}
         <span className="text-red">{suffix}</span>

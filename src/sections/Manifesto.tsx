@@ -2,7 +2,7 @@ import { CONTAINER } from '../components/blueprint/layout';
 
 export function Manifesto() {
   return (
-    <section aria-label="Manifesto" className="relative overflow-hidden bg-ink text-paper py-20 sm:py-28">
+    <section aria-label="Manifesto" className="relative overflow-hidden bg-ink text-paper py-16 sm:py-28">
       <div className={`${CONTAINER} grid grid-cols-1 lg:grid-cols-12 gap-10 items-end`}>
         <blockquote className="lg:col-span-8 font-display font-black uppercase leading-[0.92] tracking-tight text-[clamp(2.5rem,7vw,5.5rem)] text-balance">
           “At ZYNIQ, we believe the human mind was meant to <span className="text-red">explore</span>, not just execute.”

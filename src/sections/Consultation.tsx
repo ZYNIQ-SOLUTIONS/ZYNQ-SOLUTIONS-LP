@@ -185,7 +185,7 @@ export function Consultation() {
         <h3 className="bp-label mt-10 mb-3">Prefer email?</h3>
         <a
           href={`mailto:${contact}`}
-          className="font-display font-black text-2xl sm:text-3xl leading-none break-all hover:text-red transition-colors"
+          className="inline-flex items-center min-h-11 font-display font-black text-2xl sm:text-3xl leading-none break-all hover:text-red transition-colors"
         >
           {contact}
         </a>

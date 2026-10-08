@@ -77,7 +77,7 @@ export function Services() {
                           <p className="text-base leading-relaxed text-muted max-w-md">{service.description}</p>
                           <a
                             href="#consultation"
-                            className="mt-6 inline-flex items-center gap-2 border border-ink font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-5 py-3 hover:bg-red hover:border-red hover:text-white transition-colors"
+                            className="mt-6 inline-flex items-center gap-2 border border-ink font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-5 py-3.5 hover:bg-red hover:border-red hover:text-white transition-colors"
                           >
                             Request this
                             <ArrowRight className="w-3.5 h-3.5" />

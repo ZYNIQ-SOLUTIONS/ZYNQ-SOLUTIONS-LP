@@ -141,13 +141,13 @@ export function Hero() {
   };
 
   return (
-    <section aria-labelledby="hero-title" className="py-10 sm:py-14 lg:py-16">
+    <section aria-labelledby="hero-title" className="py-6 sm:py-14 lg:py-16">
       <div className={CONTAINER}>
         <div
           ref={frame}
           onPointerMove={onPointerMove}
           onPointerLeave={onPointerLeave}
-          className="group relative border border-rule bg-paper/60 px-5 py-8 sm:px-10 sm:py-12"
+          className="group relative border border-rule bg-paper/60 px-4 py-6 sm:px-10 sm:py-12"
         >
           <CornerMarks />
 
@@ -167,13 +167,13 @@ export function Hero() {
             <span className="hidden sm:inline">DWG 001-A</span>
           </div>
 
-          <div className="relative mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="relative mt-6 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
             <div className="lg:col-span-7">
               <p className="bp-label !text-red font-semibold">AI-Driven Software Factory &amp; Innovation Lab</p>
 
               <h1
                 id="hero-title"
-                className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,14vw,9rem)] lg:text-[clamp(5rem,9.5vw,9rem)]"
+                className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,18vw,9rem)] lg:text-[clamp(5rem,9.5vw,9rem)]"
               >
                 {HEADLINE.map((line, i) => (
                   <span key={line} className="block overflow-hidden pt-[0.05em]">

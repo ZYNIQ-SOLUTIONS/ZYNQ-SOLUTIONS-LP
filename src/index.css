@@ -40,13 +40,19 @@
 
 html {
   scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  -webkit-tap-highlight-color: transparent;
 }
 
 body {
   background-color: var(--paper);
   color: var(--ink);
   font-family: var(--font-sans);
+  /* clip, not hidden, so the body never becomes its own scroll container and the
+     sticky nav keeps tracking the viewport */
   overflow-x: hidden;
+  overflow-x: clip;
   transition: background-color 0.3s ease, color 0.3s ease;
 }
 
@@ -88,6 +94,14 @@ section[id] {
 .bp-outline {
   color: transparent;
   -webkit-text-stroke: 1.5px var(--rule);
+}
+
+/* Horizontal strips that scroll by touch, without a visible scrollbar */
+.bp-noscroll {
+  scrollbar-width: none;
+}
+.bp-noscroll::-webkit-scrollbar {
+  display: none;
 }
 
 @keyframes bp-marquee {

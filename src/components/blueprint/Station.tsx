@@ -15,7 +15,7 @@ export function Station({ id, number, label, title, intro, children }: StationPr
   const reduce = useReducedMotion();
 
   return (
-    <section id={id} aria-labelledby={`${id}-title`} className="relative border-t border-rule py-16 sm:py-24">
+    <section id={id} aria-labelledby={`${id}-title`} className="relative border-t border-rule py-14 sm:py-24">
       <motion.div
         className={`${CONTAINER} relative`}
         initial={reduce ? false : { opacity: 0, y: 20 }}
@@ -29,7 +29,7 @@ export function Station({ id, number, label, title, intro, children }: StationPr
         >
           {number}
         </span>
-        <header className="relative mb-10 sm:mb-14 max-w-3xl">
+        <header className="relative mb-8 sm:mb-14 max-w-3xl">
           <p className="bp-label flex items-center gap-3">
             <span className="text-red font-semibold">Station {number}</span>
             <span aria-hidden="true" className="h-px w-8 bg-rule" />

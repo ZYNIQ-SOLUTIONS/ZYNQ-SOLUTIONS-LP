@@ -10,7 +10,7 @@ function SectorSchematic({ id }: { id: string }) {
   const red = { fill: 'var(--red)' };
 
   return (
-    <svg viewBox="0 0 240 160" className="w-full max-w-xs" aria-hidden="true">
+    <svg viewBox="0 0 240 160" className="w-full max-w-[15rem] sm:max-w-xs" aria-hidden="true">
       {id === 'cloud' && (
         // three linked node clusters
         <g {...stroke}>
@@ -75,7 +75,7 @@ export function Sectors() {
       intro="Combining synthetic intelligence, niche problem-solving, and uncompromising quality to deliver powerful, intelligent solutions."
     >
       {/* Floor plan: four bays */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 border-l border-t border-ink">
+      <div className="grid grid-cols-2 lg:grid-cols-4 border-l border-t border-ink">
         {SECTORS.map((sector) => {
           const isActive = sector.id === activeId;
           return (
@@ -85,20 +85,20 @@ export function Sectors() {
               aria-pressed={isActive}
               aria-controls="sector-detail"
               onClick={() => setActiveId(sector.id)}
-              className={`relative text-left p-6 min-h-[200px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
+              className={`relative text-left p-4 sm:p-6 min-h-[104px] sm:min-h-[200px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
                 isActive ? 'bg-raised' : 'hover:bg-raised/60'
               }`}
             >
               <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
               <span className={`bp-label ${isActive ? '!text-red font-semibold' : ''}`}>Bay {sector.number}</span>
-              <span className="mt-3 font-display font-black uppercase text-3xl leading-none">{sector.title}</span>
-              <span className="mt-3 text-sm text-muted leading-relaxed">{sector.description}</span>
+              <span className="mt-2 sm:mt-3 font-display font-black uppercase text-2xl sm:text-3xl leading-none">{sector.title}</span>
+              <span className="hidden sm:block mt-3 text-sm text-muted leading-relaxed">{sector.description}</span>
             </button>
           );
         })}
       </div>
 
-      <div id="sector-detail" className="relative mt-6 border border-rule bg-raised p-6 sm:p-10">
+      <div id="sector-detail" className="relative mt-4 sm:mt-6 border border-rule bg-raised p-5 sm:p-10">
         <CornerMarks />
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
@@ -114,6 +114,8 @@ export function Sectors() {
                 Detail / Bay {active.number} / {active.title}
               </p>
               <h3 className="mt-3 font-display font-black uppercase text-3xl sm:text-4xl leading-none">{active.detailTitle}</h3>
+              {/* On phones the bays are too small to hold their description, so it leads the detail. */}
+              <p className="sm:hidden mt-4 text-base font-medium leading-relaxed">{active.description}</p>
               <p className="mt-4 text-base text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">

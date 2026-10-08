@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { MobileDock } from './components/blueprint/MobileDock';
 import { ProductionLine } from './components/blueprint/ProductionLine';
 import { STATIONS } from './content/site';
 import { Consultation } from './sections/Consultation';
@@ -45,6 +46,7 @@ export default function App() {
         <Consultation />
       </main>
       <TitleBlock />
+      <MobileDock stations={STATIONS} />
     </div>
   );
 }
