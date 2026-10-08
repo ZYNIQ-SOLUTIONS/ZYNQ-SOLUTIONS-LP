@@ -28,8 +28,9 @@ function measure(stations: StationDef[]) {
   return { fill, reached: tops.filter((t) => y >= t).length };
 }
 
-export function ProductionLine({ stations }: { stations: StationDef[] }) {
-  const [{ fill, reached }, setState] = useState({ fill: 0, reached: 0 });
+// Scroll progress along the line: how far the rail is filled and how many stations are behind us.
+export function useLineProgress(stations: StationDef[]) {
+  const [state, setState] = useState({ fill: 0, reached: 0 });
 
   useEffect(() => {
     let frame = 0;
@@ -46,6 +47,12 @@ export function ProductionLine({ stations }: { stations: StationDef[] }) {
       window.removeEventListener('resize', update);
     };
   }, [stations]);
+
+  return state;
+}
+
+export function ProductionLine({ stations }: { stations: StationDef[] }) {
+  const { fill, reached } = useLineProgress(stations);
 
   return (
     <>

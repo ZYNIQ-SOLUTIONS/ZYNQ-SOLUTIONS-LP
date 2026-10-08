@@ -3,6 +3,7 @@ import { ArrowRight, Menu, X } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
 import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { ThemeToggle } from '../components/ThemeToggle';
+import { useLineProgress } from '../components/blueprint/ProductionLine';
 import { STATIONS } from '../content/site';
 
 // The Output station is reached by scrolling; the nav lists the four main destinations.
@@ -10,6 +11,8 @@ const LINKS = STATIONS.filter((s) => s.id !== 'output');
 
 export function Nav() {
   const [open, setOpen] = useState(false);
+  const { reached } = useLineProgress(STATIONS);
+  const currentId = reached > 0 ? STATIONS[reached - 1].id : null;
 
   return (
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule">
@@ -22,7 +25,14 @@ export function Nav() {
 
         <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
           {LINKS.map((s) => (
-            <a key={s.id} href={`#${s.id}`} className="hover:text-ink transition-colors">
+            <a
+              key={s.id}
+              href={`#${s.id}`}
+              aria-current={s.id === currentId ? 'location' : undefined}
+              className={`py-1 border-b-2 transition-colors ${
+                s.id === currentId ? 'text-ink border-red' : 'border-transparent hover:text-ink'
+              }`}
+            >
               <span className="text-red mr-1.5">{s.number}</span>
               {s.label}
             </a>

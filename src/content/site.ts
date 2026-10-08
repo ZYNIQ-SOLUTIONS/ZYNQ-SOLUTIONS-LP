@@ -6,6 +6,14 @@ export const SITE = {
   hq: 'Dubai, UAE',
 };
 
+// The four stages of the line, shown in the hero diagram and beside the form.
+export const STAGES = [
+  { label: 'Intake', note: 'Your brief comes in' },
+  { label: 'Crews', note: 'Specialist agents build' },
+  { label: 'Checks', note: 'Commanders review' },
+  { label: 'Ship', note: 'Deployed and holding up' },
+];
+
 export const STATIONS: StationDef[] = [
   { id: 'output', number: '01', label: 'Output' },
   { id: 'sectors', number: '02', label: 'Sectors' },

@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { Station } from '../components/blueprint/Station';
-import { CONTACT_EMAILS, STATIONS } from '../content/site';
+import { CONTACT_EMAILS, SITE, STAGES, STATIONS } from '../content/site';
 import { encodeForm } from '../lib/encodeForm';
 
 const FORM_NAME = 'consultation';
@@ -45,7 +45,8 @@ export function Consultation() {
       title="Get Free Consultation"
       intro="Ready to architect your custom synthetic brain? Connect with our specialist commanders and start engineering the future today."
     >
-      <div className="relative max-w-3xl border border-ink bg-raised">
+      <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
+      <div className="relative lg:col-span-7 border border-ink bg-raised">
         <CornerMarks />
         <div className="flex justify-between gap-4 px-5 sm:px-8 py-4 border-b border-ink bp-label">
           <span>Work order / New</span>
@@ -167,6 +168,29 @@ export function Consultation() {
             </button>
           </form>
         )}
+      </div>
+
+      <aside className="lg:col-span-5">
+        <h3 className="bp-label mb-4">After you send</h3>
+        <ol className="border-t border-ink">
+          {STAGES.map((stage, i) => (
+            <li key={stage.label} className="flex items-baseline gap-4 py-4 border-b border-rule">
+              <span className="font-mono text-xs text-red">0{i + 1}</span>
+              <span className="font-display font-black uppercase text-2xl leading-none w-24 shrink-0">{stage.label}</span>
+              <span className="text-sm text-muted">{stage.note}</span>
+            </li>
+          ))}
+        </ol>
+
+        <h3 className="bp-label mt-10 mb-3">Prefer email?</h3>
+        <a
+          href={`mailto:${contact}`}
+          className="font-display font-black text-2xl sm:text-3xl leading-none break-all hover:text-red transition-colors"
+        >
+          {contact}
+        </a>
+        <p className="bp-label mt-4">HQ: {SITE.hq}</p>
+      </aside>
       </div>
     </Station>
   );

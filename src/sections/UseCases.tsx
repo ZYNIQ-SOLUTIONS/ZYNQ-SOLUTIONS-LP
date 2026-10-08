@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { Station } from '../components/blueprint/Station';
 import { STATIONS } from '../content/site';
@@ -11,6 +11,15 @@ export function UseCases() {
     USE_CASES.findIndex((u) => u.id === activeId),
   );
   const active = USE_CASES[activeIndex];
+  const ticket = useRef<HTMLElement>(null);
+
+  const select = (id: string) => {
+    setActiveId(id);
+    // Below the desktop layout the ticket sits under the list, out of view.
+    if (window.innerWidth < 1024) {
+      requestAnimationFrame(() => ticket.current?.scrollIntoView({ block: 'start' }));
+    }
+  };
 
   return (
     <Station
@@ -29,7 +38,7 @@ export function UseCases() {
                   type="button"
                   aria-pressed={isActive}
                   aria-controls="usecase-ticket"
-                  onClick={() => setActiveId(uc.id)}
+                  onClick={() => select(uc.id)}
                   className={`relative w-full text-left py-5 pl-5 pr-3 cursor-pointer transition-colors ${
                     isActive ? 'bg-raised' : 'hover:bg-raised/60'
                   }`}
@@ -47,7 +56,7 @@ export function UseCases() {
         </ul>
 
         {/* Work order ticket */}
-        <article id="usecase-ticket" className="relative lg:col-span-8 border border-ink bg-raised min-w-0">
+        <article ref={ticket} id="usecase-ticket" className="relative scroll-mt-24 lg:col-span-8 border border-ink bg-raised min-w-0">
           <CornerMarks />
           <header className="flex flex-wrap items-center justify-between gap-2 px-5 sm:px-8 py-4 border-b border-ink bp-label">
             <span>

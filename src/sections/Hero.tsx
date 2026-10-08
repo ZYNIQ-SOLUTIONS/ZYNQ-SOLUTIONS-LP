@@ -1,13 +1,12 @@
+import { useRef } from 'react';
+import type { PointerEvent } from 'react';
+import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { CONTAINER } from '../components/blueprint/layout';
+import { STAGES } from '../content/site';
 
-const STAGES = [
-  { label: 'Intake', note: 'Your brief comes in' },
-  { label: 'Crews', note: 'Specialist agents build' },
-  { label: 'Checks', note: 'Commanders review' },
-  { label: 'Ship', note: 'Deployed and holding up' },
-];
+const HEADLINE = ['The future', 'is coded', 'by us.'];
 
 const BOX_H = 74;
 const GAP = 38;
@@ -104,7 +103,7 @@ function FactorySchematic() {
             <text x="18" y={y + 52} className="font-display" fontSize="28" fontWeight="900" fill="var(--ink)">
               {stage.label.toUpperCase()}
             </text>
-            <text x="150" y={y + 50} className="font-mono" fontSize="9.5" letterSpacing="0.5" fill="var(--ink-muted)">
+            <text x="150" y={y + 50} className="font-mono hidden sm:block" fontSize="9.5" letterSpacing="0.5" fill="var(--ink-muted)">
               {stage.note}
             </text>
             <g transform={`translate(300 ${y + 20})`}>
@@ -118,18 +117,57 @@ function FactorySchematic() {
 }
 
 export function Hero() {
+  const reduce = useReducedMotion();
+  const frame = useRef<HTMLDivElement>(null);
+  const readout = useRef<HTMLSpanElement>(null);
+
+  // Drafting crosshair: follows a mouse inside the frame and reports its position.
+  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
+    const el = frame.current;
+    if (!el || e.pointerType !== 'mouse') return;
+    const rect = el.getBoundingClientRect();
+    const x = Math.round(e.clientX - rect.left);
+    const y = Math.round(e.clientY - rect.top);
+    el.style.setProperty('--cx', `${x}px`);
+    el.style.setProperty('--cy', `${y}px`);
+    el.dataset.tracking = 'true';
+    if (readout.current) {
+      readout.current.textContent = `X ${String(x).padStart(4, '0')} / Y ${String(y).padStart(4, '0')}`;
+    }
+  };
+
+  const onPointerLeave = () => {
+    if (frame.current) delete frame.current.dataset.tracking;
+  };
+
   return (
     <section aria-labelledby="hero-title" className="py-10 sm:py-14 lg:py-16">
       <div className={CONTAINER}>
-        <div className="relative border border-rule bg-paper/60 px-5 py-8 sm:px-10 sm:py-12">
+        <div
+          ref={frame}
+          onPointerMove={onPointerMove}
+          onPointerLeave={onPointerLeave}
+          className="group relative border border-rule bg-paper/60 px-5 py-8 sm:px-10 sm:py-12"
+        >
           <CornerMarks />
 
-          <div className="bp-label flex justify-between gap-4">
+          <div
+            aria-hidden="true"
+            className="pointer-events-none absolute inset-0 overflow-hidden opacity-0 transition-opacity duration-200 group-data-[tracking=true]:opacity-100"
+          >
+            <span className="absolute inset-y-0 w-px bg-red/40" style={{ left: 'var(--cx)' }} />
+            <span className="absolute inset-x-0 h-px bg-red/40" style={{ top: 'var(--cy)' }} />
+            <span ref={readout} className="bp-label !text-red absolute bottom-3 right-5">
+              X 0000 / Y 0000
+            </span>
+          </div>
+
+          <div className="relative bp-label flex justify-between gap-4">
             <span>Sheet 00 / Overview</span>
             <span className="hidden sm:inline">DWG 001-A</span>
           </div>
 
-          <div className="mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="relative mt-8 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             <div className="lg:col-span-7">
               <p className="bp-label !text-red font-semibold">AI-Driven Software Factory &amp; Innovation Lab</p>
 
@@ -137,11 +175,18 @@ export function Hero() {
                 id="hero-title"
                 className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,14vw,9rem)] lg:text-[clamp(5rem,9.5vw,9rem)]"
               >
-                The future
-                <br />
-                is coded
-                <br />
-                <span className="text-red">by us.</span>
+                {HEADLINE.map((line, i) => (
+                  <span key={line} className="block overflow-hidden pt-[0.05em]">
+                    <motion.span
+                      className={`block ${i === HEADLINE.length - 1 ? 'text-red' : ''}`}
+                      initial={reduce ? false : { y: '105%' }}
+                      animate={{ y: 0 }}
+                      transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.2, 0.8, 0.2, 1] }}
+                    >
+                      {line}
+                    </motion.span>
+                  </span>
+                ))}
               </h1>
 
               {/* decorative dimension line under the headline */}
