@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { ProductionLine } from './components/blueprint/ProductionLine';
-import { Station } from './components/blueprint/Station';
 import { STATIONS } from './content/site';
+import { Consultation } from './sections/Consultation';
 import { Hero } from './sections/Hero';
 import { Manifesto } from './sections/Manifesto';
 import { Nav } from './sections/Nav';
@@ -32,13 +32,7 @@ export default function App() {
         <Manifesto />
         <Services />
         <UseCases />
-        {STATIONS.slice(4).map((s) => (
-          <div key={s.id}>
-            <Station id={s.id} number={s.number} label={s.label} title={s.label}>
-              <div className="h-64" />
-            </Station>
-          </div>
-        ))}
+        <Consultation />
       </main>
       <TitleBlock />
     </div>
