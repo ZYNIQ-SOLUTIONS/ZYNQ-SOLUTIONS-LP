@@ -20,7 +20,7 @@ export function Nav() {
           <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
         </a>
 
-        <nav aria-label="Main" className="hidden md:flex items-center gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
+        <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
           {LINKS.map((s) => (
             <a key={s.id} href={`#${s.id}`} className="hover:text-ink transition-colors">
               <span className="text-red mr-1.5">{s.number}</span>
@@ -40,7 +40,7 @@ export function Nav() {
           </a>
           <button
             type="button"
-            className="md:hidden p-2 text-muted hover:text-ink cursor-pointer"
+            className="lg:hidden p-2 text-muted hover:text-ink cursor-pointer"
             aria-label={open ? 'Close menu' : 'Open menu'}
             aria-expanded={open}
             aria-controls="mobile-menu"
@@ -52,7 +52,7 @@ export function Nav() {
       </div>
 
       {open && (
-        <nav id="mobile-menu" aria-label="Mobile" className="md:hidden absolute top-16 inset-x-0 bg-paper border-b border-rule">
+        <nav id="mobile-menu" aria-label="Mobile" className="lg:hidden absolute top-16 inset-x-0 bg-paper border-b border-rule">
           <ul className="px-5 py-2 font-display font-black uppercase text-3xl">
             {LINKS.map((s) => (
               <li key={s.id} className="border-b border-rule last:border-b-0">
