@@ -8,7 +8,9 @@ import { Nav } from './sections/Nav';
 import { Output } from './sections/Output';
 import { PartsStrip } from './sections/PartsStrip';
 import { Sectors } from './sections/Sectors';
+import { Services } from './sections/Services';
 import { TitleBlock } from './sections/TitleBlock';
+import { UseCases } from './sections/UseCases';
 
 export default function App() {
   // The page renders after the browser has already tried to follow the URL hash,
@@ -28,7 +30,9 @@ export default function App() {
         <Output />
         <Sectors />
         <Manifesto />
-        {STATIONS.slice(2).map((s) => (
+        <Services />
+        <UseCases />
+        {STATIONS.slice(4).map((s) => (
           <div key={s.id}>
             <Station id={s.id} number={s.number} label={s.label} title={s.label}>
               <div className="h-64" />
