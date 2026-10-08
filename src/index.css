@@ -116,3 +116,35 @@ section[id] {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* Hero schematic: items moving down the line and the crew working in sequence */
+@keyframes bp-flow {
+  0% {
+    transform: translateY(0);
+    opacity: 0;
+  }
+  15%,
+  85% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(38px);
+    opacity: 0;
+  }
+}
+.bp-flow {
+  animation: bp-flow 2s linear infinite;
+}
+
+@keyframes bp-crew {
+  0%,
+  100% {
+    opacity: 0.25;
+  }
+  40% {
+    opacity: 1;
+  }
+}
+.bp-crew {
+  animation: bp-crew 1.6s ease-in-out infinite;
+}
