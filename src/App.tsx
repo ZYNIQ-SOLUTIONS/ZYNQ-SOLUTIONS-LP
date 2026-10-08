@@ -3,8 +3,11 @@ import { ProductionLine } from './components/blueprint/ProductionLine';
 import { Station } from './components/blueprint/Station';
 import { STATIONS } from './content/site';
 import { Hero } from './sections/Hero';
+import { Manifesto } from './sections/Manifesto';
 import { Nav } from './sections/Nav';
+import { Output } from './sections/Output';
 import { PartsStrip } from './sections/PartsStrip';
+import { Sectors } from './sections/Sectors';
 import { TitleBlock } from './sections/TitleBlock';
 
 export default function App() {
@@ -22,7 +25,10 @@ export default function App() {
       <main id="top">
         <Hero />
         <PartsStrip />
-        {STATIONS.map((s) => (
+        <Output />
+        <Sectors />
+        <Manifesto />
+        {STATIONS.slice(2).map((s) => (
           <div key={s.id}>
             <Station id={s.id} number={s.number} label={s.label} title={s.label}>
               <div className="h-64" />
