@@ -23,6 +23,7 @@
   --ink-muted: #8F8B80;
   --rule: rgba(236, 232, 221, 0.16);
   --grid: rgba(236, 232, 221, 0.05);
+  --grid-major: rgba(236, 232, 221, 0.08);
   --red: #EA2323;
   /* Used by the logo SVGs */
   --theme-white: var(--ink);
@@ -35,6 +36,7 @@
   --ink-muted: #6B675C;
   --rule: rgba(21, 20, 15, 0.16);
   --grid: rgba(21, 20, 15, 0.06);
+  --grid-major: rgba(21, 20, 15, 0.1);
 }
 
 html {
@@ -66,8 +68,8 @@ section[id] {
 /* Drafting grid: 24px minor lines, 120px major lines */
 .bp-grid {
   background-image:
-    linear-gradient(var(--rule) 1px, transparent 1px),
-    linear-gradient(90deg, var(--rule) 1px, transparent 1px),
+    linear-gradient(var(--grid-major) 1px, transparent 1px),
+    linear-gradient(90deg, var(--grid-major) 1px, transparent 1px),
     linear-gradient(var(--grid) 1px, transparent 1px),
     linear-gradient(90deg, var(--grid) 1px, transparent 1px);
   background-size: 120px 120px, 120px 120px, 24px 24px, 24px 24px;
