@@ -60,7 +60,7 @@ export function Nav() {
           <ThemeToggle />
           <a
             href="#consultation"
-            className="hidden sm:inline-flex items-center gap-2 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 h-11 lg:h-auto lg:py-2.5 hover:bg-ink hover:text-paper transition-colors"
+            className="hidden sm:inline-flex items-center gap-2 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 h-11 lg:h-auto lg:py-2.5 bp-sweep"
           >
             Start a build
             <ArrowRight className="w-3.5 h-3.5" />

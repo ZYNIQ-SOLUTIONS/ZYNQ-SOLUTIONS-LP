@@ -161,7 +161,7 @@ export function Consultation() {
             <button
               type="submit"
               disabled={status === 'sending'}
-              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-8 py-4 cursor-pointer hover:bg-ink hover:text-paper transition-colors disabled:opacity-60 disabled:cursor-wait"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-8 py-4 cursor-pointer bp-sweep disabled:opacity-60 disabled:cursor-wait"
             >
               {status === 'sending' ? 'Sending…' : 'Send work order'}
               <ArrowRight className="w-4 h-4" />

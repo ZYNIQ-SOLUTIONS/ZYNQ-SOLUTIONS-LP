@@ -85,14 +85,14 @@ export function Sectors() {
               aria-pressed={isActive}
               aria-controls="sector-detail"
               onClick={() => setActiveId(sector.id)}
-              className={`relative text-left p-4 sm:p-6 min-h-[104px] sm:min-h-[200px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
-                isActive ? 'bg-raised' : 'hover:bg-raised/60'
+              className={`relative text-left p-4 sm:p-6 min-h-[104px] sm:min-h-[200px] lg:min-h-[240px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
+                isActive ? 'bg-ink text-paper' : 'hover:bg-raised'
               }`}
             >
               <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
               <span className={`bp-label ${isActive ? '!text-red font-semibold' : ''}`}>Bay {sector.number}</span>
-              <span className="mt-2 sm:mt-3 font-display font-black uppercase text-2xl sm:text-3xl leading-none">{sector.title}</span>
-              <span className="hidden sm:block mt-3 text-sm text-muted leading-relaxed">{sector.description}</span>
+              <span className="mt-2 sm:mt-3 font-display font-black uppercase text-2xl sm:text-3xl xl:text-4xl leading-none">{sector.title}</span>
+              <span className={`hidden sm:block mt-3 text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{sector.description}</span>
             </button>
           );
         })}
@@ -113,7 +113,7 @@ export function Sectors() {
               <p className="bp-label">
                 Detail / Bay {active.number} / {active.title}
               </p>
-              <h3 className="mt-3 font-display font-black uppercase text-3xl sm:text-4xl leading-none">{active.detailTitle}</h3>
+              <h3 className="mt-3 font-display font-black uppercase text-3xl sm:text-4xl lg:text-5xl leading-none">{active.detailTitle}</h3>
               {/* On phones the bays are too small to hold their description, so it leads the detail. */}
               <p className="sm:hidden mt-4 text-base font-medium leading-relaxed">{active.description}</p>
               <p className="mt-4 text-base text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>

@@ -3,6 +3,8 @@ import type { PointerEvent } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
+import { LineDrawing } from '../components/blueprint/LineDrawing';
+import { LineStatus } from '../components/blueprint/LineStatus';
 import { CONTAINER } from '../components/blueprint/layout';
 import { STAGES } from '../content/site';
 
@@ -60,7 +62,7 @@ function StageGlyph({ index }: { index: number }) {
 function FactorySchematic() {
   const height = STAGES.length * STEP - GAP + 2;
   return (
-    <svg viewBox={`0 0 400 ${height}`} className="w-full max-w-md mx-auto lg:ml-auto lg:mr-0" aria-hidden="true">
+    <svg viewBox={`0 0 400 ${height}`} className="w-full max-w-md mx-auto" aria-hidden="true">
       {/* height dimension line */}
       <g stroke="var(--ink-muted)" strokeWidth="1" fill="none">
         <path d={`M388 1v${height - 2}M382 1h12M382 ${height - 1}h12`} />
@@ -141,13 +143,13 @@ export function Hero() {
   };
 
   return (
-    <section aria-labelledby="hero-title" className="py-6 sm:py-14 lg:py-16">
+    <section aria-labelledby="hero-title" className="py-6 sm:py-14 lg:py-10">
       <div className={CONTAINER}>
         <div
           ref={frame}
           onPointerMove={onPointerMove}
           onPointerLeave={onPointerLeave}
-          className="group relative border border-rule bg-paper/60 px-4 py-6 sm:px-10 sm:py-12"
+          className="group relative border border-rule bg-paper/60 px-4 py-6 sm:px-10 sm:py-12 lg:py-10"
         >
           <CornerMarks />
 
@@ -164,16 +166,16 @@ export function Hero() {
 
           <div className="relative bp-label flex justify-between gap-4">
             <span>Sheet 00 / Overview</span>
-            <span className="hidden sm:inline">DWG 001-A</span>
+            <LineStatus className="hidden sm:inline-flex" />
           </div>
 
-          <div className="relative mt-6 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-8 items-center">
-            <div className="lg:col-span-7">
+          <div className="relative mt-6 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 lg:items-end">
+            <div className="lg:col-span-8">
               <p className="bp-label !text-red font-semibold">AI-Driven Software Factory &amp; Innovation Lab</p>
 
               <h1
                 id="hero-title"
-                className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,18vw,9rem)] lg:text-[clamp(5rem,9.5vw,9rem)]"
+                className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,18vw,9rem)] lg:text-[clamp(5rem,10.5vw,10.5rem)]"
               >
                 {HEADLINE.map((line, i) => (
                   <span key={line} className="block overflow-hidden pt-[0.05em]">
@@ -188,7 +190,9 @@ export function Hero() {
                   </span>
                 ))}
               </h1>
+            </div>
 
+            <div className="lg:col-span-4 lg:pb-2">
               {/* decorative dimension line under the headline */}
               <div aria-hidden="true" className="mt-6 flex items-center gap-3 max-w-md bp-label">
                 <span className="h-3 w-px bg-muted" />
@@ -198,22 +202,22 @@ export function Hero() {
                 <span className="h-3 w-px bg-muted" />
               </div>
 
-              <p className="mt-6 max-w-xl text-base sm:text-lg leading-relaxed text-muted">
+              <p className="mt-6 max-w-xl text-base sm:text-lg lg:text-base xl:text-lg leading-relaxed text-muted">
                 We don’t just adapt to the future, we engineer it. Where ideas ship fast and hold up in the real world.
                 Architecting synthetic brains to power universal discovery.
               </p>
 
-              <div className="mt-8 flex flex-col sm:flex-row gap-3">
+              <div className="mt-8 flex flex-col sm:flex-row lg:flex-col gap-3">
                 <a
                   href="#consultation"
-                  className="inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 hover:bg-ink hover:text-paper transition-colors"
+                  className="inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap bp-sweep"
                 >
                   Start a build
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a
                   href="#sectors"
-                  className="inline-flex items-center justify-center gap-2 border border-ink font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 hover:bg-ink hover:text-paper transition-colors"
+                  className="inline-flex items-center justify-center gap-2 border border-ink font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap bp-sweep"
                 >
                   See the line
                   <ArrowDown className="w-4 h-4" />
@@ -221,9 +225,13 @@ export function Hero() {
               </div>
             </div>
 
-            <div className="lg:col-span-5">
-              <FactorySchematic />
-            </div>
+          </div>
+
+          <div className="relative mt-10 lg:hidden">
+            <FactorySchematic />
+          </div>
+          <div className="relative mt-10 hidden lg:block">
+            <LineDrawing />
           </div>
         </div>
       </div>

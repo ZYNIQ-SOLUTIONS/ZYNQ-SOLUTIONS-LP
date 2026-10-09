@@ -96,6 +96,35 @@ section[id] {
   -webkit-text-stroke: 1.5px var(--rule);
 }
 
+/* Paper grain over the whole sheet */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 100;
+  pointer-events: none;
+  opacity: 0.07;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='220' height='220'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1.1 -0.2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+}
+:root:not(.light) body::after {
+  filter: invert(1);
+  opacity: 0.05;
+}
+
+/* Buttons fill from the left on hover */
+.bp-sweep {
+  background-image: linear-gradient(var(--ink), var(--ink));
+  background-repeat: no-repeat;
+  background-size: 0% 100%;
+  transition: background-size 0.4s cubic-bezier(0.2, 0.8, 0.2, 1), color 0.25s ease;
+}
+@media (hover: hover) {
+  .bp-sweep:hover {
+    background-size: 100% 100%;
+    color: var(--paper);
+  }
+}
+
 /* Horizontal strips that scroll by touch, without a visible scrollbar */
 .bp-noscroll {
   scrollbar-width: none;
@@ -166,4 +195,56 @@ section[id] {
 }
 .bp-crew {
   animation: bp-crew 1.6s ease-in-out infinite;
+}
+
+/* Hero line drawing: strokes draw in, machines rise into place, parts ride the belt */
+@keyframes bp-draw {
+  from {
+    stroke-dashoffset: 1;
+  }
+}
+.bp-draw {
+  stroke-dasharray: 1;
+  animation: bp-draw 1.4s cubic-bezier(0.6, 0, 0.2, 1) 0.2s backwards;
+}
+
+@keyframes bp-rise {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+.bp-rise {
+  animation: bp-rise 0.6s cubic-bezier(0.2, 0.8, 0.2, 1) backwards;
+}
+
+@keyframes bp-belt {
+  to {
+    transform: translateX(1190px);
+  }
+}
+.bp-belt {
+  animation: bp-belt linear infinite;
+}
+
+@keyframes bp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+.bp-spin {
+  animation: bp-spin 2.4s linear infinite;
+}
+
+@keyframes bp-scan {
+  0%,
+  100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(64px);
+  }
+}
+.bp-scan {
+  animation: bp-scan 2.6s ease-in-out infinite;
 }

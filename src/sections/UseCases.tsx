@@ -73,7 +73,7 @@ export function UseCases() {
                   aria-controls="usecase-ticket"
                   onClick={() => select(uc.id)}
                   className={`relative w-full text-left py-5 pl-5 pr-3 cursor-pointer transition-colors ${
-                    isActive ? 'bg-raised' : 'hover:bg-raised/60'
+                    isActive ? 'bg-ink text-paper' : 'hover:bg-raised'
                   }`}
                 >
                   <span aria-hidden="true" className={`absolute inset-y-0 left-0 w-1 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
@@ -81,7 +81,7 @@ export function UseCases() {
                     0{i + 1} / {uc.category}
                   </span>
                   <span className="mt-2 block font-display font-black uppercase text-2xl leading-none">{uc.title}</span>
-                  <span className="mt-2 block text-sm text-muted leading-relaxed">{uc.summary}</span>
+                  <span className={`mt-2 block text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{uc.summary}</span>
                 </button>
               </li>
             );
@@ -99,7 +99,7 @@ export function UseCases() {
           </header>
 
           <div className="px-5 sm:px-8 py-6 sm:py-8">
-            <h3 className="font-display font-black uppercase text-3xl sm:text-4xl leading-none">{active.title}</h3>
+            <h3 className="font-display font-black uppercase text-3xl sm:text-4xl lg:text-5xl leading-none">{active.title}</h3>
             <p className="lg:hidden mt-4 text-base font-medium leading-relaxed">{active.summary}</p>
             <p className="mt-4 text-base text-muted leading-relaxed max-w-2xl">{active.description}</p>
 

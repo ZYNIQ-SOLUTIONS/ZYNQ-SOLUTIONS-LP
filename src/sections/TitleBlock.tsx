@@ -9,7 +9,7 @@ const LINK = 'inline-flex items-center min-h-11 min-w-11 lg:min-h-0 lg:min-w-0 h
 // Footer laid out like the title block in the corner of a technical drawing.
 export function TitleBlock() {
   return (
-    <footer className="border-t border-rule pt-12 sm:pt-16 pb-10">
+    <footer className="border-t border-rule pt-12 sm:pt-16 overflow-hidden">
       <div className={CONTAINER}>
         <div className="border border-ink bg-raised">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12">
@@ -73,6 +73,12 @@ export function TitleBlock() {
           </div>
         </div>
       </div>
+      <p
+        aria-hidden="true"
+        className="mt-10 sm:mt-14 -mb-[3.2vw] text-center font-display font-black uppercase whitespace-nowrap leading-[0.8] text-[19.5vw] select-none"
+      >
+        ZYNIQ <span className="text-red">Studio</span>
+      </p>
     </footer>
   );
 }

@@ -31,10 +31,10 @@ export function Gauge({ value, suffix, fill }: Pick<Stat, 'value' | 'suffix' | '
   }, [inView, reduce]);
 
   return (
-    <div ref={ref} className="relative w-full max-w-[220px]">
+    <div ref={ref} className="relative w-full max-w-[220px] lg:max-w-[260px]">
       <svg viewBox="0 0 120 96" className="w-full" aria-hidden="true">
         <g transform="rotate(150 60 58)" fill="none" strokeWidth="6">
-          <circle cx="60" cy="58" r={R} stroke="var(--rule)" strokeDasharray={`${SWEEP} ${CIRCUMFERENCE}`} />
+          <circle cx="60" cy="58" r={R} stroke="currentColor" strokeOpacity="0.18" strokeDasharray={`${SWEEP} ${CIRCUMFERENCE}`} />
           <circle
             cx="60"
             cy="58"
@@ -44,7 +44,7 @@ export function Gauge({ value, suffix, fill }: Pick<Stat, 'value' | 'suffix' | '
           />
         </g>
         {/* tick marks at the start and end of the scale */}
-        <g stroke="var(--ink)" strokeWidth="1">
+        <g stroke="currentColor" strokeWidth="1">
           <line x1="14" y1="86" x2="8" y2="90" />
           <line x1="106" y1="86" x2="112" y2="90" />
         </g>
@@ -56,7 +56,7 @@ export function Gauge({ value, suffix, fill }: Pick<Stat, 'value' | 'suffix' | '
       </span>
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 top-[38%] text-center font-display font-black text-[2.1rem] md:text-6xl leading-none tabular-nums"
+        className="absolute inset-x-0 top-[38%] text-center font-display font-black text-[2.1rem] md:text-6xl lg:text-7xl leading-none tabular-nums"
       >
         {Math.round(value * progress)}
         <span className="text-red">{suffix}</span>

@@ -44,8 +44,8 @@ export function Services() {
                     </span>
                     <span className="min-w-0">
                       <span
-                        className={`block font-display font-black uppercase leading-none text-2xl sm:text-4xl break-words transition-colors ${
-                          isOpen ? 'text-red' : 'group-hover:text-red'
+                        className={`block font-display font-black uppercase leading-none text-2xl sm:text-4xl break-words transition-[color,transform] duration-300 ${
+                          isOpen ? 'text-red' : 'group-hover:text-red lg:group-hover:translate-x-3'
                         }`}
                       >
                         {service.title}
@@ -77,7 +77,7 @@ export function Services() {
                           <p className="text-base leading-relaxed text-muted max-w-md">{service.description}</p>
                           <a
                             href="#consultation"
-                            className="mt-6 inline-flex items-center gap-2 border border-ink font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-5 py-3.5 hover:bg-red hover:border-red hover:text-white transition-colors"
+                            className="mt-6 inline-flex items-center gap-2 border border-ink font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-5 py-3.5 bp-sweep"
                           >
                             Request this
                             <ArrowRight className="w-3.5 h-3.5" />
