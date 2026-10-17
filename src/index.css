@@ -248,3 +248,15 @@ body::after {
 .bp-scan {
   animation: bp-scan 2.6s ease-in-out infinite;
 }
+
+/* Fades the ends of a scrolling strip so it never runs hard into the production line rail */
+.bp-fade-edges {
+  -webkit-mask-image: linear-gradient(90deg, transparent, #000 4rem, #000 calc(100% - 4rem), transparent);
+  mask-image: linear-gradient(90deg, transparent, #000 4rem, #000 calc(100% - 4rem), transparent);
+}
+@media (min-width: 1024px) {
+  .bp-fade-edges {
+    -webkit-mask-image: linear-gradient(90deg, transparent 5rem, #000 7rem, #000 calc(100% - 4rem), transparent);
+    mask-image: linear-gradient(90deg, transparent 5rem, #000 7rem, #000 calc(100% - 4rem), transparent);
+  }
+}

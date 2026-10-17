@@ -21,20 +21,21 @@ export function Station({ id, number, label, title, intro, children }: StationPr
 
   // The numeral drifts against the scroll, like a sheet number on a layer behind the drawing.
   const { scrollYProgress } = useScroll({ target: section, offset: ['start end', 'end start'] });
-  const drift = useTransform(scrollYProgress, [0, 1], [70, -70]);
+  const drift = useTransform(scrollYProgress, [0, 1], [24, -24]);
 
   return (
     <section ref={section} id={id} aria-labelledby={`${id}-title`} className="relative border-t border-rule py-14 sm:py-24 lg:py-28">
       <div className={`${CONTAINER} relative`}>
-        <motion.span
-          aria-hidden="true"
-          style={reduce ? undefined : { y: drift }}
-          className="bp-outline hidden md:block absolute right-8 lg:right-10 -top-8 font-display font-black text-[13rem] lg:text-[17rem] leading-none select-none"
-        >
-          {number}
-        </motion.span>
-
-        <header className="relative mb-8 sm:mb-14">
+        <header className="mb-8 sm:mb-14">
+          {/* The numeral lives inside this box and is clipped to it, so its strokes never reach the rule or the content below. */}
+          <div className="relative overflow-hidden">
+            <motion.span
+              aria-hidden="true"
+              style={reduce ? undefined : { y: drift }}
+              className="bp-outline hidden xl:block absolute right-0 top-1/2 -translate-y-1/2 font-display font-black text-[11rem] leading-none select-none pointer-events-none"
+            >
+              {number}
+            </motion.span>
           <motion.p
             className="bp-label flex items-center gap-3"
             initial={reduce ? false : { opacity: 0 }}
@@ -69,6 +70,7 @@ export function Station({ id, number, label, title, intro, children }: StationPr
               {intro}
             </motion.p>
           )}
+          </div>
 
           {/* ruled line that draws across under the header */}
           <motion.div

@@ -57,7 +57,7 @@ export function PartsStrip() {
     <section aria-label="Technologies we build with" className="border-y border-rule bg-raised py-8" onKeyDown={onKeyDown}>
       <p className="bp-label text-center">Powered by</p>
 
-      <div className="mt-5 overflow-hidden">
+      <div className="mt-5 overflow-hidden bp-fade-edges">
         {reduce ? (
           renderParts('main')
         ) : (
