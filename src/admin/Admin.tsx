@@ -25,6 +25,8 @@ interface Inquiry {
   last_name: string | null;
   email: string;
   message: string;
+  meeting_at: string | null;
+  timezone: string | null;
   status: InquiryStatus;
 }
 
@@ -178,6 +180,13 @@ function Dashboard({ session }: { session: Session }) {
                   </p>
                 </div>
               </div>
+              {r.meeting_at && (
+                <p className="mt-4 inline-block border border-red px-3 py-2 font-mono text-xs">
+                  <span className="text-red font-semibold uppercase tracking-wider">Wants to meet</span>{' '}
+                  {new Date(r.meeting_at).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' })}
+                  {r.timezone && <span className="text-muted"> · visitor in {r.timezone}</span>}
+                </p>
+              )}
               <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-relaxed">{r.message}</p>
               <div className="mt-4 flex flex-wrap gap-2">
                 {r.status !== 'contacted' && (

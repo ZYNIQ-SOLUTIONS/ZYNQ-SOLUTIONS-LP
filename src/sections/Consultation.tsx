@@ -2,6 +2,7 @@ import { useState } from 'react';
 import type { ChangeEvent, FormEvent } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
+import { MeetingPicker } from '../components/MeetingPicker';
 import { Station } from '../components/blueprint/Station';
 import { CONTACT_EMAILS, SITE, STAGES, STATIONS } from '../content/site';
 import { supabase } from '../lib/supabase';
@@ -16,6 +17,7 @@ const FIELD =
 
 export function Consultation() {
   const [values, setValues] = useState(EMPTY);
+  const [meetingAt, setMeetingAt] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const contact = CONTACT_EMAILS[0];
 
@@ -37,6 +39,8 @@ export function Consultation() {
         last_name: values.lastName.trim() || null,
         email: values.email.trim(),
         message: values.message.trim(),
+        meeting_at: meetingAt || null,
+        timezone: Intl.DateTimeFormat().resolvedOptions().timeZone,
       });
       setStatus(error ? 'error' : 'sent');
     } catch {
@@ -65,7 +69,14 @@ export function Consultation() {
             </span>
             <h3 className="mt-5 font-display font-black uppercase text-4xl leading-none">Work order received</h3>
             <p className="mt-3 text-base text-muted leading-relaxed">
-              We'll reply to <span className="text-ink font-medium break-all">{values.email}</span>.
+              We'll reply to <span className="text-ink font-medium break-all">{values.email}</span>
+              {meetingAt && (
+                <>
+                  {' '}
+                  to confirm {new Date(meetingAt).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' })}
+                </>
+              )}
+              .
             </p>
           </div>
         ) : (
@@ -147,6 +158,8 @@ export function Consultation() {
                 className={`${FIELD} resize-y`}
               />
             </div>
+
+            <MeetingPicker value={meetingAt} onChange={setMeetingAt} />
 
             {status === 'error' && (
               <p role="alert" className="border-l-4 border-red bg-paper px-4 py-3 text-sm leading-relaxed">
