@@ -15,7 +15,7 @@ export function Services() {
     <Station
       {...STATIONS[2]}
       title="A Menu of Power"
-      intro="Deploying military-grade software pipelines and synthetic intelligence to dominate the digital landscape."
+      intro="Deploying production-grade software pipelines and synthetic intelligence to help your business lead in its market."
     >
       <div className="border border-ink bg-raised">
         <div className={`${ROW_GRID} px-4 sm:px-6 py-3 border-b border-ink bp-label`}>

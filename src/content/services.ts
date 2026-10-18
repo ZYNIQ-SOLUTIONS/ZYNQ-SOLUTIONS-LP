@@ -46,7 +46,7 @@ export const SERVICES: Service[] = [
     number: '04',
     title: 'AUTONOMOUS SYSTEMS',
     subtitle: 'Intelligent Automation (RPA)',
-    description: 'Replace repetition with precision. We deploy invisible bots that handle the mundane, freeing your human workforce for strategic dominance.',
+    description: 'Replace repetition with precision. We deploy invisible bots that handle the mundane, freeing your team for strategic work.',
     deliverables: [
       'Workflow Automation Pipelines',
       'Data Entry & Processing Bots',
@@ -59,7 +59,7 @@ export const SERVICES: Service[] = [
     number: '05',
     title: 'THE CORE ENGINE',
     subtitle: 'High-Performance Back-ends',
-    description: 'The unseen engine of your digital existence. We design modular microservices and deploy lightning-fast, secure APIs built for infinite scale.',
+    description: 'The unseen engine of your digital existence. We design modular microservices and deploy fast, secure APIs built to scale.',
     deliverables: [
       'Microservices Architecture',
       'Secure API Development',
@@ -124,7 +124,7 @@ export const SERVICES: Service[] = [
     number: '10',
     title: 'WORKFORCE RENTAL',
     subtitle: 'ZYNIQ SYNTH (AI Staffing)',
-    description: 'Why hire humans when you can rent perfection? We provide individual AI Agents or full "Crews" integrated as employees into your company structure.',
+    description: 'Need specialist capacity without the overhead of hiring? We provide individual AI Agents or full "Crews" integrated as employees into your company structure.',
     deliverables: [
       'Single Unit: Expert AI Specialist',
       'Crew-7: Full Swarm Team',

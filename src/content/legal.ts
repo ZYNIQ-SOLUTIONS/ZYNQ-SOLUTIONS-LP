@@ -62,7 +62,7 @@ export const TERMS: LegalDoc = {
       paragraphs: [
         'Our software factory combines human engineers ("Commanders") with AI systems and specialist agents ("Crews"). Our Commanders review work before it ships, but AI-generated output is probabilistic. It can be incomplete, inaccurate or similar to other output.',
         'You should treat AI output as something to verify, not as advice you can rely on without checking. Unless the SOW says otherwise, we do not guarantee that AI models, agents or automations will be error-free, will reach any stated accuracy or success rate, or will behave identically over time as underlying models and APIs change.',
-        'Figures shown on this website, such as task success rates or speed improvements, describe results observed in specific tests and projects. They are not guarantees of the results you will see.',
+        'Figures shown on this website, such as task success rates or speed improvements, describe results observed in ZYNIQ internal tests and client engagements, whose names we withhold for confidentiality. They are not guarantees of the results you will see.',
       ],
     },
     {

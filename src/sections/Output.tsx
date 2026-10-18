@@ -28,6 +28,7 @@ export function Output() {
           </li>
         ))}
       </ul>
+      <p className="mt-3 text-xs text-muted leading-relaxed">Results from ZYNIQ internal tests and client engagements. Client names are withheld for confidentiality. Individual results vary.</p>
 
       <a
         href="#services"

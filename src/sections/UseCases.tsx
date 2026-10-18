@@ -114,6 +114,7 @@ export function UseCases() {
                 </div>
               ))}
             </dl>
+            <p className="mt-3 text-xs text-muted leading-relaxed">Results from ZYNIQ internal tests and client engagements. Client names are withheld for confidentiality. Individual results vary.</p>
 
             <div className="mt-8 grid grid-cols-1 md:grid-cols-2 gap-8">
               <div>
