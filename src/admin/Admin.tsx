@@ -2,7 +2,20 @@ import { useCallback, useEffect, useState } from 'react';
 import type { FormEvent } from 'react';
 import type { Session } from '@supabase/supabase-js';
 import { Check, LogOut, RefreshCw, Trash2 } from 'lucide-react';
+import { LogoIcon } from '../components/LogoIcon';
+import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { supabase } from '../lib/supabase';
+
+function Brand() {
+  return (
+    <div className="flex items-center gap-2.5">
+      <LogoIcon className="w-8 h-8" />
+      <ZyniqTextLogo className="h-4 w-auto" />
+      <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
+      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-muted translate-y-px">Admin</span>
+    </div>
+  );
+}
 
 type InquiryStatus = 'new' | 'contacted' | 'closed';
 interface Inquiry {
@@ -38,7 +51,8 @@ function SignIn() {
 
   return (
     <form onSubmit={submit} className="w-full max-w-sm border border-ink bg-raised p-6 sm:p-8 space-y-5">
-      <h1 className="font-display font-black uppercase text-3xl leading-none">Admin sign in</h1>
+      <Brand />
+      <h1 className="font-display font-black uppercase text-3xl leading-none pt-2">Sign in</h1>
       <div>
         <label htmlFor="email" className="bp-label block mb-2">Email</label>
         <input id="email" type="email" required autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} className={FIELD} />
@@ -98,8 +112,8 @@ function Dashboard({ session }: { session: Session }) {
     <div className="mx-auto w-full max-w-5xl px-5 sm:px-8 py-8">
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-ink pb-5">
         <div>
-          <p className="bp-label">ZYNIQ Studio / Admin</p>
-          <h1 className="font-display font-black uppercase text-4xl leading-none mt-2">Inquiries</h1>
+          <Brand />
+          <h1 className="font-display font-black uppercase text-4xl leading-none mt-5">Inquiries</h1>
         </div>
         <div className="flex items-center gap-3">
           <span className="bp-label hidden sm:inline">{session.user.email}</span>
@@ -215,13 +229,21 @@ export default function Admin() {
   }, []);
 
   return (
-    <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
+    <div className="min-h-screen flex flex-col overflow-hidden bg-paper text-ink font-sans antialiased bp-grid">
       {!ready ? null : session ? (
         <Dashboard session={session} />
       ) : (
-        <div className="min-h-screen flex items-center justify-center px-5">
-          <SignIn />
-        </div>
+        <>
+          <div className="flex-1 flex items-center justify-center px-5 py-16">
+            <SignIn />
+          </div>
+          <p
+            aria-hidden="true"
+            className="-mb-[3.2vw] text-center font-display font-black uppercase whitespace-nowrap leading-[0.8] text-[19.5vw] select-none"
+          >
+            ZYNIQ <span className="text-red">Studio</span>
+          </p>
+        </>
       )}
     </div>
   );
