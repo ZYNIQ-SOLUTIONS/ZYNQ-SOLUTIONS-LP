@@ -87,7 +87,7 @@ export const SERVICES: Service[] = [
     subtitle: 'Web3 & Blockchain',
     description: 'Step into the next internet. From dApps to NFT marketplaces, we bring Web3 to life with security, transparency, and geometric precision.',
     deliverables: [
-      'Smart Contract Auditing & Dev',
+      'Smart Contract Auditing & Development',
       'dApp Creation',
       'NFT Ecosystems',
       'Blockchain Security Layers'
@@ -116,7 +116,7 @@ export const SERVICES: Service[] = [
       'Business Logic Analysis',
       'Automated Scaling Systems',
       'Revenue Optimization Tools',
-      'Time-Winning Workflows'
+      'Time-Saving Workflows'
     ],
   },
   {

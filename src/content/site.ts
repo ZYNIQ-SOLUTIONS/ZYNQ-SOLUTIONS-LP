@@ -22,11 +22,7 @@ export const STATIONS: StationDef[] = [
   { id: 'consultation', number: '05', label: 'Consultation' },
 ];
 
-export const CONTACT_EMAILS = [
-  'contact@zyniq.solutions',
-  'marketing@zyniq.solutions',
-  'finance@zyniq.solutions',
-];
+export const CONTACT_EMAILS = ['contact@zyniq.studio'];
 
 export const SOCIALS = [
   { name: 'X', href: 'https://x.com/zyniq_solutions' },

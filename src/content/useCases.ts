@@ -94,16 +94,16 @@ export const USE_CASES: UseCase[] = [
     ],
     mockConfig: {
       guidelines: [
-        'Scan incoming global traffic payloads for routing efficiency.',
-        'Cross-reference values with active EU watchlists.',
-        'Prepare isolated audit summaries for suspicious entities.'
+        'Scan incoming global traffic for routing efficiency.',
+        'Cross-reference node health with regional capacity thresholds.',
+        'Prepare isolated scaling summaries for overloaded regions.'
       ],
-      allowedTools: ['SWIFT Parser', 'Watchlist database API', 'Report Generator'],
+      allowedTools: ['Traffic Analyzer', 'Capacity Planner', 'Report Generator'],
       sampleLogs: [
-        { time: '11:45:00', text: 'Starting hourly transaction audit session...', type: 'system' },
-        { time: '11:45:01', text: 'Scanned 14,082 payment registries.', type: 'action' },
-        { time: '11:45:02', text: 'Verified SWIFT structures against ISO 20022 schemas.', type: 'action' },
-        { time: '11:45:03', text: 'All transaction codes valid. Compliance status clear.', type: 'success' }
+        { time: '11:45:00', text: 'Starting hourly capacity audit session...', type: 'system' },
+        { time: '11:45:01', text: 'Scanned 14,082 active nodes.', type: 'action' },
+        { time: '11:45:02', text: 'Verified load parameters against regional capacity limits.', type: 'action' },
+        { time: '11:45:03', text: 'All regions within thresholds. Scaling status clear.', type: 'success' }
       ]
     }
   }

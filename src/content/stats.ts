@@ -12,7 +12,7 @@ export const STATS: Stat[] = [
     value: 88,
     suffix: '%',
     fill: 0.88,
-    label: 'Logical Accuracy',
+    label: 'Logical accuracy',
     note: 'Consistent compliance alignment over unstructured inputs.',
   },
   {

@@ -52,7 +52,7 @@ export function Consultation() {
     <Station
       {...STATIONS[4]}
       title="Get Free Consultation"
-      intro="Ready to architect your custom synthetic brain? Connect with our specialist commanders and start engineering the future today."
+      intro="Ready to architect your custom synthetic brain? Connect with our specialist Commanders and start engineering the future today."
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
       <div className="relative lg:col-span-7 border border-ink bg-raised">

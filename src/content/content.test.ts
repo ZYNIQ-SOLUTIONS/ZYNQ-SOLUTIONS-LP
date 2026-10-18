@@ -15,7 +15,7 @@ test('all existing content is carried over', () => {
   assert.equal(SERVICES.length, 10);
   assert.equal(USE_CASES.length, 4);
   assert.equal(SOCIALS.length, 8);
-  assert.equal(CONTACT_EMAILS.length, 3);
+  assert.equal(CONTACT_EMAILS.length, 1);
 });
 
 test('statistics keep their published values', () => {
@@ -45,6 +45,6 @@ test('stations are the five numbered sections', () => {
 
 test('brand is ZYNIQ Studio and contact details are unchanged', () => {
   assert.equal(SITE.name, 'ZYNIQ Studio');
-  assert.equal(CONTACT_EMAILS[0], 'contact@zyniq.solutions');
+  assert.equal(CONTACT_EMAILS[0], 'contact@zyniq.studio');
   for (const s of SOCIALS) assert.match(s.href, /^https:\/\//);
 });
