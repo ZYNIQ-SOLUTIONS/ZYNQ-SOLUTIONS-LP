@@ -1,4 +1,5 @@
 import { useEffect } from 'react';
+import { Loader } from './components/Loader';
 import { MobileDock } from './components/blueprint/MobileDock';
 import { ProductionLine } from './components/blueprint/ProductionLine';
 import { STATIONS } from './content/site';
@@ -27,6 +28,7 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
+      <Loader />
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 font-mono text-xs uppercase tracking-widest"

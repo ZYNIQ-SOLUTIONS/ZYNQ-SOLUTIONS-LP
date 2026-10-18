@@ -260,3 +260,510 @@ body::after {
     mask-image: linear-gradient(90deg, transparent 5rem, #000 7rem, #000 calc(100% - 4rem), transparent);
   }
 }
+
+/* Intro loader */
+.zl-overlay {
+      cursor: pointer;
+      position: fixed;
+      inset: 0;
+      z-index: 99999;
+      background: #050505;
+      color: #f5f5f5;
+      font-family: var(--font-sans);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      transition: opacity 0.4s ease;
+    }
+
+    /* — Background layers — */
+    .zl-bg-grid {
+      position: fixed;
+      inset: 0;
+      z-index: 0;
+      background-image:
+        linear-gradient(rgba(234, 35, 35, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(234, 35, 35, 0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+    }
+
+    .zl-bg-vignette {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: radial-gradient(ellipse at center, transparent 40%, #050505 100%);
+    }
+
+    .zl-bg-scanline {
+      position: fixed;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      opacity: 0.04;
+      background: repeating-linear-gradient(0deg, transparent, transparent 2px,
+        rgba(234, 35, 35, 0.08) 2px, rgba(234, 35, 35, 0.08) 4px);
+    }
+
+    .zl-bg-glow {
+      position: fixed;
+      z-index: 0;
+      pointer-events: none;
+      width: min(500px, 90vw);
+      height: min(500px, 90vw);
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(234, 35, 35, 0.08) 0%, transparent 70%);
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: zlAmbientPulse 4s ease-in-out infinite;
+    }
+
+    @keyframes zlAmbientPulse {
+      0%, 100% {
+        opacity: 0.6;
+        transform: translate(-50%, -50%) scale(1);
+      }
+      50% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1.15);
+      }
+    }
+
+    /* — Container — */
+    .zl-container {
+      text-align: center;
+      width: 90%;
+      max-width: 600px;
+      position: relative;
+      z-index: 2;
+      padding: 1rem;
+    }
+
+    /* — Z Sign Logo — */
+    .zl-logo-wrap {
+      margin-bottom: 0.1rem;
+      position: relative;
+      display: inline-block;
+    }
+
+    .zl-sign-svg {
+      width: clamp(70px, 15vw, 110px);
+      height: auto;
+      filter: drop-shadow(0 0 25px rgba(234, 35, 35, 0.35));
+    }
+
+    .zl-sign-path {
+      stroke: #ffffff;
+      fill: #ea2323;
+      fill-opacity: 0;
+      stroke-dasharray: 3000;
+      stroke-dashoffset: 3000;
+      stroke-width: 7;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      animation: zlDrawSign 2s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                 zlFillSign 1s ease-out 1.8s forwards;
+    }
+
+    .zl-sign-path--2 {
+      animation-delay: 0.6s, 2.0s;
+    }
+
+    @keyframes zlDrawSign {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes zlFillSign {
+      to {
+        fill-opacity: 1;
+        stroke-width: 0;
+      }
+    }
+
+    .zl-logo-ring {
+      position: absolute;
+      inset: -16px;
+      border-radius: 50%;
+      border: 0.5px solid rgba(234, 35, 35, 0.12);
+      animation: zlRingPulse 3s ease-in-out 1.8s infinite;
+      opacity: 0;
+    }
+
+    .zl-logo-ring--outer {
+      inset: -28px;
+      animation-delay: 2.2s;
+    }
+
+    @keyframes zlRingPulse {
+      0% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+      50% {
+        opacity: 0.5;
+        transform: scale(1.05);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.95);
+      }
+    }
+
+    /* — Wordmark — */
+    .zl-wordmark-wrap {
+      margin-bottom: 0.1rem;
+      display: flex;
+      justify-content: center;
+    }
+
+    .zl-wordmark-svg {
+      width: clamp(260px, 65vw, 420px);
+      height: auto;
+      filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.1));
+      opacity: 0;
+      animation: zlFadeUp 0.4s ease-out 1.4s forwards;
+    }
+
+    .zl-wm-path {
+      stroke-dasharray: 6000;
+      stroke-dashoffset: 6000;
+      stroke-width: 15;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      fill-opacity: 0;
+      animation: zlDrawWM 2.5s cubic-bezier(0.16, 1, 0.3, 1) forwards,
+                 zlFillWM 1.2s ease-out 3.2s forwards;
+    }
+
+    .zl-wm-white {
+      stroke: #ffffff;
+      fill: #ffffff;
+    }
+
+    .zl-wm-red {
+      stroke: #ea2323;
+      fill: #ea2323;
+    }
+
+    .zl-wm-path:nth-child(1) { animation-delay: 1.4s, 2.8s; }
+    .zl-wm-path:nth-child(2) { animation-delay: 1.5s, 2.8s; }
+    .zl-wm-path:nth-child(3) { animation-delay: 1.6s, 2.8s; }
+    .zl-wm-path:nth-child(4) { animation-delay: 1.7s, 2.8s; }
+    .zl-wm-path:nth-child(5) { animation-delay: 1.8s, 2.8s; }
+    .zl-wm-path:nth-child(6) { animation-delay: 1.9s, 2.8s; }
+
+    @keyframes zlDrawWM {
+      to {
+        stroke-dashoffset: 0;
+      }
+    }
+
+    @keyframes zlFillWM {
+      to {
+        fill-opacity: 1;
+        stroke-width: 0;
+      }
+    }
+
+    /* — Brand text — */
+    .zl-brand-studio {
+      font-family: var(--font-display);
+      font-size: clamp(1rem, 3.2vw, 1.4rem);
+      font-weight: 800;
+      letter-spacing: 0.5em;
+      color: #ea2323;
+      margin-bottom: 0.25rem;
+      opacity: 0;
+      animation: zlFadeUp 0.6s ease-out 3s forwards;
+    }
+
+    .zl-brand-sub {
+      font-size: clamp(0.55rem, 1.8vw, 0.7rem);
+      color: #888888;
+      opacity: 0.6;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      margin-bottom: 2rem;
+      opacity: 0;
+      animation: zlFadeUp 0.6s ease-out 3.2s forwards;
+    }
+
+    @keyframes zlFadeUp {
+      from {
+        opacity: 0;
+        transform: translateY(10px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* — Terminal — */
+    .zl-terminal {
+      background: #0a0808;
+      border: 1px solid rgba(234, 35, 35, 0.15);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: 1.5rem;
+      opacity: 0;
+      animation: zlFadeUp 0.5s ease-out 2s forwards;
+    }
+
+    .zl-terminal-header {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      padding: 8px 12px;
+      background: rgba(234, 35, 35, 0.06);
+      border-bottom: 1px solid rgba(234, 35, 35, 0.15);
+    }
+
+    .zl-terminal-dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: rgba(234, 35, 35, 0.3);
+    }
+    .zl-terminal-dot:nth-child(2) {
+      background: rgba(234, 35, 35, 0.2);
+    }
+    .zl-terminal-dot:nth-child(3) {
+      background: rgba(234, 35, 35, 0.1);
+    }
+
+    .zl-terminal-title {
+      font-family: var(--font-mono);
+      font-size: 0.6rem;
+      color: #888888;
+      margin-left: auto;
+      letter-spacing: 0.05em;
+    }
+
+    .zl-terminal-body {
+      padding: 0.75rem 1rem;
+      text-align: left;
+      font-family: var(--font-mono);
+      font-size: clamp(0.6rem, 1.8vw, 0.7rem);
+      line-height: 1.7;
+      max-height: 200px;
+      overflow-y: hidden;
+    }
+
+    /* Terminal line animations */
+    .zl-terminal-line {
+      color: #888888;
+      opacity: 0;
+      white-space: nowrap;
+      overflow: hidden;
+    }
+
+    .zl-terminal-line.zl-active {
+      animation: zlTypeLine 0.25s ease-out forwards;
+    }
+
+    .zl-terminal-line .ok {
+      color: #22c55e;
+    }
+    .zl-terminal-line .warn {
+      color: #eab308;
+    }
+    .zl-terminal-line .brand {
+      color: #ea2323;
+      font-weight: 700;
+    }
+    .zl-terminal-line .dim {
+      color: #888888;
+      opacity: 0.5;
+    }
+
+    @keyframes zlTypeLine {
+      from {
+        opacity: 0;
+        transform: translateX(-8px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+
+    /* — Progress — */
+    .zl-progress-wrap {
+      width: 100%;
+      height: 3px;
+      background: rgba(234, 35, 35, 0.08);
+      border-radius: 2px;
+      overflow: hidden;
+      opacity: 0;
+      animation: zlFadeUp 0.4s ease-out 2.2s forwards;
+    }
+
+    .zl-progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #ea2323, #ff5a4d);
+      border-radius: 2px;
+      transition: width 0.3s ease-out;
+      box-shadow: 0 0 12px rgba(234, 35, 35, 0.5), 0 0 4px rgba(234, 35, 35, 0.8);
+    }
+
+    .zl-progress-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-top: 0.75rem;
+      opacity: 0;
+      animation: zlFadeUp 0.4s ease-out 2.2s forwards;
+    }
+
+    .zl-progress-label {
+      font-family: var(--font-mono);
+      font-size: clamp(0.55rem, 1.6vw, 0.65rem);
+      color: #888888;
+    }
+
+    .zl-progress-version {
+      font-family: var(--font-mono);
+      font-size: clamp(0.5rem, 1.4vw, 0.6rem);
+      color: rgba(234, 35, 35, 0.4);
+    }
+
+    /* — Exit animation — */
+    .zl-done {
+      animation: zlLoaderExit 0.8s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+      pointer-events: none;
+    }
+
+    @keyframes zlLoaderExit {
+      0% {
+        opacity: 1;
+        transform: scale(1);
+        filter: blur(0);
+      }
+      100% {
+        opacity: 0;
+        transform: scale(0.96);
+        filter: blur(4px);
+      }
+    }
+
+    /* — Responsive adjustments — */
+    @media (min-width: 640px) {
+      .zl-terminal-body {
+        padding: 1rem 1.25rem;
+        max-height: 240px;
+      }
+    }
+
+    @media (min-width: 768px) {
+      .zl-container {
+        max-width: 650px;
+      }
+      .zl-terminal-body {
+        padding: 1.25rem 1.5rem;
+        font-size: 0.75rem;
+        max-height: 260px;
+      }
+      .zl-sign-svg {
+        width: 120px;
+      }
+      .zl-wordmark-svg {
+        width: 420px;
+      }
+    }
+
+    @media (max-width: 359px) {
+      .zl-sign-svg {
+        width: 80px;
+      }
+      .zl-wordmark-svg {
+        width: 280px;
+      }
+      .zl-brand-studio {
+        font-size: 0.75rem;
+        letter-spacing: 0.3em;
+      }
+      .zl-brand-sub {
+        font-size: 0.6rem;
+        margin-bottom: 1.5rem;
+      }
+      .zl-terminal-body {
+        font-size: 0.6rem;
+        padding: 0.6rem 0.8rem;
+      }
+    }
+
+    @media (max-height: 500px) and (orientation: landscape) {
+      .zl-container {
+        max-width: 80vw;
+      }
+      .zl-logo-wrap {
+        margin-bottom: 0;
+      }
+      .zl-sign-svg {
+        width: 60px;
+      }
+      .zl-wordmark-wrap {
+        margin-bottom: 0;
+      }
+      .zl-wordmark-svg {
+        width: 250px;
+      }
+      .zl-brand-studio {
+        font-size: 0.65rem;
+        margin-bottom: 0.1rem;
+      }
+      .zl-brand-sub {
+        font-size: 0.5rem;
+        margin-bottom: 1rem;
+      }
+      .zl-terminal {
+        margin-bottom: 0.75rem;
+      }
+      .zl-terminal-body {
+        max-height: 100px;
+        font-size: 0.6rem;
+        padding: 0.5rem 0.75rem;
+        line-height: 1.4;
+      }
+      .zl-progress-footer {
+        margin-top: 0.4rem;
+      }
+      .zl-bg-glow, .zl-bg-scanline {
+        display: none;
+      }
+    }
+
+    /* — Accessibility: Reduced Motion — */
+    @media (prefers-reduced-motion: reduce) {
+      .zl-sign-path {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+        stroke-width: 0;
+      }
+      .zl-wm-path {
+        stroke-dashoffset: 0;
+        fill-opacity: 1;
+        stroke-width: 0;
+      }
+      .zl-wordmark-svg,
+      .zl-brand-studio,
+      .zl-brand-sub,
+      .zl-terminal,
+      .zl-progress-wrap,
+      .zl-progress-footer {
+        opacity: 1;
+      }
+      .zl-bg-glow,
+      .zl-bg-scanline,
+      .zl-logo-ring {
+        display: none;
+      }
+    }
+
+    
