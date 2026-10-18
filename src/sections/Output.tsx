@@ -9,7 +9,7 @@ export function Output() {
     <Station
       {...STATIONS[0]}
       title="Architecting Synthetic Brains"
-      intro={'ZYNIQ provides the "Crews" and "Specialist Agents" to handle the building, leaving the "Commanders" to navigate the unknown. We are building a Quantic Calculator for the soul of humanity.'}
+      intro={'ZYNIQ provides the "Crews" and "Specialist Agents" to handle the building, leaving the "Commanders" to navigate the unknown. We are building technology that helps people explore what comes next.'}
     >
       <ul className="grid grid-cols-1 md:grid-cols-3 bg-ink text-paper">
         {STATS.map((stat, i) => (

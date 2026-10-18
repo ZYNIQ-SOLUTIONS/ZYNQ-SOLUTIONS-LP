@@ -5,7 +5,7 @@ export const SECTORS: Pillar[] = [
     id: 'cloud',
     number: '01',
     title: 'ZYNIQ Cloud',
-    description: 'Scale your infrastructure seamlessly. ZYNIQ Cloud provides the foundational compute and storage environment for Quantic operations.',
+    description: 'Scale your infrastructure seamlessly. ZYNIQ Cloud provides the foundational compute and storage environment for AI and software operations.',
     detailTitle: 'Global Scalable Infrastructure',
     detailExplanation: 'Operate without limits. ZYNIQ Cloud handles the massive data flow and compute power needed to run synthetic brains and industrial-grade software pipelines globally, securely, and seamlessly.',
   },

@@ -30,7 +30,7 @@ export const USE_CASES: UseCase[] = [
   },
   {
     id: 'innovation-lab',
-    title: 'Quantic Discovery Engine',
+    title: 'Discovery Engine',
     category: 'Innovation Lab',
     summary: 'Automate R&D synthesis, parse massive datasets, and generate new algorithmic solutions to impossible problems.',
     description: 'Continuously listening to scientific telemetry, executing automated heuristics to diagnose system halts, and discovering entirely new ways to structure synthetic intelligence.',
@@ -43,7 +43,7 @@ export const USE_CASES: UseCase[] = [
       guidelines: [
         'Audit unstructured research telemetry and vector clusters.',
         'Isolate anomalies triggering novel pattern alerts.',
-        'Draft experimental Quantic logic flow hypothesis.'
+        'Draft experimental logic-flow hypotheses.'
       ],
       allowedTools: ['Telemetry Scanner', 'Neural-Symbolic Synthesizer', 'Pattern Engine'],
       sampleLogs: [

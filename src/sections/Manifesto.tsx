@@ -53,7 +53,7 @@ export function Manifesto() {
             'Commanders' to navigate the unknown.
           </p>
           <p className="font-mono text-xs uppercase tracking-[0.14em] leading-relaxed text-paper/60">
-            We are building a Quantic Calculator for the soul of humanity.
+            We are building technology that helps people explore what comes next.
           </p>
         </div>
       </div>

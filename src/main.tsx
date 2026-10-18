@@ -4,13 +4,19 @@ import App from './App.tsx';
 import './index.css';
 
 const Admin = lazy(() => import('./admin/Admin.tsx'));
-const isAdmin = window.location.pathname.replace(/\/+$/, '') === '/admin';
+const Legal = lazy(() => import('./legal/LegalPage.tsx'));
+const path = window.location.pathname.replace(/\/+$/, '');
+const isAdmin = path === '/admin';
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
     {isAdmin ? (
       <Suspense fallback={null}>
         <Admin />
+      </Suspense>
+    ) : path === '/terms' || path === '/privacy' ? (
+      <Suspense fallback={null}>
+        <Legal doc={path} />
       </Suspense>
     ) : (
       <App />
