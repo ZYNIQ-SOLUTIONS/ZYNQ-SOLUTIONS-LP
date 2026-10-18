@@ -212,7 +212,7 @@ export function Hero() {
                   href="#consultation"
                   className="inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap bp-sweep"
                 >
-                  Start a build
+                  Get free consultation
                   <ArrowRight className="w-4 h-4" />
                 </a>
                 <a

@@ -4,9 +4,8 @@ import { ArrowRight, Check } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { Station } from '../components/blueprint/Station';
 import { CONTACT_EMAILS, SITE, STAGES, STATIONS } from '../content/site';
-import { encodeForm } from '../lib/encodeForm';
+import { supabase } from '../lib/supabase';
 
-const FORM_NAME = 'consultation';
 const EMPTY = { firstName: '', lastName: '', email: '', message: '', 'bot-field': '' };
 
 type Status = 'idle' | 'sending' | 'sent' | 'error';
@@ -28,12 +27,18 @@ export function Consultation() {
     if (status === 'sending') return;
     setStatus('sending');
     try {
-      const response = await fetch('/', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: encodeForm({ 'form-name': FORM_NAME, ...values }),
+      // Bots fill the hidden field; pretend it worked and store nothing.
+      if (values['bot-field']) {
+        setStatus('sent');
+        return;
+      }
+      const { error } = await supabase.from('inquiries').insert({
+        first_name: values.firstName.trim(),
+        last_name: values.lastName.trim() || null,
+        email: values.email.trim(),
+        message: values.message.trim(),
       });
-      setStatus(response.ok ? 'sent' : 'error');
+      setStatus(error ? 'error' : 'sent');
     } catch {
       setStatus('error');
     }
@@ -65,14 +70,9 @@ export function Consultation() {
           </div>
         ) : (
           <form
-            name={FORM_NAME}
-            method="POST"
-            data-netlify="true"
-            data-netlify-honeypot="bot-field"
             onSubmit={onSubmit}
             className="px-5 sm:px-8 py-8 space-y-5"
           >
-            <input type="hidden" name="form-name" value={FORM_NAME} />
             {/* Honeypot: hidden from people, filled in by bots */}
             <p className="hidden">
               <label>

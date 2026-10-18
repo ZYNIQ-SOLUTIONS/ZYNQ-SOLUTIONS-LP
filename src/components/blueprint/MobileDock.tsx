@@ -29,7 +29,7 @@ export function MobileDock({ stations }: { stations: StationDef[] }) {
           href="#consultation"
           className="shrink-0 inline-flex items-center gap-2 h-11 px-3.5 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em]"
         >
-          Start a build
+          Get free consultation
           <ArrowRight className="w-3.5 h-3.5" />
         </a>
       </div>

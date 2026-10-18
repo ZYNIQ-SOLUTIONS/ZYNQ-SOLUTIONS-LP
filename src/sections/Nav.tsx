@@ -62,7 +62,7 @@ export function Nav() {
             href="#consultation"
             className="hidden sm:inline-flex items-center gap-2 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 h-11 lg:h-auto lg:py-2.5 bp-sweep"
           >
-            Start a build
+            Get free consultation
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
           <button
@@ -109,7 +109,7 @@ export function Nav() {
               onClick={() => setOpen(false)}
               className="flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4"
             >
-              Start a build
+              Get free consultation
               <ArrowRight className="w-4 h-4" />
             </a>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 bp-label">
