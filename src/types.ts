@@ -52,7 +52,10 @@ export interface StationDef {
   label: string;
 }
 
-export type PortfolioCategory = 'AI Platforms & Agents' | 'SaaS & Web Apps' | 'Brand & Digital Experiences';
+export type PortfolioCategory =
+  | 'AI Platforms & Agents'
+  | 'Core Infrastructure & Swarms'
+  | 'SaaS & Web3 Systems';
 
 export interface PortfolioItem {
   id: string;
@@ -73,6 +76,14 @@ export interface PortfolioItem {
   }[];
   stack: string[];
   deliverables: string[];
-  schematic: 'gateway' | 'swarm' | 'workflow' | 'identity' | 'commerce' | 'coaching' | 'brand' | 'luxury';
+  schematic:
+    | 'gateway'
+    | 'swarm'
+    | 'workflow'
+    | 'identity'
+    | 'commerce'
+    | 'coaching'
+    | 'brand'
+    | 'luxury';
   href?: string;
 }

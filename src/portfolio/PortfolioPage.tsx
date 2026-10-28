@@ -1,26 +1,31 @@
 import { useEffect, useState } from 'react';
-import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Layers, X } from 'lucide-react';
+import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Layers, SlidersHorizontal, X } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { LineStatus } from '../components/blueprint/LineStatus';
 import { PortfolioSchematic } from '../components/blueprint/PortfolioSchematic';
-import { PORTFOLIO_ITEMS } from '../content/portfolio';
+import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS } from '../content/portfolio';
 import { CONTACT_EMAILS, SITE, SOCIALS } from '../content/site';
-import type { PortfolioItem } from '../types';
+import type { PortfolioCategory, PortfolioItem } from '../types';
+
+type Filter = 'All' | PortfolioCategory;
 
 export default function PortfolioPage() {
+  const [filter, setFilter] = useState<Filter>('All');
   const [selected, setSelected] = useState<PortfolioItem | null>(null);
-  const flagship = PORTFOLIO_ITEMS[0];
 
   useEffect(() => {
-    document.title = `Portfolio — Z-OLLA | ${SITE.name}`;
+    document.title = `Portfolio & Shipped Systems | ${SITE.name}`;
     const hash = decodeURIComponent(window.location.hash.slice(1));
     if (hash) {
       const match = PORTFOLIO_ITEMS.find((item) => item.id === hash);
       if (match) {
         setSelected(match);
+        setTimeout(() => {
+          document.getElementById(match.id)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
+        }, 100);
         return;
       }
     }
@@ -35,6 +40,16 @@ export default function PortfolioPage() {
     window.addEventListener('keydown', onKey);
     return () => window.removeEventListener('keydown', onKey);
   }, [selected]);
+
+  const filtered =
+    filter === 'All' ? PORTFOLIO_ITEMS : PORTFOLIO_ITEMS.filter((item) => item.category === filter);
+
+  const counts: Record<Filter, number> = {
+    All: PORTFOLIO_ITEMS.length,
+    'AI Platforms & Agents': PORTFOLIO_ITEMS.filter((i) => i.category === 'AI Platforms & Agents').length,
+    'Core Infrastructure & Swarms': PORTFOLIO_ITEMS.filter((i) => i.category === 'Core Infrastructure & Swarms').length,
+    'SaaS & Web3 Systems': PORTFOLIO_ITEMS.filter((i) => i.category === 'SaaS & Web3 Systems').length,
+  };
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
@@ -55,7 +70,7 @@ export default function PortfolioPage() {
               <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
             </a>
             <span aria-hidden="true" className="hidden sm:inline-block h-4 w-px bg-rule" />
-            <span className="hidden sm:inline-block bp-label !text-ink">Sheet P-01 / Z-OLLA Flagship Dossier</span>
+            <span className="hidden sm:inline-block bp-label !text-ink">Sheet P-01 / Portfolio Ledger</span>
           </div>
 
           <div className="flex items-center gap-3 sm:gap-5">
@@ -85,139 +100,180 @@ export default function PortfolioPage() {
           <CornerMarks />
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-rule bp-label">
             <span className="flex items-center gap-3">
-              <span className="text-red font-semibold">Flagship Build // {flagship.code}</span>
+              <span className="text-red font-semibold">Archive // Rev. 2026</span>
               <span aria-hidden="true" className="h-px w-8 bg-rule" />
-              <span>{flagship.division}</span>
+              <span>ZYNIQ-STUDIO &amp; Flagship Ecosystem</span>
             </span>
             <LineStatus />
           </div>
 
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="bp-label !text-red font-semibold">{flagship.category}</p>
+              <p className="bp-label !text-red font-semibold">Verified Factory Output</p>
               <h1
                 id="portfolio-heading"
                 className="mt-3 font-display font-black uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.88] tracking-tight"
               >
-                {flagship.title} <span className="text-red">Platform.</span>
+                Engineered Systems.{' '}
+                <span className="text-red">Real-World Proof.</span>
               </h1>
               <p className="mt-5 max-w-2xl text-base sm:text-lg text-muted leading-relaxed">
-                {flagship.summary}
+                From Z-OLLA, IZN, Agent T, and Tchiko Assistant to the core autonomous agent swarms inside ZYNIQ-STUDIO—every system below was architected, assembled, and verified on our production line.
               </p>
             </div>
 
             <div className="lg:col-span-4">
-              <dl className="grid grid-cols-1 sm:grid-cols-3 lg:grid-cols-1 border-l border-t border-ink bg-paper">
-                {flagship.metrics.map((m) => (
-                  <div key={m.label} className="p-4 border-r border-b border-ink flex items-baseline justify-between gap-4">
-                    <dt className="bp-label">{m.label}</dt>
-                    <dd className="font-display font-black text-3xl leading-none text-red tabular-nums">{m.value}</dd>
-                  </div>
-                ))}
+              <dl className="grid grid-cols-2 border-l border-t border-ink bg-paper">
+                <div className="p-4 border-r border-b border-ink">
+                  <dt className="bp-label">Documented Systems</dt>
+                  <dd className="mt-1 font-display font-black text-4xl leading-none tabular-nums">0{PORTFOLIO_ITEMS.length}</dd>
+                </div>
+                <div className="p-4 border-r border-b border-ink">
+                  <dt className="bp-label">Factory Divisions</dt>
+                  <dd className="mt-1 font-display font-black text-4xl leading-none tabular-nums">04</dd>
+                </div>
+                <div className="p-4 border-r border-b border-ink">
+                  <dt className="bp-label">Gnosis Swarm</dt>
+                  <dd className="mt-1 font-display font-black text-3xl leading-none text-red tabular-nums">10 Agents</dd>
+                </div>
+                <div className="p-4 border-r border-b border-ink">
+                  <dt className="bp-label">Routing Latency</dt>
+                  <dd className="mt-1 font-display font-black text-3xl leading-none tabular-nums">5–10ms</dd>
+                </div>
               </dl>
             </div>
           </div>
         </section>
 
-        {/* Detailed Flagship Build Breakdown */}
-        {PORTFOLIO_ITEMS.map((item) => (
-          <article
-            key={item.id}
-            id={item.id}
-            className="mt-10 relative border border-ink bg-raised"
-          >
-            <CornerMarks />
-            <header className="flex flex-wrap items-center justify-between gap-2 px-5 sm:px-8 py-4 border-b border-ink bp-label">
-              <span className="flex items-center gap-2">
-                <span className="text-red font-semibold">{item.code}</span>
-                <span aria-hidden="true">/</span>
-                <span>{item.division}</span>
-                <span aria-hidden="true">/</span>
-                <span>Technical Architecture</span>
-              </span>
-              <span className="inline-flex items-center gap-2">
-                <span aria-hidden="true" className="w-1.5 h-1.5 bg-red" />
-                {item.status} · {item.year}
-              </span>
-            </header>
+        {/* Filter Bar */}
+        <section aria-label="Filter portfolio by category" className="mt-10 sm:mt-12">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-4 border-b border-ink">
+            <div className="flex items-center gap-2.5 bp-label">
+              <SlidersHorizontal className="w-3.5 h-3.5 text-red" />
+              <span>Filter by Production Line</span>
+            </div>
 
-            <div className="p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start">
-              <div className="lg:col-span-7 space-y-8">
+            <div role="group" aria-label="Portfolio categories" className="flex flex-wrap gap-2">
+              {(['All', ...PORTFOLIO_CATEGORIES] as Filter[]).map((cat) => {
+                const active = filter === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    aria-pressed={active}
+                    onClick={() => setFilter(cat)}
+                    className={`min-h-10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] border transition-colors cursor-pointer ${
+                      active
+                        ? 'bg-ink text-paper border-ink font-semibold'
+                        : 'bg-paper text-muted border-rule hover:border-ink hover:text-ink'
+                    }`}
+                  >
+                    <span>{cat}</span>
+                    <span className={`ml-2 ${active ? 'text-red' : 'text-muted/70'}`}>[{counts[cat]}]</span>
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+
+        {/* Portfolio Grid */}
+        <section aria-label="Shipped builds" className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
+          {filtered.map((item) => {
+            const isSelected = selected?.id === item.id;
+            return (
+              <article
+                key={item.id}
+                id={item.id}
+                className={`relative border bg-raised flex flex-col justify-between transition-colors ${
+                  isSelected ? 'border-red' : 'border-ink'
+                }`}
+              >
+                <CornerMarks />
                 <div>
-                  <h2 className="font-display font-black uppercase text-3xl sm:text-5xl leading-none">
-                    {item.subtitle}
-                  </h2>
-                </div>
+                  {/* Card Top Bar */}
+                  <header className="flex flex-wrap items-center justify-between gap-2 px-5 sm:px-7 py-3.5 border-b border-ink bp-label">
+                    <span className="flex items-center gap-2">
+                      <span className="text-red font-semibold">{item.code}</span>
+                      <span aria-hidden="true">/</span>
+                      <span>{item.division}</span>
+                    </span>
+                    <span className="inline-flex items-center gap-2">
+                      <span aria-hidden="true" className="w-1.5 h-1.5 bg-red" />
+                      {item.status} · {item.year}
+                    </span>
+                  </header>
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                  <div className="border border-rule bg-paper p-5">
-                    <h3 className="bp-label !text-red font-semibold mb-2">01 / Operational Challenge</h3>
-                    <p className="text-sm leading-relaxed text-ink/90">{item.challenge}</p>
+                  {/* Schematic Preview */}
+                  <div className="border-b border-rule bg-paper px-5 py-4">
+                    <PortfolioSchematic type={item.schematic} code={item.code} className="w-full max-h-44" />
                   </div>
-                  <div className="border border-rule bg-paper p-5">
-                    <h3 className="bp-label !text-red font-semibold mb-2">02 / Engineered Architecture</h3>
-                    <p className="text-sm leading-relaxed text-ink/90">{item.architecture}</p>
+
+                  {/* Main Body */}
+                  <div className="px-5 sm:px-7 pt-6 pb-5">
+                    <p className="bp-label !text-red font-semibold">{item.category}</p>
+                    <h2 className="mt-2 font-display font-black uppercase text-3xl sm:text-4xl leading-none">
+                      {item.title}
+                    </h2>
+                    <p className="mt-1.5 font-mono text-xs text-muted">{item.subtitle}</p>
+                    <p className="mt-4 text-sm sm:text-base text-ink/90 leading-relaxed">{item.summary}</p>
+
+                    {/* Metrics Strip */}
+                    <dl className="mt-6 grid grid-cols-3 border-l border-t border-rule bg-paper">
+                      {item.metrics.map((m) => (
+                        <div key={m.label} className="p-3 sm:p-3.5 border-r border-b border-rule">
+                          <dt className="font-mono text-[10px] uppercase tracking-wider text-muted truncate">{m.label}</dt>
+                          <dd className="mt-1 font-display font-black text-xl sm:text-2xl leading-none tabular-nums">
+                            {m.value}
+                          </dd>
+                        </div>
+                      ))}
+                    </dl>
+
+                    {/* Tech Stack */}
+                    <ul className="mt-5 flex flex-wrap gap-1.5" aria-label="Technology stack">
+                      {item.stack.map((tech) => (
+                        <li
+                          key={tech}
+                          className="border border-rule bg-paper px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted"
+                        >
+                          {tech}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
                 </div>
 
-                <div>
-                  <h3 className="bp-label mb-3">03 / Shipped Deliverables</h3>
-                  <ul className="border-t border-rule bg-paper px-4">
-                    {item.deliverables.map((d) => (
-                      <li key={d} className="flex items-start gap-3 py-3 border-b border-rule last:border-b-0 text-sm font-medium">
-                        <Check className="w-4 h-4 text-red shrink-0 mt-0.5" />
-                        <span>{d}</span>
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-              </div>
-
-              <div className="lg:col-span-5 space-y-6">
-                <div className="border border-rule bg-paper p-5">
-                  <PortfolioSchematic type={item.schematic} code={item.code} className="w-full" />
-                </div>
-
-                <div>
-                  <h3 className="bp-label mb-3">04 / Production Stack</h3>
-                  <ul className="flex flex-wrap gap-2" aria-label="Technology stack">
-                    {item.stack.map((tech) => (
-                      <li
-                        key={tech}
-                        className="border border-ink bg-paper px-3 py-1.5 font-mono text-xs uppercase tracking-wider"
-                      >
-                        {tech}
-                      </li>
-                    ))}
-                  </ul>
-                </div>
-
-                <div className="pt-4 border-t border-rule flex flex-wrap items-center gap-3">
+                {/* Card Actions Footer */}
+                <footer className="px-5 sm:px-7 py-4 border-t border-rule bg-paper/60 flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
                     onClick={() => setSelected(item)}
-                    className="inline-flex items-center gap-2 border border-ink bg-paper font-mono text-xs font-semibold uppercase tracking-[0.14em] px-5 py-3.5 cursor-pointer bp-sweep"
+                    className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:text-red cursor-pointer transition-colors"
                   >
                     <Layers className="w-3.5 h-3.5 text-red" />
-                    Inspect technical dossier
+                    Inspect technical spec
+                    <ArrowRight className="w-3.5 h-3.5" />
                   </button>
 
-                  {item.href && (
+                  {item.href ? (
                     <a
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-5 py-3.5 bp-sweep"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-red hover:underline"
                     >
-                      Launch Z-OLLA
+                      Live platform
                       <ArrowUpRight className="w-3.5 h-3.5" />
                     </a>
+                  ) : (
+                    <span className="bp-label">ZYNIQ Core / Studio</span>
                   )}
-                </div>
-              </div>
-            </div>
-          </article>
-        ))}
+                </footer>
+              </article>
+            );
+          })}
+        </section>
 
         {/* Bottom CTA Block */}
         <section aria-labelledby="portfolio-cta-heading" className="mt-14 sm:mt-20 relative border border-ink bg-ink text-paper p-6 sm:p-12">
@@ -253,7 +309,7 @@ export default function PortfolioPage() {
         </section>
       </main>
 
-      {/* Case Study Technical Spec Modal */}
+      {/* Case Study Technical Spec Modal / Drawer */}
       {selected && (
         <div
           role="dialog"

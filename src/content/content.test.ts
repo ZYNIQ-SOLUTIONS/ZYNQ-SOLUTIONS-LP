@@ -15,9 +15,9 @@ test('all existing content is carried over', () => {
   assert.equal(SECTORS.length, 4);
   assert.equal(SERVICES.length, 10);
   assert.equal(USE_CASES.length, 4);
-  assert.equal(PORTFOLIO_ITEMS.length, 1);
+  assert.equal(PORTFOLIO_ITEMS.length, 8);
   assert.equal(PORTFOLIO_ITEMS[0].id, 'z-olla');
-  assert.equal(PORTFOLIO_CATEGORIES.length, 1);
+  assert.equal(PORTFOLIO_CATEGORIES.length, 3);
   assert.equal(SOCIALS.length, 8);
   assert.equal(CONTACT_EMAILS.length, 1);
 });

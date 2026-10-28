@@ -2,6 +2,8 @@ import { PortfolioCategory, PortfolioItem } from '../types';
 
 export const PORTFOLIO_CATEGORIES: PortfolioCategory[] = [
   'AI Platforms & Agents',
+  'Core Infrastructure & Swarms',
+  'SaaS & Web3 Systems',
 ];
 
 export const PORTFOLIO_ITEMS: PortfolioItem[] = [
@@ -20,7 +22,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     challenge:
       'Enterprise teams needed a sovereign, self-hosted AI assistant and routing core capable of switching between cloud and local LLMs seamlessly while retaining long-term semantic memory, document context, and full MCP tool observability.',
     architecture:
-      'Engineered an 8-service containerized topology (FastAPI, Next.js, LiteLLM, Letta, Ollama, PostgreSQL 16 + pgvector, Redis, and MinIO) behind Caddy auto-TLS and Keycloak JWT authentication, achieving <10ms routing overhead and 40–60ms IVFFlat vector retrieval.',
+      'Engineered an 8-service containerized topology (FastAPI, Next.js, LiteLLM, Letta, Ollama, PostgreSQL 16 + pgvector, Redis, and MinIO) behind Caddy auto-TLS and Keycloak JWT authentication, achieving 5–10ms routing overhead and 40–60ms IVFFlat vector retrieval.',
     metrics: [
       { label: 'Routing Overhead', value: '5–10ms' },
       { label: 'Vector Search', value: '40–60ms' },
@@ -47,5 +49,277 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     ],
     schematic: 'gateway',
     href: 'https://olla.zyniq.cloud',
+  },
+  {
+    id: 'izn-identity-platform',
+    code: 'BLD-02',
+    title: 'IZN',
+    subtitle: 'Next-Gen Digital Business Card, NFC Smart Hardware & Biometric Identity SaaS',
+    category: 'SaaS & Web3 Systems',
+    division: 'ZYNIQ Studio',
+    year: '2026',
+    status: 'Live Platform',
+    featured: true,
+    summary:
+      'Full-stack digital identity and networking SaaS combining physical NFC smart cards, instant Apple & Google Wallet passes, Gemini Vision biometric verification, Web3 EIP-191 wallet attestation, and 3D Zavatar profiles.',
+    challenge:
+      'Professionals and enterprise teams needed a verifiable, zero-friction digital identity platform that bridges physical NFC tap hardware, native mobile wallets, and cryptographic ownership across General, Work, and Social persona modes.',
+    architecture:
+      'Built on Next.js 16, React 19, and Supabase with Row-Level Security (RLS) and RPC lead-capture pipelines. Integrated live .pkpass & Google Wallet delivery, Gemini Vision camera selfie matching, MetaMask EIP-191 signature verification, and a 0–1,000 Networking Score engine.',
+    metrics: [
+      { label: 'Visual Card Themes', value: '11 Systems' },
+      { label: 'E2E Playwright Suite', value: '21/21 Pass' },
+      { label: 'Reputation Scale', value: '0–1,000 Pts' },
+    ],
+    stack: [
+      'Next.js 16',
+      'React 19',
+      'Supabase',
+      'Gemini Vision',
+      'Apple & Google Wallet',
+      'Web3 EIP-191',
+      'Tailwind v4',
+      'Playwright',
+    ],
+    deliverables: [
+      '11 Dynamic Card Layouts & Contextual Persona Switcher (Work / Social / General)',
+      'Instant Apple (.pkpass) & Google Wallet Pass Provisioning Engine',
+      'Gemini Vision Biometric Verification & Web3 Wallet Ownership Attestation',
+      'Zavatar 3D Avatar Integration, NFC Hardware Store & Admin Control Center',
+    ],
+    schematic: 'identity',
+    href: 'https://izn.zyniq.cloud',
+  },
+  {
+    id: 'agent-t-quant-terminal',
+    code: 'BLD-03',
+    title: 'Agent T',
+    subtitle: 'Decentralized AI Quantitative Trading Terminal & LangGraph Grid Fleet',
+    category: 'SaaS & Web3 Systems',
+    division: 'ZYNIQ Solutions',
+    year: '2026',
+    status: 'Production',
+    featured: true,
+    summary:
+      'Decentralized AI-driven quantitative trading terminal combining Spot and Futures grid fleets, LangGraph + SearXNG agentic market intelligence, Web3 Sign-In with Ethereum (SIWE), and 1-on-1 Telegram quant parity.',
+    challenge:
+      'Executing high-volatility Spot and Futures grid strategies required deterministic NAV loss-stop circuit breakers, non-custodial per-user encrypted API key isolation, and real-time decentralized market intelligence.',
+    architecture:
+      'Engineered a 4-container stack (Next.js frontend, FastAPI + LangGraph backend, SearXNG decentralized metasearch engine, and MongoDB) secured by Web3 wallet authentication (MetaMask, Rabby, WalletConnect), session PIN gates, and AES-encrypted exchange credentials.',
+    metrics: [
+      { label: 'Execution Fleets', value: 'Spot & Futures' },
+      { label: 'Intel Metasearch', value: 'SearXNG + LLM' },
+      { label: 'Key Isolation', value: 'AES + SIWE' },
+    ],
+    stack: [
+      'Next.js',
+      'FastAPI',
+      'LangGraph',
+      'LangChain',
+      'SearXNG',
+      'MongoDB',
+      'Web3 SIWE',
+      'Telegram Bot API',
+    ],
+    deliverables: [
+      'Spot & Multi-Tier Futures Grid Trading Fleets with Automated NAV Loss Stops',
+      'High-Volatility Opportunity Scanner & LangGraph + SearXNG Market Intelligence',
+      'Web3 Sign-In with Ethereum (SIWE) & Encrypted Per-User Exchange Vault',
+      'Synchronized Web Terminal & 1-on-1 Telegram Quant Dialogue Bot',
+    ],
+    schematic: 'swarm',
+  },
+  {
+    id: 'tchiko-assistant',
+    code: 'BLD-04',
+    title: 'Tchiko Assistant',
+    subtitle: 'Autonomous Linux Systems Engineer, DevOps Companion & 60 FPS Cairo Desktop Agent',
+    category: 'AI Platforms & Agents',
+    division: 'ZYNIQ Core',
+    year: '2026',
+    status: 'Shipped',
+    featured: true,
+    summary:
+      'Autonomous Ubuntu Linux systems engineering agent and floating desktop companion powered by a 5-tier reasoning engine, Google Antigravity SDK/CLI NDJSON streaming, an 8-step ReAct loop, and a 60 FPS parametric Cairo physics renderer.',
+    challenge:
+      'Diagnosing crashing desktop IDEs, broken X.509 certificates, locked sockets, and runaway processes on Linux required an intelligent local sysadmin companion capable of autonomous root-cause analysis and atomic self-healing.',
+    architecture:
+      'Built in Python 3.10+ with GTK3/PyCairo frameless RGBA compositing and Hooke’s law spring-jelly vector physics. Orchestrates a 5-tier dispatch pipeline—from deterministic 6-step App Crash Doctor routines and `/proc` telemetry to `agy` CLI stream-json IPC and Gemini/Ollama ReAct tool loops.',
+    metrics: [
+      { label: 'Reasoning Architecture', value: '5-Tier Engine' },
+      { label: 'Vector Physics UI', value: '60 FPS Cairo' },
+      { label: 'Auto-Heal Pipeline', value: '6-Stage Doctor' },
+    ],
+    stack: [
+      'Python 3.10+',
+      'Google Antigravity SDK',
+      'GTK3 + PyCairo',
+      'Gemini 2.5 Flash',
+      'Ollama',
+      'Ubuntu Linux /proc',
+      'OpenSSH & OpenSSL',
+    ],
+    deliverables: [
+      '5-Tier Autonomous Agent Engine with Google Antigravity CLI NDJSON Stream Bridge',
+      '6-Step Autonomous Application Crash Doctor (Binary, Lock, Log, Cert & Patch Audit)',
+      '60 FPS Parametric Cubic Bézier & Spring-Jelly Physics Desktop Companion',
+      'RBAC Capability Control Panel, Live CPU/RAM/Disk Studio & Interactive Web Showcase',
+    ],
+    schematic: 'workflow',
+  },
+  {
+    id: 'gnosis-agent-fleet',
+    code: 'BLD-05',
+    title: 'Gnosis Agent Fleet',
+    subtitle: '10-Agent Autonomous Operations Swarm & Command Center (ZYNIQ-STUDIO)',
+    category: 'Core Infrastructure & Swarms',
+    division: 'ZYNIQ Core',
+    year: '2026',
+    status: 'Live Platform',
+    featured: false,
+    summary:
+      'Centralized multi-agent command center orchestrating 10 specialized Agno AgentOS workers across architecture, browser QA, DevOps monitoring, lead collection, analytics, content generation, and automated email operations.',
+    challenge:
+      'Scaling software factory operations required autonomous agent crews that share unified authentication, event-driven Kafka messaging, and isolated API/UI ports without human micromanagement.',
+    architecture:
+      'Deployed inside the ZYNIQ-STUDIO monorepo as a containerized fleet (ports 3200–3209 UI / 8600–8609 AgentOS APIs) behind the Gnosis Auth Gate (Caddy + Keycloak OIDC), backed by Kafka event streams (`content-factory.campaigns`), PostgreSQL, and MongoDB.',
+    metrics: [
+      { label: 'Specialized Agents', value: '10 Active' },
+      { label: 'Dedicated Endpoints', value: '20 UI/API Ports' },
+      { label: 'Auth Governance', value: 'Keycloak OIDC' },
+    ],
+    stack: [
+      'Python',
+      'Agno AgentOS',
+      'FastAPI',
+      'Streamlit',
+      'Kafka',
+      'PostgreSQL',
+      'MongoDB',
+      'Keycloak OIDC',
+    ],
+    deliverables: [
+      'Gnosis Command Center & OIDC Auth Gate',
+      'Architect, Browser QA Tester, Phantom & DevOps Monitor Agents',
+      'Content Factory Swarm + Bento Blog & Recharts Analytics Portal',
+      'Lead Collector, Analytics & Mailtron Autonomous Outreach Agents',
+    ],
+    schematic: 'swarm',
+  },
+  {
+    id: 'zyniq-brain-gateway',
+    code: 'BLD-06',
+    title: 'ZYNIQ Brain & Gateway',
+    subtitle: 'Centralized LLM Router, Provider Failover & Langfuse Telemetry Spine (ZYNIQ-STUDIO)',
+    category: 'Core Infrastructure & Swarms',
+    division: 'ZYNIQ Cloud',
+    year: '2026',
+    status: 'Live Platform',
+    featured: false,
+    summary:
+      'The cognitive backbone of ZYNIQ-STUDIO (`core/brain` & `core/brain-gateway`): an OpenAI-compatible AI proxy handling multi-provider fallback, API key rotation, role-based model routing, cost budgets, and Langfuse observability.',
+    challenge:
+      'Dozens of internal microservices and agent swarms needed a single, resilient LLM interface with zero-downtime provider failover, strict cost governance, and unified trace observability.',
+    architecture:
+      'Exposes both a native Python SDK (`from core.brain import get_brain`), LangChain adapter, and an OpenAI-compatible HTTP REST Gateway on port 8700, integrated with Qdrant vector memory, Ollama local inference, MindsDB predictive analytics, and Langfuse tracing.',
+    metrics: [
+      { label: 'Gateway Interface', value: 'OpenAI-Compat' },
+      { label: 'Observability', value: '100% Traced' },
+      { label: 'Failover Mode', value: 'Multi-Provider' },
+    ],
+    stack: [
+      'Python',
+      'FastAPI',
+      'LangChain',
+      'Langfuse',
+      'Qdrant',
+      'Ollama',
+      'Redis',
+      'Docker Compose',
+    ],
+    deliverables: [
+      'OpenAI-Compatible HTTP Proxy (`brain-gateway:8700/v1`)',
+      'Automated Multi-Provider Key Rotation & Smart Role Routing',
+      'Native Python & LangChain Brain SDK Connectors',
+      'Langfuse Trace Observability & Per-Service Cost Budgeting',
+    ],
+    schematic: 'gateway',
+  },
+  {
+    id: 'the-owl-engine-strix',
+    code: 'BLD-07',
+    title: 'The Owl Engine (v2.0 Strix)',
+    subtitle: 'Autonomous Codebase Indexing, Self-Healing & Evolution Agent (ZYNIQ-STUDIO)',
+    category: 'AI Platforms & Agents',
+    division: 'ZYNIQ Core',
+    year: '2026',
+    status: 'Production',
+    featured: false,
+    summary:
+      'Self-directed, long-running autonomous code evolution engine (`scripts/the_owl_engine`) that indexes repositories into Qdrant vector memory, audits health, patches defects, and generates automated changelogs.',
+    challenge:
+      'Maintaining hygiene, documentation parity, and regression-free upgrades across a massive multi-service monorepo demanded an autonomous agent that remembers cross-session context.',
+    architecture:
+      'Powered by Agno Workflows, Qdrant vector collections (`the_owl_session_memory`), and real-time SSE streaming (`8209`) to the Owl Watcher Dashboard (`3209`), paired with the `zstudio` interactive TUI deployment orchestrator.',
+    metrics: [
+      { label: 'Engine Version', value: 'v2.0 Strix' },
+      { label: 'Session Memory', value: 'Qdrant Vector' },
+      { label: 'Telemetry Stream', value: 'Live SSE' },
+    ],
+    stack: [
+      'Python',
+      'Agno Workflows',
+      'Qdrant',
+      'FastAPI SSE',
+      'Ollama Cloud',
+      'Textual TUI',
+      'Git Automation',
+    ],
+    deliverables: [
+      'Autonomous Repository Indexer & Cross-Session Vector Memory',
+      'Automated Codebase Defect Diagnosis, Patching & Changelog Generator',
+      'Real-Time Owl Watcher Dashboard with FastAPI SSE Telemetry',
+      '`zstudio` Interactive TUI & Standardized 1-Command Product Scaffolder',
+    ],
+    schematic: 'workflow',
+  },
+  {
+    id: 'studio-flash-collab-suite',
+    code: 'BLD-08',
+    title: 'Studio Flash & Collab Suite',
+    subtitle: 'Browser Cloud IDE, LiveKit AI Meetings, Antgent Colony & DarkMatter Security (ZYNIQ-STUDIO)',
+    category: 'Core Infrastructure & Swarms',
+    division: 'ZYNIQ Studio',
+    year: '2026',
+    status: 'Live Platform',
+    featured: false,
+    summary:
+      'Integrated workspace ecosystem inside ZYNIQ-STUDIO combining the Studio Flash IDE, code-server, LiveKit WebRTC video meetings with AI participants, Collaborative Whiteboard, Antgent Colony, ZYNIQx Mobile Controller, and the DarkMatter Kali Linux MCP security scanner.',
+    challenge:
+      'Human Commanders and AI Specialist Crews needed a unified real-time environment to write code, hold voice/video briefings with AI agents, map architectures on shared canvases, and run automated security audits.',
+    architecture:
+      'Orchestrated as isolated microservices (`studio/`, `microservices_apps/`, `core/zyniqx/`, `darkmatter/`) behind Caddy reverse proxies and Keycloak SSO, with WebRTC media routing via LiveKit (`7880`) and WebSocket relay bridges (`3950`).',
+    metrics: [
+      { label: 'Integrated Apps', value: '7 Microservices' },
+      { label: 'Realtime Transport', value: 'WebRTC + WS' },
+      { label: 'Security Auditing', value: 'Kali MCP Server' },
+    ],
+    stack: [
+      'React',
+      'Next.js',
+      'Flask',
+      'LiveKit WebRTC',
+      'code-server',
+      'WebSockets',
+      'Kali Linux MCP',
+      'Docker',
+    ],
+    deliverables: [
+      'Studio Flash Web IDE (`3100`) & Cloud Code-Server Workspace',
+      'LiveKit AI Meeting App (`7880/3001`), Collaborative Whiteboard & Notes Suite',
+      'Antgent Colony Autonomous Simulation & ZYNIQx Mobile Controller PWA',
+      'DarkMatter Kali Linux MCP Server for Automated Security Reconnaissance',
+    ],
+    schematic: 'brand',
   },
 ];
