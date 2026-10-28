@@ -15,7 +15,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'AI Platforms & Agents',
     division: 'ZYNIQ Core',
     year: '2026',
-    status: 'Live Platform',
+    status: 'Production',
     featured: true,
     summary:
       'Enterprise AI workspace and orchestration platform combining LiteLLM multi-provider routing, Letta autonomous long-term memory, pgvector semantic search, and MCP tool execution under Keycloak SSO.',
@@ -48,7 +48,6 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       '8-Container Production Docker Topology with Automated Migrations',
     ],
     schematic: 'gateway',
-    href: 'https://olla.zyniq.cloud',
   },
   {
     id: 'izn-identity-platform',
@@ -98,7 +97,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'SaaS & Web3 Systems',
     division: 'ZYNIQ Solutions',
     year: '2026',
-    status: 'Production',
+    status: 'Live Platform',
     featured: true,
     summary:
       'Decentralized AI-driven quantitative trading terminal combining Spot and Futures grid fleets, LangGraph + SearXNG agentic market intelligence, Web3 Sign-In with Ethereum (SIWE), and 1-on-1 Telegram quant parity.',
@@ -128,6 +127,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       'Synchronized Web Terminal & 1-on-1 Telegram Quant Dialogue Bot',
     ],
     schematic: 'swarm',
+    href: 'https://agent-t.zyniq.cloud/',
   },
   {
     id: 'tchiko-assistant',
@@ -137,7 +137,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
     category: 'AI Platforms & Agents',
     division: 'ZYNIQ Core',
     year: '2026',
-    status: 'Shipped',
+    status: 'Live Platform',
     featured: true,
     summary:
       'Autonomous Ubuntu Linux systems engineering agent and floating desktop companion powered by a 5-tier reasoning engine, Google Antigravity SDK/CLI NDJSON streaming, an 8-step ReAct loop, and a 60 FPS parametric Cairo physics renderer.',
@@ -166,6 +166,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       'RBAC Capability Control Panel, Live CPU/RAM/Disk Studio & Interactive Web Showcase',
     ],
     schematic: 'workflow',
+    href: 'https://tchiko-companion.netlify.app/',
   },
   {
     id: 'gnosis-agent-fleet',
