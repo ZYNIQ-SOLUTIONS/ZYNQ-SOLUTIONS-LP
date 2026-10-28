@@ -33,6 +33,12 @@ export function TitleBlock() {
                     </a>
                   </li>
                 ))}
+                <li>
+                  <a href="/portfolio" className={LINK}>
+                    <span className="text-red mr-2">↗</span>
+                    Portfolio archive
+                  </a>
+                </li>
               </ul>
             </div>
 

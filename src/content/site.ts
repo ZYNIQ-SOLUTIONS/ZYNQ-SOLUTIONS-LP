@@ -18,8 +18,9 @@ export const STATIONS: StationDef[] = [
   { id: 'output', number: '01', label: 'Output' },
   { id: 'sectors', number: '02', label: 'Sectors' },
   { id: 'services', number: '03', label: 'Services' },
-  { id: 'usecases', number: '04', label: 'Use cases' },
-  { id: 'consultation', number: '05', label: 'Consultation' },
+  { id: 'portfolio', number: '04', label: 'Portfolio' },
+  { id: 'usecases', number: '05', label: 'Use cases' },
+  { id: 'consultation', number: '06', label: 'Consultation' },
 ];
 
 export const CONTACT_EMAILS = ['contact@zyniq.studio'];

@@ -9,6 +9,7 @@ import { Manifesto } from './sections/Manifesto';
 import { Nav } from './sections/Nav';
 import { Output } from './sections/Output';
 import { PartsStrip } from './sections/PartsStrip';
+import { Portfolio } from './sections/Portfolio';
 import { Sectors } from './sections/Sectors';
 import { Services } from './sections/Services';
 import { TitleBlock } from './sections/TitleBlock';
@@ -44,6 +45,7 @@ export default function App() {
         <Sectors />
         <Manifesto />
         <Services />
+        <Portfolio />
         <UseCases />
         <Consultation />
       </main>

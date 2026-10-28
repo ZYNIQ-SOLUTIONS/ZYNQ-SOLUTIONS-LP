@@ -51,3 +51,28 @@ export interface StationDef {
   number: string;
   label: string;
 }
+
+export type PortfolioCategory = 'AI Platforms & Agents' | 'SaaS & Web Apps' | 'Brand & Digital Experiences';
+
+export interface PortfolioItem {
+  id: string;
+  code: string;
+  title: string;
+  subtitle: string;
+  category: PortfolioCategory;
+  division: 'ZYNIQ Core' | 'ZYNIQ Studio' | 'ZYNIQ Cloud' | 'ZYNIQ Solutions';
+  year: string;
+  status: 'Shipped' | 'Production' | 'Live Platform';
+  featured: boolean;
+  summary: string;
+  challenge: string;
+  architecture: string;
+  metrics: {
+    label: string;
+    value: string;
+  }[];
+  stack: string[];
+  deliverables: string[];
+  schematic: 'gateway' | 'swarm' | 'workflow' | 'identity' | 'commerce' | 'coaching' | 'brand' | 'luxury';
+  href?: string;
+}

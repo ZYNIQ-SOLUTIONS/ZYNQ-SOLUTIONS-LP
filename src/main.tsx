@@ -5,6 +5,7 @@ import './index.css';
 
 const Admin = lazy(() => import('./admin/Admin.tsx'));
 const Legal = lazy(() => import('./legal/LegalPage.tsx'));
+const PortfolioPage = lazy(() => import('./portfolio/PortfolioPage.tsx'));
 const path = window.location.pathname.replace(/\/+$/, '');
 const isAdmin = path === '/admin';
 
@@ -13,6 +14,10 @@ createRoot(document.getElementById('root')!).render(
     {isAdmin ? (
       <Suspense fallback={null}>
         <Admin />
+      </Suspense>
+    ) : path === '/portfolio' ? (
+      <Suspense fallback={null}>
+        <PortfolioPage />
       </Suspense>
     ) : path === '/terms' || path === '/privacy' ? (
       <Suspense fallback={null}>

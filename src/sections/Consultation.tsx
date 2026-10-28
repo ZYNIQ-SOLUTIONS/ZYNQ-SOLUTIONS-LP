@@ -50,7 +50,7 @@ export function Consultation() {
 
   return (
     <Station
-      {...STATIONS[4]}
+      {...(STATIONS.find((s) => s.id === 'consultation') ?? STATIONS[5])}
       title="Get Free Consultation"
       intro="Ready to architect your custom synthetic brain? Connect with our specialist Commanders and start engineering the future today."
     >

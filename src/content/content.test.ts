@@ -5,6 +5,7 @@ import { STATS } from './stats';
 import { SECTORS } from './sectors';
 import { SERVICES } from './services';
 import { USE_CASES } from './useCases';
+import { PORTFOLIO_ITEMS, PORTFOLIO_CATEGORIES } from './portfolio';
 import { STATIONS, SITE, CONTACT_EMAILS, SOCIALS } from './site';
 
 const unique = (ids: string[]) => new Set(ids).size === ids.length;
@@ -14,6 +15,8 @@ test('all existing content is carried over', () => {
   assert.equal(SECTORS.length, 4);
   assert.equal(SERVICES.length, 10);
   assert.equal(USE_CASES.length, 4);
+  assert.equal(PORTFOLIO_ITEMS.length, 8);
+  assert.equal(PORTFOLIO_CATEGORIES.length, 3);
   assert.equal(SOCIALS.length, 8);
   assert.equal(CONTACT_EMAILS.length, 1);
 });
@@ -30,16 +33,18 @@ test('ids are unique and services are numbered 01 to 10 in order', () => {
   assert.ok(unique(SECTORS.map((s) => s.id)));
   assert.ok(unique(SERVICES.map((s) => s.id)));
   assert.ok(unique(USE_CASES.map((u) => u.id)));
+  assert.ok(unique(PORTFOLIO_ITEMS.map((p) => p.id)));
+  assert.ok(unique(PORTFOLIO_ITEMS.map((p) => p.code)));
   assert.deepEqual(
     SERVICES.map((s) => s.number),
     ['01', '02', '03', '04', '05', '06', '07', '08', '09', '10'],
   );
 });
 
-test('stations are the five numbered sections', () => {
+test('stations are the six numbered sections', () => {
   assert.deepEqual(
     STATIONS.map((s) => `${s.number}:${s.id}`),
-    ['01:output', '02:sectors', '03:services', '04:usecases', '05:consultation'],
+    ['01:output', '02:sectors', '03:services', '04:portfolio', '05:usecases', '06:consultation'],
   );
 });
 

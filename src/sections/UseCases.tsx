@@ -27,7 +27,7 @@ export function UseCases() {
 
   return (
     <Station
-      {...STATIONS[3]}
+      {...(STATIONS.find((s) => s.id === 'usecases') ?? STATIONS[4])}
       title="Boosting Capabilities Beyond Limits"
       intro="Explore how production teams leverage autonomous agents with strict rule structures to automate intensive manual workflows."
     >
