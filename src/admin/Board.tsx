@@ -45,7 +45,7 @@ export function Board({ rows, patch }: Props) {
                 <ul className="p-2 space-y-2 min-h-24">
                   {cards.map((r) => (
                     <li key={r.id} className="border border-rule bg-paper p-3">
-                      <p className="font-display font-semibold uppercase text-lg leading-none">
+                      <p className="font-sans font-semibold text-base leading-snug">
                         {r.first_name} {r.last_name}
                       </p>
                       <a href={`mailto:${r.email}`} className="mt-1 block text-xs break-all text-muted hover:text-red">

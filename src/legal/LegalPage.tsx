@@ -25,24 +25,24 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
             <ZyniqTextLogo className="h-4 w-auto" />
             <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
           </a>
-          <a href="/" className="inline-flex items-center gap-2 min-h-11 font-mono text-[11px] font-semibold hover:text-red transition-colors">
+          <a href="/" className="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-ink transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to site
           </a>
         </div>
       </header>
 
-      <main className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 sm:py-20">
+      <main className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 sm:py-16">
         <p className="bp-label flex items-center gap-3">
-          <span className="text-red font-semibold">Legal</span>
-          <span aria-hidden="true" className="h-px w-8 bg-rule" />
+          <span>Documentation</span>
+          <span aria-hidden="true" className="h-px w-6 bg-rule" />
           <span>Updated {page.updated}</span>
         </p>
-        <h1 className="mt-4 font-display font-semibold uppercase text-5xl sm:text-7xl leading-[0.92] tracking-tight">{page.title}</h1>
-        <p className="mt-5 max-w-2xl text-muted text-base sm:text-lg leading-relaxed">{page.summary}</p>
-        <div aria-hidden="true" className="mt-10 flex items-center">
-          <span className="w-2 h-2 bg-red" />
-          <span className="h-px flex-1 bg-ink" />
-          <span className="h-2 w-px bg-ink" />
+        <h1 className="mt-4 font-display font-semibold uppercase text-4xl sm:text-6xl leading-[0.94] tracking-tight">{page.title}</h1>
+        <p className="mt-4 max-w-2xl text-muted text-base leading-relaxed">{page.summary}</p>
+        <div aria-hidden="true" className="mt-8 flex items-center">
+          <span className="w-1.5 h-1.5 bg-red" />
+          <span className="h-px flex-1 bg-rule" />
+          <span className="h-1.5 w-px bg-rule" />
         </div>
 
         <div className="mt-10 grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-16 items-start">
@@ -51,8 +51,8 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
             <ol className="space-y-1 font-mono text-xs">
               {page.sections.map((s, i) => (
                 <li key={s.title}>
-                  <a href={`#${slug(s.title)}`} className="flex gap-3 py-1.5 hover:text-red transition-colors">
-                    <span className="text-red w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
+                  <a href={`#${slug(s.title)}`} className="flex gap-3 py-1.5 text-muted hover:text-ink transition-colors">
+                    <span className="w-6 shrink-0">{String(i + 1).padStart(2, '0')}</span>
                     <span>{s.title}</span>
                   </a>
                 </li>
@@ -63,8 +63,8 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
           <article className="lg:col-span-8 max-w-3xl">
             {page.sections.map((s, i) => (
               <section key={s.title} id={slug(s.title)} className="scroll-mt-24 pb-10 mb-10 border-b border-rule last:border-b-0">
-                <h2 className="font-display font-semibold uppercase text-3xl sm:text-4xl leading-none">
-                  <span className="text-red mr-3 font-mono text-sm align-middle">{String(i + 1).padStart(2, '0')}</span>
+                <h2 className="font-display font-semibold uppercase text-2xl sm:text-3xl leading-snug">
+                  <span className="text-muted mr-3 font-mono text-sm align-middle">{String(i + 1).padStart(2, '0')}</span>
                   {s.title}
                 </h2>
                 {s.paragraphs?.map((p) => (
@@ -94,10 +94,10 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </span>
           <span className="flex gap-6">
-            <a href={other.path} className="inline-flex items-center min-h-11 sm:min-h-0 hover:text-red transition-colors">
+            <a href={other.path} className="inline-flex items-center hover:text-red transition-colors">
               {other.title}
             </a>
-            <a href="/" className="inline-flex items-center min-h-11 sm:min-h-0 hover:text-red transition-colors">
+            <a href="/" className="inline-flex items-center hover:text-red transition-colors">
               Home
             </a>
           </span>

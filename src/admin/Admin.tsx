@@ -120,12 +120,9 @@ export default function Admin() {
           <div className="flex-1 flex items-center justify-center px-5 py-16">
             <SignIn />
           </div>
-          <p
-            aria-hidden="true"
-            className="-mb-[3.2vw] text-center font-display font-semibold uppercase whitespace-nowrap leading-[0.8] text-[19.5vw] select-none"
-          >
-            ZYNIQ <span className="text-red">Studio</span>
-          </p>
+          <footer className="py-6 text-center border-t border-rule mt-auto">
+            <p className="bp-label text-muted">ZYNIQ Studio · Restricted internal system</p>
+          </footer>
         </>
       )}
     </div>

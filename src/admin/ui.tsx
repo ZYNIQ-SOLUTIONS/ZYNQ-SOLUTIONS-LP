@@ -6,7 +6,7 @@ export function Brand() {
     <div className="flex items-center gap-2.5">
       <LogoIcon className="w-8 h-8" />
       <ZyniqTextLogo className="h-4 w-auto" />
-      <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
+      <span className="font-display font-semibold text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
       <span className="font-mono text-[11px] font-semibold text-muted translate-y-px">Admin</span>
     </div>
   );

@@ -94,16 +94,16 @@ export function Dashboard({ session }: { session: Session }) {
       <li key={r.id} className="border border-ink bg-raised p-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
-            <h2 className="font-display font-semibold uppercase text-2xl leading-none">
+            <h2 className="font-sans font-semibold text-lg sm:text-xl leading-tight">
               {r.first_name} {r.last_name}
             </h2>
-            <a href={`mailto:${r.email}`} className="mt-1 inline-block break-all text-sm underline underline-offset-2 hover:text-red">
+            <a href={`mailto:${r.email}`} className="mt-1 inline-block break-all text-sm text-muted underline underline-offset-2 hover:text-red">
               {r.email}
             </a>
           </div>
           <div className="text-right">
             <p className="bp-label">{new Date(r.created_at).toLocaleString()}</p>
-            <p className={`mt-1 font-mono text-[11px] font-semibold ${r.status === 'new' ? 'text-red' : 'text-muted'}`}>
+            <p className={`mt-1 font-mono text-xs ${r.status === 'new' ? 'text-red font-medium' : 'text-muted'}`}>
               {STAGE_LABEL[r.status]}
               {r.deal_value ? ` · ${money(r.deal_value)}` : ''}
             </p>
@@ -113,18 +113,19 @@ export function Dashboard({ session }: { session: Session }) {
         {signals.length > 0 && (
           <p className="mt-3 flex flex-wrap gap-2">
             {signals.map((s) => (
-              <span key={s} className="inline-flex items-center gap-1 border border-red px-2 py-0.5 font-mono text-[10px] text-red">
-                <ShieldAlert className="w-3 h-3" aria-hidden="true" /> {s}
+              <span key={s} className="inline-flex items-center gap-1 border border-rule bg-paper px-2 py-0.5 font-mono text-[11px] text-muted">
+                <ShieldAlert className="w-3 h-3 text-red" aria-hidden="true" /> {s}
               </span>
             ))}
           </p>
         )}
 
         {r.meeting_at && (
-          <p className="mt-4 inline-block border border-red px-3 py-2 font-mono text-xs">
-            <span className="text-red font-semibold">Wants to meet</span> {when(r.meeting_at)}
-            {r.timezone && <span className="text-muted"> · visitor in {r.timezone}</span>}
-            {clashes.has(r.meeting_at) && <span className="text-red font-semibold"> · clash</span>}
+          <p className="mt-4 inline-flex items-center gap-2 border border-rule bg-paper px-3 py-1.5 font-mono text-xs">
+            <span className="w-1.5 h-1.5 bg-red" />
+            <span className="font-medium">Requested meeting:</span> {when(r.meeting_at)}
+            {r.timezone && <span className="text-muted"> · {r.timezone}</span>}
+            {clashes.has(r.meeting_at) && <span className="text-red font-medium"> · clash</span>}
           </p>
         )}
         <p className="mt-4 whitespace-pre-wrap break-words text-sm leading-relaxed">{r.message}</p>

@@ -3,7 +3,6 @@ import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Layers, SlidersHorizontal, 
 import { LogoIcon } from '../components/LogoIcon';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
-import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { LineStatus } from '../components/blueprint/LineStatus';
 import { PortfolioSchematic } from '../components/blueprint/PortfolioSchematic';
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS } from '../content/portfolio';
@@ -97,10 +96,9 @@ export default function PortfolioPage() {
       <main id="portfolio-main" className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-10 sm:py-16">
         {/* Blueprint Sheet Hero */}
         <section aria-labelledby="portfolio-heading" className="relative border border-ink bg-raised p-6 sm:p-10 lg:p-12">
-          <CornerMarks />
           <div className="flex flex-wrap items-center justify-between gap-4 pb-6 border-b border-rule bp-label">
             <span className="flex items-center gap-3">
-              <span className="text-red font-semibold">Archive // Rev. 2026</span>
+              <span>Archive // Rev. 2026</span>
               <span aria-hidden="true" className="h-px w-8 bg-rule" />
               <span>ZYNIQ-STUDIO &amp; Flagship Ecosystem</span>
             </span>
@@ -109,15 +107,15 @@ export default function PortfolioPage() {
 
           <div className="mt-8 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="bp-label !text-red font-semibold">Verified Factory Output</p>
+              <p className="bp-label">Production Archive // Systems Ledger</p>
               <h1
                 id="portfolio-heading"
-                className="mt-3 font-display font-semibold uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.88] tracking-tight"
+                className="mt-3 font-display font-semibold uppercase text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight"
               >
                 Engineered Systems.{' '}
                 <span className="text-red">Real-World Proof.</span>
               </h1>
-              <p className="mt-5 max-w-2xl text-base sm:text-lg text-muted leading-relaxed">
+              <p className="mt-4 max-w-2xl text-base sm:text-lg text-muted leading-relaxed">
                 From Z-OLLA, IZN, Agent T, and Tchiko Assistant to the core autonomous agent swarms inside ZYNIQ-STUDIO—every system below was architected, assembled, and verified on our production line.
               </p>
             </div>
@@ -189,12 +187,11 @@ export default function PortfolioPage() {
                   isSelected ? 'border-red' : 'border-ink'
                 }`}
               >
-                <CornerMarks />
                 <div>
                   {/* Card Top Bar */}
                   <header className="flex flex-wrap items-center justify-between gap-2 px-5 sm:px-7 py-3.5 border-b border-ink bp-label">
                     <span className="flex items-center gap-2">
-                      <span className="text-red font-semibold">{item.code}</span>
+                      <span className="text-muted font-medium">{item.code}</span>
                       <span aria-hidden="true">/</span>
                       <span>{item.division}</span>
                     </span>
@@ -211,19 +208,19 @@ export default function PortfolioPage() {
 
                   {/* Main Body */}
                   <div className="px-5 sm:px-7 pt-6 pb-5">
-                    <p className="bp-label !text-red font-semibold">{item.category}</p>
-                    <h2 className="mt-2 font-display font-semibold uppercase text-3xl sm:text-4xl leading-none">
+                    <p className="bp-label">{item.category}</p>
+                    <h2 className="mt-2 font-display font-semibold uppercase text-2xl sm:text-3xl leading-snug">
                       {item.title}
                     </h2>
-                    <p className="mt-1.5 font-mono text-xs text-muted">{item.subtitle}</p>
-                    <p className="mt-4 text-sm sm:text-base text-ink/90 leading-relaxed">{item.summary}</p>
+                    <p className="mt-1 font-mono text-xs text-muted">{item.subtitle}</p>
+                    <p className="mt-3 text-sm text-muted leading-relaxed">{item.summary}</p>
 
                     {/* Metrics Strip */}
                     <dl className="mt-6 grid grid-cols-3 border-l border-t border-rule bg-paper">
                       {item.metrics.map((m) => (
                         <div key={m.label} className="p-3 sm:p-3.5 border-r border-b border-rule">
                           <dt className="font-mono text-[10px] text-muted truncate">{m.label}</dt>
-                          <dd className="mt-1 font-display font-semibold text-xl sm:text-2xl leading-none tabular-nums">
+                          <dd className="mt-1 font-display font-semibold text-lg sm:text-xl leading-none tabular-nums">
                             {m.value}
                           </dd>
                         </div>
@@ -245,11 +242,11 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Card Actions Footer */}
-                <footer className="px-5 sm:h-12 px-6 border-t border-rule bg-paper/60 flex flex-wrap items-center justify-between gap-3">
+                <footer className="px-5 sm:px-7 py-3 border-t border-rule bg-paper/60 flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
                     onClick={() => setSelected(item)}
-                    className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-ink hover:text-red cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-2 font-mono text-xs text-ink hover:text-red cursor-pointer transition-colors"
                   >
                     <Layers className="w-3.5 h-3.5 text-red" />
                     Inspect technical spec
@@ -321,10 +318,9 @@ export default function PortfolioPage() {
           }}
         >
           <div className="relative w-full max-w-4xl border border-ink bg-raised text-ink my-auto max-h-[90dvh] overflow-y-auto">
-            <CornerMarks />
-            <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 sm:h-12 px-8 border-b border-ink bg-raised/95 backdrop-blur-md">
+            <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 sm:px-8 py-3.5 border-b border-ink bg-raised/95 backdrop-blur-md">
               <div className="bp-label">
-                <span className="text-red font-semibold">{selected.code}</span> / {selected.division} / Technical Dossier
+                <span className="text-ink font-medium">{selected.code}</span> / {selected.division} / Technical Dossier
               </div>
               <button
                 type="button"
@@ -340,10 +336,10 @@ export default function PortfolioPage() {
             <div className="p-5 sm:p-8 space-y-8">
               <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-center">
                 <div className="lg:col-span-7">
-                  <p className="bp-label !text-red font-semibold">
+                  <p className="bp-label">
                     {selected.category} · {selected.status} ({selected.year})
                   </p>
-                  <h2 id="spec-modal-title" className="mt-2 font-display font-semibold uppercase text-4xl sm:text-5xl leading-none">
+                  <h2 id="spec-modal-title" className="mt-2 font-display font-semibold uppercase text-3xl sm:text-4xl leading-tight">
                     {selected.title}
                   </h2>
                   <p className="mt-2 font-mono text-xs text-muted">{selected.subtitle}</p>
@@ -358,18 +354,18 @@ export default function PortfolioPage() {
                 {selected.metrics.map((m) => (
                   <div key={m.label} className="p-4 border-r border-b border-ink">
                     <dt className="bp-label">{m.label}</dt>
-                    <dd className="mt-1.5 font-display font-semibold text-3xl leading-none text-red tabular-nums">{m.value}</dd>
+                    <dd className="mt-1.5 font-display font-semibold text-2xl sm:text-3xl leading-none tabular-nums">{m.value}</dd>
                   </div>
                 ))}
               </dl>
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <div className="border border-rule bg-paper p-5">
-                  <h3 className="bp-label !text-red font-semibold mb-2">01 / Operational Challenge</h3>
+                  <h3 className="bp-label mb-2">01 / Operational Challenge</h3>
                   <p className="text-sm leading-relaxed text-ink/90">{selected.challenge}</p>
                 </div>
                 <div className="border border-rule bg-paper p-5">
-                  <h3 className="bp-label !text-red font-semibold mb-2">02 / Engineered Architecture</h3>
+                  <h3 className="bp-label mb-2">02 / Engineered Architecture</h3>
                   <p className="text-sm leading-relaxed text-ink/90">{selected.architecture}</p>
                 </div>
               </div>
