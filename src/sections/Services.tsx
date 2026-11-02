@@ -14,14 +14,14 @@ export function Services() {
   return (
     <Station
       {...STATIONS[2]}
-      title="A Menu of Power"
-      intro="Deploying production-grade software pipelines and synthetic intelligence to help your business lead in its market."
+      title="Engineering Services"
+      intro="Production-grade software engineering, custom intelligence pipelines, and autonomous system operations."
     >
       <div className="border border-ink bg-raised">
         <div className={`${ROW_GRID} px-4 sm:px-6 py-3 border-b border-ink bp-label`}>
           <span>No.</span>
           <span>Service</span>
-          <span className="hidden md:block">Type</span>
+          <span className="hidden md:block">Discipline</span>
           <span />
         </div>
 
@@ -39,13 +39,13 @@ export function Services() {
                     onClick={() => setOpenId(isOpen ? null : service.id)}
                     className={`${ROW_GRID} w-full text-left px-4 sm:px-6 py-5 cursor-pointer group`}
                   >
-                    <span className={`font-mono text-xs tracking-widest ${isOpen ? 'text-red font-semibold' : 'text-muted'}`}>
+                    <span className={`font-mono text-xs ${isOpen ? 'text-red font-semibold' : 'text-muted'}`}>
                       {service.number}
                     </span>
                     <span className="min-w-0">
                       <span
-                        className={`block font-display font-black uppercase leading-none text-2xl sm:text-4xl break-words transition-[color,transform] duration-300 ${
-                          isOpen ? 'text-red' : 'group-hover:text-red lg:group-hover:translate-x-3'
+                        className={`block font-display font-semibold uppercase leading-none text-xl sm:text-3xl break-words transition-colors duration-200 ${
+                          isOpen ? 'text-red' : 'group-hover:text-red'
                         }`}
                       >
                         {service.title}
@@ -54,7 +54,7 @@ export function Services() {
                     </span>
                     <span className="hidden md:block font-mono text-xs text-muted">{service.subtitle}</span>
                     <span aria-hidden="true" className={isOpen ? 'text-red' : 'text-muted group-hover:text-ink'}>
-                      {isOpen ? <Minus className="w-5 h-5" /> : <Plus className="w-5 h-5" />}
+                      {isOpen ? <Minus className="w-4 h-4" /> : <Plus className="w-4 h-4" />}
                     </span>
                   </button>
                 </h3>
@@ -65,10 +65,10 @@ export function Services() {
                       id={panelId}
                       role="region"
                       aria-label={service.title}
-                      initial={{ height: 0 }}
-                      animate={{ height: 'auto' }}
-                      exit={{ height: 0 }}
-                      transition={{ duration: reduce ? 0 : 0.28, ease: 'easeInOut' }}
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: 1 }}
+                      exit={{ opacity: 0 }}
+                      transition={{ duration: reduce ? 0 : 0.2 }}
                       className="overflow-hidden"
                     >
                       <div className="px-4 sm:px-6 pb-8 pt-1 grid grid-cols-1 md:grid-cols-[4rem_1fr_1fr] gap-x-4 gap-y-6">
@@ -77,9 +77,9 @@ export function Services() {
                           <p className="text-base leading-relaxed text-muted max-w-md">{service.description}</p>
                           <a
                             href="#consultation"
-                            className="mt-6 inline-flex items-center gap-2 border border-ink font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-5 py-3.5 bp-sweep"
+                            className="mt-6 inline-flex items-center gap-2 border border-ink text-sm font-medium hover:bg-ink hover:text-paper h-11 px-5 bp-btn"
                           >
-                            Request this
+                            Request this service
                             <ArrowRight className="w-3.5 h-3.5" />
                           </a>
                         </div>

@@ -25,7 +25,7 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
             <ZyniqTextLogo className="h-4 w-auto" />
             <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
           </a>
-          <a href="/" className="inline-flex items-center gap-2 min-h-11 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] hover:text-red transition-colors">
+          <a href="/" className="inline-flex items-center gap-2 min-h-11 font-mono text-[11px] font-semibold hover:text-red transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to site
           </a>
         </div>
@@ -37,7 +37,7 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
           <span aria-hidden="true" className="h-px w-8 bg-rule" />
           <span>Updated {page.updated}</span>
         </p>
-        <h1 className="mt-4 font-display font-black uppercase text-5xl sm:text-7xl leading-[0.92] tracking-tight">{page.title}</h1>
+        <h1 className="mt-4 font-display font-semibold uppercase text-5xl sm:text-7xl leading-[0.92] tracking-tight">{page.title}</h1>
         <p className="mt-5 max-w-2xl text-muted text-base sm:text-lg leading-relaxed">{page.summary}</p>
         <div aria-hidden="true" className="mt-10 flex items-center">
           <span className="w-2 h-2 bg-red" />
@@ -63,7 +63,7 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
           <article className="lg:col-span-8 max-w-3xl">
             {page.sections.map((s, i) => (
               <section key={s.title} id={slug(s.title)} className="scroll-mt-24 pb-10 mb-10 border-b border-rule last:border-b-0">
-                <h2 className="font-display font-black uppercase text-3xl sm:text-4xl leading-none">
+                <h2 className="font-display font-semibold uppercase text-3xl sm:text-4xl leading-none">
                   <span className="text-red mr-3 font-mono text-sm align-middle">{String(i + 1).padStart(2, '0')}</span>
                   {s.title}
                 </h2>

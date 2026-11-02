@@ -1,14 +1,11 @@
-import { useRef } from 'react';
-import type { PointerEvent } from 'react';
 import { motion, useReducedMotion } from 'motion/react';
 import { ArrowRight, ArrowDown } from 'lucide-react';
 import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { LineDrawing } from '../components/blueprint/LineDrawing';
-import { LineStatus } from '../components/blueprint/LineStatus';
 import { CONTAINER } from '../components/blueprint/layout';
 import { STAGES } from '../content/site';
 
-const HEADLINE = ['The future', 'is coded', 'by us.'];
+const HEADLINE = ['The future', 'is coded', 'by us'];
 
 const BOX_H = 74;
 const GAP = 38;
@@ -35,8 +32,6 @@ function StageGlyph({ index }: { index: number }) {
               width="8"
               height="8"
               fill="var(--red)"
-              className="bp-crew"
-              style={{ animationDelay: `${i * 0.18}s` }}
             />
           ))}
         </g>
@@ -59,6 +54,7 @@ function StageGlyph({ index }: { index: number }) {
   }
 }
 
+// Phones and tablets: the line stands upright, one stage under the next.
 function FactorySchematic() {
   const height = STAGES.length * STEP - GAP + 2;
   return (
@@ -84,25 +80,12 @@ function FactorySchematic() {
         const y = i * STEP + 1;
         return (
           <g key={stage.label}>
-            {i > 0 && (
-              <g>
-                <path d={`M60 ${y - GAP}v${GAP}`} stroke="var(--red)" strokeWidth="2" />
-                <rect
-                  x="56"
-                  y={y - GAP - 4}
-                  width="8"
-                  height="8"
-                  fill="var(--red)"
-                  className="bp-flow"
-                  style={{ animationDelay: `${i * 0.5}s` }}
-                />
-              </g>
-            )}
+            {i > 0 && <path d={`M60 ${y - GAP}v${GAP}`} stroke="var(--ink)" strokeWidth="1.5" />}
             <rect x="1" y={y} width="350" height={BOX_H} fill="var(--paper-raised)" stroke="var(--ink)" strokeWidth="1.5" />
-            <text x="18" y={y + 24} className="font-mono" fontSize="10" letterSpacing="2" fill="var(--red)">
+            <text x="18" y={y + 24} className="font-mono" fontSize="10" letterSpacing="1" fill="var(--ink-muted)">
               0{i + 1}
             </text>
-            <text x="18" y={y + 52} className="font-display" fontSize="28" fontWeight="900" fill="var(--ink)">
+            <text x="18" y={y + 52} className="font-display" fontSize="28" fontWeight="600" fill="var(--ink)">
               {stage.label.toUpperCase()}
             </text>
             <text x="150" y={y + 50} className="font-mono hidden sm:block" fontSize="9.5" letterSpacing="0.5" fill="var(--ink-muted)">
@@ -120,70 +103,28 @@ function FactorySchematic() {
 
 export function Hero() {
   const reduce = useReducedMotion();
-  const frame = useRef<HTMLDivElement>(null);
-  const readout = useRef<HTMLSpanElement>(null);
-
-  // Drafting crosshair: follows a mouse inside the frame and reports its position.
-  const onPointerMove = (e: PointerEvent<HTMLDivElement>) => {
-    const el = frame.current;
-    if (!el || e.pointerType !== 'mouse') return;
-    const rect = el.getBoundingClientRect();
-    const x = Math.round(e.clientX - rect.left);
-    const y = Math.round(e.clientY - rect.top);
-    el.style.setProperty('--cx', `${x}px`);
-    el.style.setProperty('--cy', `${y}px`);
-    el.dataset.tracking = 'true';
-    if (readout.current) {
-      readout.current.textContent = `X ${String(x).padStart(4, '0')} / Y ${String(y).padStart(4, '0')}`;
-    }
-  };
-
-  const onPointerLeave = () => {
-    if (frame.current) delete frame.current.dataset.tracking;
-  };
 
   return (
-    <section aria-labelledby="hero-title" className="py-6 sm:py-14 lg:py-10">
+    <section aria-labelledby="hero-title" className="py-6 sm:py-12 lg:py-8">
       <div className={CONTAINER}>
-        <div
-          ref={frame}
-          onPointerMove={onPointerMove}
-          onPointerLeave={onPointerLeave}
-          className="group relative border border-rule bg-paper/60 px-4 py-6 sm:px-10 sm:py-12 lg:py-10"
-        >
+        <div className="relative border border-rule bg-paper/60 px-4 py-8 sm:px-10 sm:py-12 lg:py-10">
           <CornerMarks />
 
-          <div
-            aria-hidden="true"
-            className="pointer-events-none absolute inset-0 overflow-hidden opacity-0 transition-opacity duration-200 group-data-[tracking=true]:opacity-100"
-          >
-            <span className="absolute inset-y-0 w-px bg-red/40" style={{ left: 'var(--cx)' }} />
-            <span className="absolute inset-x-0 h-px bg-red/40" style={{ top: 'var(--cy)' }} />
-            <span ref={readout} className="bp-label !text-red absolute bottom-3 right-5">
-              X 0000 / Y 0000
-            </span>
-          </div>
-
-          <div className="relative bp-label flex justify-between gap-4">
-            <span>Sheet 00 / Overview</span>
-            <LineStatus className="hidden sm:inline-flex" />
-          </div>
-
-          <div className="relative mt-6 sm:mt-10 grid grid-cols-1 lg:grid-cols-12 lg:gap-8 lg:items-end">
+          <div className="relative grid grid-cols-1 lg:grid-cols-12 lg:gap-8 lg:items-end">
             <div className="lg:col-span-8">
-              <p className="bp-label !text-red font-semibold">AI-Driven Software Factory &amp; Innovation Lab</p>
+              <p className="bp-label">Software factory and innovation lab, Dubai</p>
 
               <h1
                 id="hero-title"
-                className="mt-5 font-display font-black uppercase leading-[0.86] tracking-tight text-[clamp(3.25rem,18vw,9rem)] lg:text-[clamp(5rem,10.5vw,10.5rem)]"
+                className="mt-4 font-display font-semibold uppercase leading-[0.88] tracking-tight text-[clamp(3.25rem,17vw,8rem)] lg:text-[clamp(5rem,9vw,9rem)]"
               >
                 {HEADLINE.map((line, i) => (
-                  <span key={line} className="block overflow-hidden pt-[0.05em]">
+                  <span key={line} className="block overflow-hidden pt-[0.04em]">
                     <motion.span
                       className={`block ${i === HEADLINE.length - 1 ? 'text-red' : ''}`}
-                      initial={reduce ? false : { y: '105%' }}
+                      initial={reduce ? false : { y: '100%' }}
                       animate={{ y: 0 }}
-                      transition={{ duration: 0.7, delay: 0.1 + i * 0.12, ease: [0.2, 0.8, 0.2, 1] }}
+                      transition={{ duration: 0.5, delay: 0.1 + i * 0.06, ease: [0.22, 1, 0.36, 1] }}
                     >
                       {line}
                     </motion.span>
@@ -193,44 +134,34 @@ export function Hero() {
             </div>
 
             <div className="lg:col-span-4 lg:pb-2">
-              {/* decorative dimension line under the headline */}
-              <div aria-hidden="true" className="mt-6 flex items-center gap-3 max-w-md bp-label">
-                <span className="h-3 w-px bg-muted" />
-                <span className="h-px flex-1 bg-muted" />
-                <span>Idea to shipped</span>
-                <span className="h-px flex-1 bg-muted" />
-                <span className="h-3 w-px bg-muted" />
-              </div>
-
-              <p className="mt-6 max-w-xl text-base sm:text-lg lg:text-base xl:text-lg leading-relaxed text-muted">
-                We don’t just adapt to the future, we engineer it. Where ideas ship fast and hold up in the real world.
-                Architecting synthetic brains to power universal discovery.
+              <p className="mt-6 max-w-xl text-lg lg:text-base xl:text-lg leading-relaxed text-muted">
+                Custom software, AI models and automation, built by specialist agent crews and reviewed by our leads
+                before it ships.
               </p>
 
               <div className="mt-8 flex flex-col sm:flex-row lg:flex-col gap-3">
                 <a
                   href="#consultation"
-                  className="inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap bp-sweep"
+                  className="inline-flex items-center justify-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper h-12 px-6 whitespace-nowrap bp-btn"
                 >
                   Get free consultation
-                  <ArrowRight className="w-4 h-4" />
+                  <ArrowRight className="w-4 h-4" strokeWidth={1.75} />
                 </a>
                 <a
                   href="#sectors"
-                  className="inline-flex items-center justify-center gap-2 border border-ink font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap bp-sweep"
+                  className="inline-flex items-center justify-center gap-2 border border-ink text-sm font-medium hover:bg-ink hover:text-paper h-12 px-6 whitespace-nowrap bp-btn"
                 >
                   See the line
-                  <ArrowDown className="w-4 h-4" />
+                  <ArrowDown className="w-4 h-4" strokeWidth={1.75} />
                 </a>
               </div>
             </div>
-
           </div>
 
           <div className="relative mt-10 lg:hidden">
             <FactorySchematic />
           </div>
-          <div className="relative mt-10 hidden lg:block">
+          <div className="relative mt-8 hidden lg:block">
             <LineDrawing />
           </div>
         </div>

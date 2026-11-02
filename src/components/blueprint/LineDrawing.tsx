@@ -5,7 +5,7 @@ const HOUSING = { w: 160, h: 110, y: 52 };
 const BELT_Y = 178;
 const FLOOR_Y = 232;
 const PARTS = 6;
-const BELT_SECONDS = 14;
+const BELT_SECONDS = 18;
 
 const hatch = Array.from({ length: 49 }, (_, i) => `M${24 + i * 24} ${FLOOR_Y}l-8 8`).join('');
 
@@ -30,20 +30,18 @@ function Works({ index }: { index: number }) {
               width="14"
               height="14"
               fill="var(--red)"
-              className="bp-crew"
-              style={{ animationDelay: `${i * 0.18}s` }}
             />
           ))}
         </g>
       );
-    case 2: // checks: a scan line passing over a checklist
+    case 2: // checks: checklist validation
       return (
         <g>
           <rect x="34" y="38" width="16" height="16" />
           <rect x="34" y="66" width="16" height="16" />
           <path d="M38 46l3.5 3.5 6-7M38 74l3.5 3.5 6-7" stroke="var(--red)" />
           <path d="M62 46h64M62 74h64" />
-          <path d="M14 34h132" stroke="var(--red)" strokeWidth="2" className="bp-scan" />
+          <path d="M14 34h132" stroke="var(--red)" strokeWidth="1.5" />
         </g>
       );
     default: // ship
@@ -80,7 +78,7 @@ export function LineDrawing() {
         </clipPath>
       </defs>
 
-      {/* overall dimension; the small annotations only appear where they are legible */}
+      {/* overall dimension */}
       <g stroke="var(--ink-muted)" strokeWidth="1" className="hidden xl:block">
         <path className="bp-draw" pathLength={1} d="M100 14H460M100 6v16" />
         <path className="bp-draw" pathLength={1} d="M1100 14H740M1100 6v16" />
@@ -95,7 +93,7 @@ export function LineDrawing() {
       <path d={[60, 320, 600, 880, 1140].map((x) => `M${x} ${BELT_Y + 16}V${FLOOR_Y}`).join('')} />
       <rect x="40" y={BELT_Y} width="1120" height="16" rx="8" fill="var(--paper-raised)" />
       {Array.from({ length: 21 }, (_, i) => (
-        <g key={i} className="bp-spin" style={{ transformOrigin: `${48 + i * 55.2}px ${BELT_Y + 8}px` }}>
+        <g key={i}>
           <circle cx={48 + i * 55.2} cy={BELT_Y + 8} r="4.5" strokeWidth="1" />
           <path d={`M${48 + i * 55.2 - 4.5} ${BELT_Y + 8}h9`} strokeWidth="1" />
         </g>
@@ -112,8 +110,8 @@ export function LineDrawing() {
       {STAGES.map((stage, i) => {
         const x = CENTRES[i] - HOUSING.w / 2;
         return (
-          <g key={stage.label} className="bp-rise" style={{ animationDelay: `${0.5 + i * 0.14}s` }}>
-            <text x={x} y="42" stroke="none" fill="var(--ink)" className="font-display" fontSize="27" fontWeight="900">
+          <g key={stage.label} className="bp-rise" style={{ animationDelay: `${0.4 + i * 0.1}s` }}>
+            <text x={x} y="42" stroke="none" fill="var(--ink)" className="font-display" fontSize="27" fontWeight="600">
               {stage.label.toUpperCase()}
             </text>
             <path d={`M${x} ${HOUSING.y + HOUSING.h}V${FLOOR_Y}M${x + HOUSING.w} ${HOUSING.y + HOUSING.h}V${FLOOR_Y}`} />
@@ -123,7 +121,7 @@ export function LineDrawing() {
               <text x="10" y="15" stroke="none" fill="var(--red)" className="font-mono hidden xl:block" fontSize="9.5" letterSpacing="2">
                 0{i + 1}
               </text>
-              <rect x="143" y="8" width="7" height="7" stroke="none" fill="var(--red)" className="bp-crew" style={{ animationDelay: `${i * 0.4}s` }} />
+              <rect x="143" y="8" width="7" height="7" stroke="none" fill="var(--red)" />
               <Works index={i} />
             </g>
             <text x={x} y="254" stroke="none" fill="var(--ink-muted)" className="font-mono hidden xl:block" fontSize="9.5" letterSpacing="0.5">

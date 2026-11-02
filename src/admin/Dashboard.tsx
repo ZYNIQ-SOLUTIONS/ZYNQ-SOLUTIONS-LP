@@ -94,7 +94,7 @@ export function Dashboard({ session }: { session: Session }) {
       <li key={r.id} className="border border-ink bg-raised p-5">
         <div className="flex flex-wrap items-start justify-between gap-3">
           <div className="min-w-0">
-            <h2 className="font-display font-black uppercase text-2xl leading-none">
+            <h2 className="font-display font-semibold uppercase text-2xl leading-none">
               {r.first_name} {r.last_name}
             </h2>
             <a href={`mailto:${r.email}`} className="mt-1 inline-block break-all text-sm underline underline-offset-2 hover:text-red">
@@ -103,7 +103,7 @@ export function Dashboard({ session }: { session: Session }) {
           </div>
           <div className="text-right">
             <p className="bp-label">{new Date(r.created_at).toLocaleString()}</p>
-            <p className={`mt-1 font-mono text-[11px] font-semibold uppercase tracking-wider ${r.status === 'new' ? 'text-red' : 'text-muted'}`}>
+            <p className={`mt-1 font-mono text-[11px] font-semibold ${r.status === 'new' ? 'text-red' : 'text-muted'}`}>
               {STAGE_LABEL[r.status]}
               {r.deal_value ? ` · ${money(r.deal_value)}` : ''}
             </p>
@@ -113,7 +113,7 @@ export function Dashboard({ session }: { session: Session }) {
         {signals.length > 0 && (
           <p className="mt-3 flex flex-wrap gap-2">
             {signals.map((s) => (
-              <span key={s} className="inline-flex items-center gap-1 border border-red px-2 py-0.5 font-mono text-[10px] uppercase tracking-wider text-red">
+              <span key={s} className="inline-flex items-center gap-1 border border-red px-2 py-0.5 font-mono text-[10px] text-red">
                 <ShieldAlert className="w-3 h-3" aria-hidden="true" /> {s}
               </span>
             ))}
@@ -122,7 +122,7 @@ export function Dashboard({ session }: { session: Session }) {
 
         {r.meeting_at && (
           <p className="mt-4 inline-block border border-red px-3 py-2 font-mono text-xs">
-            <span className="text-red font-semibold uppercase tracking-wider">Wants to meet</span> {when(r.meeting_at)}
+            <span className="text-red font-semibold">Wants to meet</span> {when(r.meeting_at)}
             {r.timezone && <span className="text-muted"> · visitor in {r.timezone}</span>}
             {clashes.has(r.meeting_at) && <span className="text-red font-semibold"> · clash</span>}
           </p>
@@ -186,7 +186,7 @@ export function Dashboard({ session }: { session: Session }) {
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-ink pb-5">
         <div>
           <Brand />
-          <h1 className="font-display font-black uppercase text-4xl leading-none mt-5">Inquiries</h1>
+          <h1 className="font-display font-semibold uppercase text-4xl leading-none mt-5">Inquiries</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <span className="bp-label hidden md:inline">{session.user.email}</span>
@@ -212,7 +212,7 @@ export function Dashboard({ session }: { session: Session }) {
         ].map(([label, n]) => (
           <div key={label} className="p-4 border-r border-b border-ink bg-raised">
             <p className="bp-label">{label}</p>
-            <p className="font-display font-black text-3xl leading-none mt-2">{n}</p>
+            <p className="font-display font-semibold text-3xl leading-none mt-2">{n}</p>
           </div>
         ))}
       </div>
@@ -255,12 +255,12 @@ export function Dashboard({ session }: { session: Session }) {
               {upcoming.map((r) => (
                 <li key={r.id} className="py-4 border-b border-rule flex flex-wrap items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="font-display font-black uppercase text-xl leading-none">{when(r.meeting_at!)}</p>
+                    <p className="font-display font-semibold uppercase text-xl leading-none">{when(r.meeting_at!)}</p>
                     <p className="mt-1 text-sm">
                       {r.first_name} {r.last_name} · <span className="text-muted break-all">{r.email}</span>
                     </p>
                     {clashes.has(r.meeting_at!) && (
-                      <p className="mt-1 font-mono text-[11px] font-semibold uppercase tracking-wider text-red">
+                      <p className="mt-1 font-mono text-[11px] font-semibold text-red">
                         Clash: more than one request for this time
                       </p>
                     )}

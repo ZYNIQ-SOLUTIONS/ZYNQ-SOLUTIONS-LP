@@ -88,7 +88,7 @@ export function ProductionLine({ stations }: { stations: StationDef[] }) {
                     }`}
                   />
                   <span
-                    className={`absolute left-5 font-mono text-[10px] tracking-widest transition-colors ${
+                    className={`absolute left-5 font-mono text-[10px] transition-colors ${
                       isReached ? 'text-red' : 'text-muted group-hover:text-ink'
                     }`}
                   >

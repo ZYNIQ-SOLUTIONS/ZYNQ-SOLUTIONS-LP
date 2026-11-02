@@ -1,5 +1,4 @@
 import { ArrowRight } from 'lucide-react';
-import { Gauge } from '../components/blueprint/Gauge';
 import { Station } from '../components/blueprint/Station';
 import { STATIONS } from '../content/site';
 import { STATS } from '../content/stats';
@@ -8,34 +7,37 @@ export function Output() {
   return (
     <Station
       {...STATIONS[0]}
-      title="Architecting Synthetic Brains"
-      intro={'ZYNIQ provides the "Crews" and "Specialist Agents" to handle the building, leaving the "Commanders" to navigate the unknown. We are building technology that helps people explore what comes next.'}
+      title="Engineered Output"
+      intro="Measured performance metrics across our automated software factory pipelines and autonomous agent deployments."
     >
-      <ul className="grid grid-cols-1 md:grid-cols-3 bg-ink text-paper">
+      <ul className="grid grid-cols-1 md:grid-cols-3 border border-ink bg-raised">
         {STATS.map((stat, i) => (
           <li
             key={stat.label}
-            className="grid grid-cols-[7.5rem_1fr] gap-x-5 items-center p-5 md:flex md:flex-col md:text-center md:px-8 md:py-12 border-paper/15 border-b last:border-b-0 md:border-b-0 md:border-r md:last:border-r-0"
+            className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-ink last:border-b-0 md:last:border-r-0 flex flex-col justify-between"
           >
-            <span className="bp-label !text-paper/50 col-span-2 md:self-start">Gauge 0{i + 1}</span>
-            <div className="mt-3 md:mt-4 w-full flex justify-center">
-              <Gauge value={stat.value} suffix={stat.suffix} fill={stat.fill} />
+            <div>
+              <span className="bp-label">Metric 0{i + 1}</span>
+              <div className="mt-4 font-display font-semibold text-5xl lg:text-6xl tabular-nums leading-none">
+                {stat.value}
+                <span className="text-red ml-0.5">{stat.suffix}</span>
+              </div>
+              <h3 className="mt-3 font-mono text-xs font-semibold">{stat.label}</h3>
             </div>
-            <div className="mt-3 md:mt-2">
-              <h3 className="font-mono text-xs font-semibold uppercase tracking-[0.14em]">{stat.label}</h3>
-              <p className="mt-2 text-sm text-paper/60 leading-relaxed md:max-w-[26ch] md:mx-auto">{stat.note}</p>
-            </div>
+            <p className="mt-4 text-sm text-muted leading-relaxed">{stat.note}</p>
           </li>
         ))}
       </ul>
-      <p className="mt-3 text-xs text-muted leading-relaxed">Results from ZYNIQ internal tests and client engagements. Client names are withheld for confidentiality. Individual results vary.</p>
+      <p className="mt-3 text-xs text-muted leading-relaxed">
+        Results from ZYNIQ internal tests and client engagements. Individual results vary.
+      </p>
 
       <a
         href="#services"
-        className="mt-6 sm:mt-8 inline-flex items-center gap-2 min-h-11 font-mono text-xs font-semibold uppercase tracking-[0.14em] underline decoration-1 underline-offset-8 hover:text-red transition-colors"
+        className="mt-6 inline-flex items-center gap-2 font-mono text-xs font-medium underline decoration-1 underline-offset-4 hover:text-red transition-colors"
       >
         Explore services
-        <ArrowRight className="w-4 h-4" />
+        <ArrowRight className="w-3.5 h-3.5" />
       </a>
     </Station>
   );

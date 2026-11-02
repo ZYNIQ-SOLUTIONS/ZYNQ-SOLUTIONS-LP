@@ -3,20 +3,20 @@ import { UseCase } from '../types';
 export const USE_CASES: UseCase[] = [
   {
     id: 'factory-pipeline',
-    title: 'Automated Software Assembly',
+    title: 'Automated Code Generation & CI',
     category: 'ZYNIQ Core',
-    summary: 'Automate code generation, architectural validation, and module integration in the software factory.',
-    description: 'Scanning project requirements, mapping flows to modular software architectures, and orchestrating Specialist Agents to assemble deployable code pipelines rapidly and deterministically.',
+    summary: 'Automate boilerplate code generation, architectural validation, and module integration in the factory pipeline.',
+    description: 'Parses project requirements, maps flows to modular architectures, and coordinates specialist agents to assemble deployable code pipelines with static validation.',
     metrics: [
       { label: 'Assembly Speed', value: '10x Faster' },
       { label: 'Architecture Consistency', value: '99.9%' },
-      { label: 'Technical Debt Reduction', value: '-85%' }
+      { label: 'Technical Debt Reduction', value: '-85%' },
     ],
     mockConfig: {
       guidelines: [
-        'Analyze product flow actions against enterprise architecture standards.',
-        'Orchestrate Specialist Agents for backend, frontend, and database schema.',
-        'Validate API parameters conform to standard OpenAPI drafts.'
+        'Analyze product flow actions against repository architecture standards.',
+        'Orchestrate specialist agents for backend, frontend, and database schema.',
+        'Validate API parameters conform to standard OpenAPI specifications.',
       ],
       allowedTools: ['Architecture Scanner', 'Code Generation Engine', 'Compiler Rule Validator'],
       sampleLogs: [
@@ -24,52 +24,52 @@ export const USE_CASES: UseCase[] = [
         { time: '10:00:13', text: 'Extracting user payment lifecycle loops...', type: 'action' },
         { time: '10:00:14', text: 'Cross-checking with Core database indices...', type: 'action' },
         { time: '10:00:14', text: 'Commanding Backend Specialist Agent to assemble module...', type: 'system' },
-        { time: '10:00:15', text: 'Module successfully assembled and validated.', type: 'success' }
-      ]
-    }
+        { time: '10:00:15', text: 'Module successfully assembled and validated.', type: 'success' },
+      ],
+    },
   },
   {
     id: 'innovation-lab',
-    title: 'Discovery Engine',
+    title: 'Telemetry & Anomaly Analysis',
     category: 'Innovation Lab',
-    summary: 'Automate R&D synthesis, parse massive datasets, and generate new algorithmic solutions to impossible problems.',
-    description: 'Continuously listening to scientific telemetry, executing automated heuristics to diagnose system halts, and discovering entirely new ways to structure synthetic intelligence.',
+    summary: 'Automate telemetry synthesis, parse large datasets, and identify systemic performance anomalies.',
+    description: 'Continuously monitors system metrics, runs automated diagnostics on system halts, and synthesizes root-cause analyses for engineering teams.',
     metrics: [
       { label: 'Data Synthesis Rate', value: '1M+ Docs/hr' },
-      { label: 'Novel Pattern Discovery', value: '+300%' },
-      { label: 'Hypothesis Generation', value: '< 2 Minutes' }
+      { label: 'Anomaly Detection', value: '+300%' },
+      { label: 'Diagnostic Speed', value: '< 2 Minutes' },
     ],
     mockConfig: {
       guidelines: [
-        'Audit unstructured research telemetry and vector clusters.',
-        'Isolate anomalies triggering novel pattern alerts.',
-        'Draft experimental logic-flow hypotheses.'
+        'Audit unstructured telemetry and log vectors.',
+        'Isolate anomalies triggering performance threshold alerts.',
+        'Draft experimental diagnostic hypotheses.',
       ],
       allowedTools: ['Telemetry Scanner', 'Neural-Symbolic Synthesizer', 'Pattern Engine'],
       sampleLogs: [
         { time: '14:22:01', text: 'Monitoring global research telemetry indices...', type: 'system' },
-        { time: '14:22:03', text: 'Detected novel vector anomaly in Cluster 91b...', type: 'system' },
+        { time: '14:22:03', text: 'Detected vector anomaly in Cluster 91b...', type: 'system' },
         { time: '14:22:04', text: 'Running automated hypothesis generation on pattern 91b.', type: 'action' },
-        { time: '14:22:05', text: 'Hypothesis formed. Diverted to Commanders for review.', type: 'success' }
-      ]
-    }
+        { time: '14:22:05', text: 'Hypothesis formed. Forwarded to leads for review.', type: 'success' },
+      ],
+    },
   },
   {
     id: 'studio-creative',
-    title: 'Studio Creative Crews',
+    title: 'Design-to-Code Pipeline',
     category: 'ZYNIQ Studio',
-    summary: 'Collaborate with human Commanders to design UI/UX, generate visual assets, and build interactive environments.',
-    description: 'Synthesizing creative briefs, generating pixel-perfect user interfaces, evaluating alignment with brand identity, and preparing deployable frontend code for engineering.',
+    summary: 'Translate Figma and specification tokens into responsive, accessible UI components.',
+    description: 'Takes design briefs, extracts design tokens, validates WCAG contrast ratios, and outputs clean Tailwind and React component code.',
     metrics: [
       { label: 'Design-to-Code Speed', value: '< 5 Seconds' },
       { label: 'Brand Alignment', value: '100%' },
-      { label: 'Iteration Cycles', value: '10x Faster' }
+      { label: 'Iteration Cycles', value: '10x Faster' },
     ],
     mockConfig: {
       guidelines: [
-        'Retrieve brand identity guidelines and color matrices.',
-        'Validate UI component generation against accessibility standards.',
-        'Formulate deployable React and Tailwind code structures.'
+        'Retrieve brand identity guidelines and color tokens.',
+        'Validate UI component generation against WCAG accessibility standards.',
+        'Formulate deployable React and Tailwind component structures.',
       ],
       allowedTools: ['UI Generation Engine', 'Design System Lexicon', 'React Drafter'],
       sampleLogs: [
@@ -77,34 +77,34 @@ export const USE_CASES: UseCase[] = [
         { time: '09:12:31', text: 'Pulling design tokens from ZYNIQ Studio Ledger...', type: 'action' },
         { time: '09:12:32', text: 'Validating contrast ratios against WCAG guidelines.', type: 'action' },
         { time: '09:12:32', text: 'Status: Component structure generated and validated.', type: 'system' },
-        { time: '09:12:33', text: 'Compiled draft frontend codebase. Ready for Commander review.', type: 'success' }
-      ]
-    }
+        { time: '09:12:33', text: 'Compiled draft frontend codebase. Ready for lead review.', type: 'success' },
+      ],
+    },
   },
   {
     id: 'cloud-ops',
     title: 'Cloud Orchestration Fleet',
     category: 'ZYNIQ Cloud',
-    summary: 'Automate cross-border node validations and scale infrastructure against dynamic load matrices.',
-    description: 'Scanning network logs for discrepancies, validating load parameters against global computing directives, and scaling infrastructure automatically with zero downtime.',
+    summary: 'Automate node validations and scale infrastructure based on real-time load matrices.',
+    description: 'Monitors network telemetry, balances loads against regional constraints, and scales containerized clusters with zero downtime.',
     metrics: [
       { label: 'Network Audit Volume', value: '500,000/sec' },
       { label: 'Uptime Reliability', value: '99.999%' },
-      { label: 'Auto-Scale Response', value: '< 1.5 Seconds' }
+      { label: 'Auto-Scale Response', value: '< 1.5 Seconds' },
     ],
     mockConfig: {
       guidelines: [
-        'Scan incoming global traffic for routing efficiency.',
+        'Scan incoming network traffic for routing efficiency.',
         'Cross-reference node health with regional capacity thresholds.',
-        'Prepare isolated scaling summaries for overloaded regions.'
+        'Prepare isolated scaling summaries for overloaded regions.',
       ],
       allowedTools: ['Traffic Analyzer', 'Capacity Planner', 'Report Generator'],
       sampleLogs: [
         { time: '11:45:00', text: 'Starting hourly capacity audit session...', type: 'system' },
         { time: '11:45:01', text: 'Scanned 14,082 active nodes.', type: 'action' },
         { time: '11:45:02', text: 'Verified load parameters against regional capacity limits.', type: 'action' },
-        { time: '11:45:03', text: 'All regions within thresholds. Scaling status clear.', type: 'success' }
-      ]
-    }
-  }
+        { time: '11:45:03', text: 'All regions within thresholds. Scaling status clear.', type: 'success' },
+      ],
+    },
+  },
 ];

@@ -50,7 +50,7 @@ export function MeetingPicker({ value, onChange }: Props) {
           <button type="button" onClick={() => shift(-1)} disabled={!canGoBack} aria-label="Previous month" className={`${btn} w-11 inline-flex items-center justify-center disabled:opacity-30 disabled:cursor-default`}>
             <ChevronLeft className="w-4 h-4" />
           </button>
-          <span className="font-display font-black uppercase text-lg leading-none" aria-live="polite">
+          <span className="font-display font-semibold uppercase text-lg leading-none" aria-live="polite">
             {MONTH.format(monthStart)}
           </span>
           <button type="button" onClick={() => shift(1)} disabled={!canGoForward} aria-label="Next month" className={`${btn} w-11 inline-flex items-center justify-center disabled:opacity-30 disabled:cursor-default`}>

@@ -40,29 +40,32 @@ export function Nav() {
           <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
         </a>
 
-        <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-[11px] uppercase tracking-[0.14em] text-muted">
-          {LINKS.map((s) => (
-            <a
-              key={s.id}
-              href={`#${s.id}`}
-              aria-current={s.id === currentId ? 'location' : undefined}
-              className={`py-1 border-b-2 transition-colors ${
-                s.id === currentId ? 'text-ink border-red' : 'border-transparent hover:text-ink'
-              }`}
-            >
-              <span className="text-red mr-1.5">{s.number}</span>
-              {s.label}
-            </a>
-          ))}
+        <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-xs text-muted">
+          {LINKS.map((s) => {
+            const isActive = s.id === currentId;
+            return (
+              <a
+                key={s.id}
+                href={`#${s.id}`}
+                aria-current={isActive ? 'location' : undefined}
+                className={`py-1 border-b-2 transition-colors ${
+                  isActive ? 'text-ink border-red' : 'border-transparent hover:text-ink'
+                }`}
+              >
+                <span className={`mr-1.5 ${isActive ? 'text-red' : 'text-muted'}`}>{s.number}</span>
+                {s.label}
+              </a>
+            );
+          })}
         </nav>
 
         <div className="flex items-center sm:gap-3">
           <ThemeToggle />
           <a
             href="#consultation"
-            className="hidden sm:inline-flex items-center gap-2 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 h-11 lg:h-auto lg:py-2.5 bp-sweep"
+            className="hidden sm:inline-flex items-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper px-4 h-9 bp-btn"
           >
-            Get free consultation
+            Get consultation
             <ArrowRight className="w-3.5 h-3.5" />
           </a>
           <button
@@ -85,35 +88,40 @@ export function Nav() {
           className="lg:hidden absolute top-16 inset-x-0 h-[calc(100dvh-4rem)] overflow-y-auto overscroll-contain bg-paper bp-grid border-t border-rule flex flex-col px-5 sm:px-8"
           style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
         >
-          <p className="bp-label pt-6 pb-2">Index / Stations</p>
-          <ul className="border-t border-ink font-display font-black uppercase text-4xl">
-            {LINKS.map((s) => (
-              <li key={s.id} className="border-b border-rule">
-                <a
-                  href={`#${s.id}`}
-                  onClick={() => setOpen(false)}
-                  aria-current={s.id === currentId ? 'location' : undefined}
-                  className="flex items-baseline gap-4 py-4"
-                >
-                  <span className="font-mono text-[11px] font-normal tracking-widest text-red">{s.number}</span>
-                  <span className="flex-1">{s.label}</span>
-                  {s.id === currentId && <span className="bp-label !text-red font-semibold self-center">You are here</span>}
-                </a>
-              </li>
-            ))}
+          <p className="bp-label pt-6 pb-2">Stations index</p>
+          <ul className="border-t border-ink font-display font-semibold uppercase text-2xl sm:text-3xl">
+            {LINKS.map((s) => {
+              const isActive = s.id === currentId;
+              return (
+                <li key={s.id} className="border-b border-rule">
+                  <a
+                    href={`#${s.id}`}
+                    onClick={() => setOpen(false)}
+                    aria-current={isActive ? 'location' : undefined}
+                    className="flex items-baseline gap-4 py-4"
+                  >
+                    <span className={`font-mono text-xs ${isActive ? 'text-red font-semibold' : 'text-muted'}`}>
+                      {s.number}
+                    </span>
+                    <span className="flex-1">{s.label}</span>
+                    {isActive && <span className="bp-label text-red self-center">Current</span>}
+                  </a>
+                </li>
+              );
+            })}
           </ul>
 
           <div className="mt-auto pt-8">
             <a
               href="#consultation"
               onClick={() => setOpen(false)}
-              className="flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4"
+              className="flex items-center justify-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper h-12 px-6"
             >
               Get free consultation
               <ArrowRight className="w-4 h-4" />
             </a>
             <div className="mt-4 flex flex-wrap items-center justify-between gap-x-4 bp-label">
-              <a href={`mailto:${CONTACT_EMAILS[0]}`} className="inline-flex items-center min-h-11 normal-case tracking-normal text-ink">
+              <a href={`mailto:${CONTACT_EMAILS[0]}`} className="inline-flex items-center min-h-11 text-ink">
                 {CONTACT_EMAILS[0]}
               </a>
               <span>HQ: {SITE.hq}</span>

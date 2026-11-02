@@ -24,7 +24,7 @@ export function Board({ rows, patch }: Props) {
         ].map(([label, value, note]) => (
           <div key={label} className="p-4 border-r border-b border-ink bg-raised">
             <p className="bp-label">{label}</p>
-            <p className="font-display font-black text-3xl leading-none mt-2">{value}</p>
+            <p className="font-display font-semibold text-3xl leading-none mt-2">{value}</p>
             <p className="bp-label mt-1 normal-case tracking-normal">{note}</p>
           </div>
         ))}
@@ -37,7 +37,7 @@ export function Board({ rows, patch }: Props) {
             return (
               <section key={stage} aria-label={STAGE_LABEL[stage]} className="border border-ink bg-raised">
                 <header className="px-3 py-2.5 border-b border-ink flex items-baseline justify-between gap-2">
-                  <h2 className={`font-mono text-[11px] font-semibold uppercase tracking-[0.14em] ${stage === 'new' ? 'text-red' : ''}`}>
+                  <h2 className={`font-mono text-[11px] font-semibold ${stage === 'new' ? 'text-red' : ''}`}>
                     {STAGE_LABEL[stage]} <span className="text-muted">{cards.length}</span>
                   </h2>
                   <span className="bp-label normal-case tracking-normal">{sum(cards) > 0 && money(sum(cards))}</span>
@@ -45,7 +45,7 @@ export function Board({ rows, patch }: Props) {
                 <ul className="p-2 space-y-2 min-h-24">
                   {cards.map((r) => (
                     <li key={r.id} className="border border-rule bg-paper p-3">
-                      <p className="font-display font-black uppercase text-lg leading-none">
+                      <p className="font-display font-semibold uppercase text-lg leading-none">
                         {r.first_name} {r.last_name}
                       </p>
                       <a href={`mailto:${r.email}`} className="mt-1 block text-xs break-all text-muted hover:text-red">

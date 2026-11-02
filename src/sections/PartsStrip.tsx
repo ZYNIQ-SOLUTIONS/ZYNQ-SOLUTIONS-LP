@@ -1,10 +1,8 @@
 import { useState } from 'react';
 import type { KeyboardEvent, PointerEvent } from 'react';
-import { useReducedMotion } from 'motion/react';
 import { BRANDS } from '../content/brands';
 
 export function PartsStrip() {
-  const reduce = useReducedMotion();
   const [selected, setSelected] = useState<string | null>(null);
   const [hovered, setHovered] = useState<string | null>(null);
 
@@ -18,69 +16,51 @@ export function PartsStrip() {
     }
   };
 
-  // Hover only applies to a real mouse; on touch a tap selects instead.
   const hoverProps = (name: string) => ({
     onPointerEnter: (e: PointerEvent) => e.pointerType === 'mouse' && setHovered(name),
     onPointerLeave: () => setHovered(null),
   });
 
-  const renderParts = (copy: 'main' | 'clone') => (
-    <ul
-      aria-hidden={copy === 'clone' ? true : undefined}
-      className={reduce ? 'flex flex-wrap justify-center' : 'flex shrink-0'}
-    >
-      {BRANDS.map((brand) => (
-        <li key={brand.name} className="flex items-center">
-          <button
-            type="button"
-            tabIndex={copy === 'clone' ? -1 : undefined}
-            aria-pressed={copy === 'main' ? selected === brand.name : undefined}
-            onClick={() => setSelected(selected === brand.name ? null : brand.name)}
-            onFocus={() => setHovered(brand.name)}
-            onBlur={() => setHovered(null)}
-            {...hoverProps(brand.name)}
-            className={`px-6 sm:px-8 py-2 font-display font-black uppercase text-2xl sm:text-3xl tracking-wide cursor-pointer transition-colors ${
-              activeName === brand.name ? 'text-red' : 'text-ink hover:text-red'
-            }`}
-          >
-            {brand.name}
-          </button>
-          <span aria-hidden="true" className="font-mono text-xs text-muted">
-            +
-          </span>
-        </li>
-      ))}
-    </ul>
-  );
-
   return (
-    <section aria-label="Technologies we build with" className="border-y border-rule bg-raised py-8" onKeyDown={onKeyDown}>
-      <p className="bp-label text-center">Powered by</p>
+    <section aria-label="Technologies we build with" className="border-y border-rule bg-raised py-6 sm:py-8" onKeyDown={onKeyDown}>
+      <p className="bp-label text-center">Core stack and integrations</p>
 
-      <div className="mt-5 overflow-hidden bp-fade-edges">
-        {reduce ? (
-          renderParts('main')
-        ) : (
-          <div
-            className="flex w-max"
-            style={{
-              animation: 'bp-marquee 36s linear infinite',
-              animationPlayState: activeName ? 'paused' : 'running',
-            }}
-          >
-            {renderParts('main')}
-            {renderParts('clone')}
-          </div>
-        )}
+      <div className="mt-4 max-w-5xl mx-auto px-5 sm:px-8">
+        <ul className="flex flex-wrap items-center justify-center gap-x-2 gap-y-2">
+          {BRANDS.map((brand, i) => (
+            <li key={brand.name} className="flex items-center">
+              <button
+                type="button"
+                aria-pressed={selected === brand.name}
+                onClick={() => setSelected(selected === brand.name ? null : brand.name)}
+                onFocus={() => setHovered(brand.name)}
+                onBlur={() => setHovered(null)}
+                {...hoverProps(brand.name)}
+                className={`px-3 py-1.5 font-mono text-xs font-medium cursor-pointer border transition-colors bp-btn ${
+                  activeName === brand.name
+                    ? 'border-red bg-paper text-red'
+                    : 'border-rule bg-paper/60 text-ink hover:border-ink hover:text-ink'
+                }`}
+              >
+                {brand.name}
+              </button>
+              {i < BRANDS.length - 1 && (
+                <span aria-hidden="true" className="ml-2 font-mono text-xs text-muted/40">
+                  /
+                </span>
+              )}
+            </li>
+          ))}
+        </ul>
       </div>
 
-      <p aria-live="polite" className="mt-5 px-5 min-h-10 text-center font-mono text-xs leading-relaxed text-muted">
+      <p aria-live="polite" className="mt-4 px-5 min-h-6 text-center font-mono text-xs leading-relaxed text-muted">
         {active ? (
           <>
-            <span className="text-red font-semibold uppercase tracking-wider">{active.name}:</span> {active.useCase}
+            <span className="text-ink font-semibold">{active.name}:</span> {active.useCase}
           </>
         ) : (
-          'Select a part to see what we use it for.'
+          'Select a component to inspect its role in the pipeline.'
         )}
       </p>
     </section>

@@ -1,6 +1,5 @@
 import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
-import { CornerMarks } from '../components/blueprint/CornerMarks';
 import { Station } from '../components/blueprint/Station';
 import { SECTORS } from '../content/sectors';
 import { STATIONS } from '../content/site';
@@ -12,7 +11,6 @@ function SectorSchematic({ id }: { id: string }) {
   return (
     <svg viewBox="0 0 240 160" className="w-full max-w-[15rem] sm:max-w-xs" aria-hidden="true">
       {id === 'cloud' && (
-        // three linked node clusters
         <g {...stroke}>
           <path d="M50 110L120 40L190 110Z" strokeDasharray="4 4" />
           {[
@@ -29,7 +27,6 @@ function SectorSchematic({ id }: { id: string }) {
         </g>
       )}
       {id === 'core' && (
-        // a central engine with signals radiating out
         <g {...stroke}>
           {[0, 45, 90, 135, 180, 225, 270, 315].map((a) => (
             <path key={a} d="M120 80L120 14" transform={`rotate(${a} 120 80)`} strokeDasharray="3 5" />
@@ -40,7 +37,6 @@ function SectorSchematic({ id }: { id: string }) {
         </g>
       )}
       {id === 'studio' && (
-        // a drawing board with a layout and a cursor
         <g {...stroke}>
           <rect x="30" y="20" width="180" height="120" fill="var(--paper-raised)" />
           <path d="M30 44h180" />
@@ -51,7 +47,6 @@ function SectorSchematic({ id }: { id: string }) {
         </g>
       )}
       {id === 'solutions' && (
-        // interlocking blocks: a system fitted to the problem
         <g {...stroke}>
           <rect x="40" y="30" width="70" height="46" fill="var(--paper-raised)" />
           <rect x="130" y="30" width="70" height="46" fill="var(--paper-raised)" />
@@ -71,8 +66,8 @@ export function Sectors() {
   return (
     <Station
       {...STATIONS[1]}
-      title="The Software Factory of the Next Era"
-      intro="Combining synthetic intelligence, niche problem-solving, and uncompromising quality to deliver powerful, intelligent solutions."
+      title="Production Divisions"
+      intro="Four operational bays that structure how we build, orchestrate, and deploy software and agent systems."
     >
       {/* Floor plan: four bays */}
       <div className="grid grid-cols-2 lg:grid-cols-4 border-l border-t border-ink">
@@ -85,38 +80,36 @@ export function Sectors() {
               aria-pressed={isActive}
               aria-controls="sector-detail"
               onClick={() => setActiveId(sector.id)}
-              className={`relative text-left p-4 sm:p-6 min-h-[104px] sm:min-h-[200px] lg:min-h-[240px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
+              className={`relative text-left p-4 sm:p-6 min-h-[104px] sm:min-h-[180px] lg:min-h-[200px] flex flex-col border-r border-b border-ink cursor-pointer transition-colors ${
                 isActive ? 'bg-ink text-paper' : 'hover:bg-raised'
               }`}
             >
-              <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-1 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
-              <span className={`bp-label ${isActive ? '!text-red font-semibold' : ''}`}>Bay {sector.number}</span>
-              <span className="mt-2 sm:mt-3 font-display font-black uppercase text-2xl sm:text-3xl xl:text-4xl leading-none">{sector.title}</span>
+              <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-0.5 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
+              <span className={`bp-label ${isActive ? '!text-paper/70' : ''}`}>Bay {sector.number}</span>
+              <span className="mt-2 font-display font-semibold uppercase text-xl sm:text-2xl xl:text-3xl leading-none">{sector.title}</span>
               <span className={`hidden sm:block mt-3 text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{sector.description}</span>
             </button>
           );
         })}
       </div>
 
-      <div id="sector-detail" className="relative mt-4 sm:mt-6 border border-rule bg-raised p-5 sm:p-10">
-        <CornerMarks />
+      <div id="sector-detail" className="relative mt-4 sm:mt-6 border border-ink bg-raised p-5 sm:p-8">
         <AnimatePresence mode="wait" initial={false}>
           <motion.div
             key={active.id}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            transition={{ duration: 0.18 }}
+            transition={{ duration: 0.15 }}
             className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center"
           >
             <div className="lg:col-span-7">
               <p className="bp-label">
                 Detail / Bay {active.number} / {active.title}
               </p>
-              <h3 className="mt-3 font-display font-black uppercase text-3xl sm:text-4xl lg:text-5xl leading-none">{active.detailTitle}</h3>
-              {/* On phones the bays are too small to hold their description, so it leads the detail. */}
-              <p className="sm:hidden mt-4 text-base font-medium leading-relaxed">{active.description}</p>
-              <p className="mt-4 text-base text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>
+              <h3 className="mt-3 font-display font-semibold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.detailTitle}</h3>
+              <p className="sm:hidden mt-3 text-sm font-medium leading-relaxed">{active.description}</p>
+              <p className="mt-3 text-sm text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <SectorSchematic id={active.id} />

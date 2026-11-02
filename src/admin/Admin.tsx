@@ -23,7 +23,7 @@ function SignIn() {
   return (
     <form onSubmit={submit} className="w-full max-w-sm border border-ink bg-raised p-6 sm:p-8 space-y-5">
       <Brand />
-      <h1 className="font-display font-black uppercase text-3xl leading-none pt-2">Sign in</h1>
+      <h1 className="font-display font-semibold uppercase text-3xl leading-none pt-2">Sign in</h1>
       <div>
         <label htmlFor="email" className="bp-label block mb-2">Email</label>
         <input id="email" type="email" required autoComplete="username" value={email} onChange={(e) => setEmail(e.target.value)} className={FIELD} />
@@ -62,7 +62,7 @@ function SetPassword({ onDone }: { onDone: () => void }) {
   return (
     <form onSubmit={submit} className="w-full max-w-sm border border-ink bg-raised p-6 sm:p-8 space-y-5">
       <Brand />
-      <h1 className="font-display font-black uppercase text-3xl leading-none pt-2">Choose a password</h1>
+      <h1 className="font-display font-semibold uppercase text-3xl leading-none pt-2">Choose a password</h1>
       <div>
         <label htmlFor="new-password" className="bp-label block mb-2">New password (8+ characters)</label>
         <input id="new-password" type="password" required minLength={8} autoComplete="new-password" value={password} onChange={(e) => setPassword(e.target.value)} className={FIELD} />
@@ -122,7 +122,7 @@ export default function Admin() {
           </div>
           <p
             aria-hidden="true"
-            className="-mb-[3.2vw] text-center font-display font-black uppercase whitespace-nowrap leading-[0.8] text-[19.5vw] select-none"
+            className="-mb-[3.2vw] text-center font-display font-semibold uppercase whitespace-nowrap leading-[0.8] text-[19.5vw] select-none"
           >
             ZYNIQ <span className="text-red">Studio</span>
           </p>

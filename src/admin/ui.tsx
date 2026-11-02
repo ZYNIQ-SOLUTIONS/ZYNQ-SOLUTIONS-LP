@@ -7,7 +7,7 @@ export function Brand() {
       <LogoIcon className="w-8 h-8" />
       <ZyniqTextLogo className="h-4 w-auto" />
       <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
-      <span className="font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-muted translate-y-px">Admin</span>
+      <span className="font-mono text-[11px] font-semibold text-muted translate-y-px">Admin</span>
     </div>
   );
 }
@@ -15,7 +15,7 @@ export function Brand() {
 export const FIELD =
   'w-full bg-paper border border-rule px-4 py-3 text-base text-ink focus:outline-none focus:border-red transition-colors';
 export const BTN =
-  'inline-flex items-center justify-center gap-2 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 min-h-10 cursor-pointer disabled:opacity-60';
+  'inline-flex items-center justify-center gap-2 font-mono text-[11px] font-semibold px-4 min-h-10 cursor-pointer disabled:opacity-60';
 
 export const when = (iso: string) => new Date(iso).toLocaleString([], { dateStyle: 'full', timeStyle: 'short' });
 

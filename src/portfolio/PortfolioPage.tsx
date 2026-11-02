@@ -55,7 +55,7 @@ export default function PortfolioPage() {
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
       <a
         href="#portfolio-main"
-        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 font-mono text-xs uppercase tracking-widest"
+        className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 font-mono text-xs"
       >
         Skip to portfolio
       </a>
@@ -76,7 +76,7 @@ export default function PortfolioPage() {
           <div className="flex items-center gap-3 sm:gap-5">
             <a
               href="/"
-              className="inline-flex items-center gap-2 min-h-11 font-mono text-[11px] font-semibold uppercase tracking-[0.14em] text-muted hover:text-ink transition-colors"
+              className="inline-flex items-center gap-2 min-h-11 font-mono text-[11px] font-semibold text-muted hover:text-ink transition-colors"
             >
               <ArrowLeft className="w-3.5 h-3.5" />
               <span className="hidden sm:inline">Back to factory</span>
@@ -85,7 +85,7 @@ export default function PortfolioPage() {
             <ThemeToggle />
             <a
               href="/#consultation"
-              className="hidden md:inline-flex items-center gap-2 bg-red text-white font-mono text-[11px] font-semibold uppercase tracking-[0.14em] px-4 py-2.5 bp-sweep"
+              className="hidden md:inline-flex items-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper px-4 h-9 bp-btn"
             >
               Get free consultation
               <ArrowRight className="w-3.5 h-3.5" />
@@ -112,7 +112,7 @@ export default function PortfolioPage() {
               <p className="bp-label !text-red font-semibold">Verified Factory Output</p>
               <h1
                 id="portfolio-heading"
-                className="mt-3 font-display font-black uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.88] tracking-tight"
+                className="mt-3 font-display font-semibold uppercase text-5xl sm:text-7xl lg:text-8xl leading-[0.88] tracking-tight"
               >
                 Engineered Systems.{' '}
                 <span className="text-red">Real-World Proof.</span>
@@ -126,19 +126,19 @@ export default function PortfolioPage() {
               <dl className="grid grid-cols-2 border-l border-t border-ink bg-paper">
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Documented Systems</dt>
-                  <dd className="mt-1 font-display font-black text-4xl leading-none tabular-nums">0{PORTFOLIO_ITEMS.length}</dd>
+                  <dd className="mt-1 font-display font-semibold text-4xl leading-none tabular-nums">0{PORTFOLIO_ITEMS.length}</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Factory Divisions</dt>
-                  <dd className="mt-1 font-display font-black text-4xl leading-none tabular-nums">04</dd>
+                  <dd className="mt-1 font-display font-semibold text-4xl leading-none tabular-nums">04</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Gnosis Swarm</dt>
-                  <dd className="mt-1 font-display font-black text-3xl leading-none text-red tabular-nums">10 Agents</dd>
+                  <dd className="mt-1 font-display font-semibold text-3xl leading-none text-red tabular-nums">10 Agents</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Routing Latency</dt>
-                  <dd className="mt-1 font-display font-black text-3xl leading-none tabular-nums">5–10ms</dd>
+                  <dd className="mt-1 font-display font-semibold text-3xl leading-none tabular-nums">5–10ms</dd>
                 </div>
               </dl>
             </div>
@@ -162,7 +162,7 @@ export default function PortfolioPage() {
                     type="button"
                     aria-pressed={active}
                     onClick={() => setFilter(cat)}
-                    className={`min-h-10 px-4 py-2 font-mono text-[11px] uppercase tracking-[0.14em] border transition-colors cursor-pointer ${
+                    className={`min-h-10 px-4 py-2 font-mono text-[11px] border transition-colors cursor-pointer ${
                       active
                         ? 'bg-ink text-paper border-ink font-semibold'
                         : 'bg-paper text-muted border-rule hover:border-ink hover:text-ink'
@@ -212,7 +212,7 @@ export default function PortfolioPage() {
                   {/* Main Body */}
                   <div className="px-5 sm:px-7 pt-6 pb-5">
                     <p className="bp-label !text-red font-semibold">{item.category}</p>
-                    <h2 className="mt-2 font-display font-black uppercase text-3xl sm:text-4xl leading-none">
+                    <h2 className="mt-2 font-display font-semibold uppercase text-3xl sm:text-4xl leading-none">
                       {item.title}
                     </h2>
                     <p className="mt-1.5 font-mono text-xs text-muted">{item.subtitle}</p>
@@ -222,8 +222,8 @@ export default function PortfolioPage() {
                     <dl className="mt-6 grid grid-cols-3 border-l border-t border-rule bg-paper">
                       {item.metrics.map((m) => (
                         <div key={m.label} className="p-3 sm:p-3.5 border-r border-b border-rule">
-                          <dt className="font-mono text-[10px] uppercase tracking-wider text-muted truncate">{m.label}</dt>
-                          <dd className="mt-1 font-display font-black text-xl sm:text-2xl leading-none tabular-nums">
+                          <dt className="font-mono text-[10px] text-muted truncate">{m.label}</dt>
+                          <dd className="mt-1 font-display font-semibold text-xl sm:text-2xl leading-none tabular-nums">
                             {m.value}
                           </dd>
                         </div>
@@ -235,7 +235,7 @@ export default function PortfolioPage() {
                       {item.stack.map((tech) => (
                         <li
                           key={tech}
-                          className="border border-rule bg-paper px-2.5 py-1 font-mono text-[10px] uppercase tracking-wider text-muted"
+                          className="border border-rule bg-paper px-2.5 py-1 font-mono text-[10px] text-muted"
                         >
                           {tech}
                         </li>
@@ -245,11 +245,11 @@ export default function PortfolioPage() {
                 </div>
 
                 {/* Card Actions Footer */}
-                <footer className="px-5 sm:px-7 py-4 border-t border-rule bg-paper/60 flex flex-wrap items-center justify-between gap-3">
+                <footer className="px-5 sm:h-12 px-6 border-t border-rule bg-paper/60 flex flex-wrap items-center justify-between gap-3">
                   <button
                     type="button"
                     onClick={() => setSelected(item)}
-                    className="inline-flex items-center gap-2 font-mono text-xs font-semibold uppercase tracking-[0.14em] text-ink hover:text-red cursor-pointer transition-colors"
+                    className="inline-flex items-center gap-2 font-mono text-xs font-semibold text-ink hover:text-red cursor-pointer transition-colors"
                   >
                     <Layers className="w-3.5 h-3.5 text-red" />
                     Inspect technical spec
@@ -261,7 +261,7 @@ export default function PortfolioPage() {
                       href={item.href}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="inline-flex items-center gap-1.5 font-mono text-[11px] uppercase tracking-wider text-red hover:underline"
+                      className="inline-flex items-center gap-1.5 font-mono text-[11px] text-red hover:underline"
                     >
                       Live platform
                       <ArrowUpRight className="w-3.5 h-3.5" />
@@ -282,7 +282,7 @@ export default function PortfolioPage() {
               <p className="bp-label !text-red font-semibold">Next Work Order</p>
               <h2
                 id="portfolio-cta-heading"
-                className="mt-3 font-display font-black uppercase text-4xl sm:text-6xl leading-[0.92]"
+                className="mt-3 font-display font-semibold uppercase text-4xl sm:text-6xl leading-[0.92]"
               >
                 Ready to Put Your Build on the Line?
               </h2>
@@ -293,14 +293,14 @@ export default function PortfolioPage() {
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 lg:items-end">
               <a
                 href="/#consultation"
-                className="inline-flex items-center justify-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap hover:bg-white hover:text-ink transition-colors"
+                className="inline-flex items-center justify-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper h-12 px-6 whitespace-nowrap hover:bg-white hover:text-ink transition-colors"
               >
                 Get free consultation
                 <ArrowRight className="w-4 h-4" />
               </a>
               <a
                 href={`mailto:${CONTACT_EMAILS[0]}`}
-                className="inline-flex items-center justify-center gap-2 border border-paper/30 text-paper font-mono text-xs uppercase tracking-[0.14em] px-7 py-4 whitespace-nowrap hover:border-red hover:text-red transition-colors"
+                className="inline-flex items-center justify-center gap-2 border border-paper/30 text-paper font-mono text-xs h-12 px-6 whitespace-nowrap hover:border-red hover:text-red transition-colors"
               >
                 {CONTACT_EMAILS[0]}
               </a>
@@ -322,7 +322,7 @@ export default function PortfolioPage() {
         >
           <div className="relative w-full max-w-4xl border border-ink bg-raised text-ink my-auto max-h-[90dvh] overflow-y-auto">
             <CornerMarks />
-            <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 sm:px-8 py-4 border-b border-ink bg-raised/95 backdrop-blur-md">
+            <header className="sticky top-0 z-10 flex items-center justify-between gap-4 px-5 sm:h-12 px-8 border-b border-ink bg-raised/95 backdrop-blur-md">
               <div className="bp-label">
                 <span className="text-red font-semibold">{selected.code}</span> / {selected.division} / Technical Dossier
               </div>
@@ -330,7 +330,7 @@ export default function PortfolioPage() {
                 type="button"
                 onClick={() => setSelected(null)}
                 aria-label="Close technical dossier"
-                className="inline-flex items-center gap-1.5 font-mono text-xs uppercase tracking-widest text-muted hover:text-red cursor-pointer p-1"
+                className="inline-flex items-center gap-1.5 font-mono text-xs text-muted hover:text-red cursor-pointer p-1"
               >
                 <span>ESC</span>
                 <X className="w-4 h-4" />
@@ -343,7 +343,7 @@ export default function PortfolioPage() {
                   <p className="bp-label !text-red font-semibold">
                     {selected.category} · {selected.status} ({selected.year})
                   </p>
-                  <h2 id="spec-modal-title" className="mt-2 font-display font-black uppercase text-4xl sm:text-5xl leading-none">
+                  <h2 id="spec-modal-title" className="mt-2 font-display font-semibold uppercase text-4xl sm:text-5xl leading-none">
                     {selected.title}
                   </h2>
                   <p className="mt-2 font-mono text-xs text-muted">{selected.subtitle}</p>
@@ -358,7 +358,7 @@ export default function PortfolioPage() {
                 {selected.metrics.map((m) => (
                   <div key={m.label} className="p-4 border-r border-b border-ink">
                     <dt className="bp-label">{m.label}</dt>
-                    <dd className="mt-1.5 font-display font-black text-3xl leading-none text-red tabular-nums">{m.value}</dd>
+                    <dd className="mt-1.5 font-display font-semibold text-3xl leading-none text-red tabular-nums">{m.value}</dd>
                   </div>
                 ))}
               </dl>
@@ -393,7 +393,7 @@ export default function PortfolioPage() {
                     {selected.stack.map((tech) => (
                       <span
                         key={tech}
-                        className="border border-ink bg-paper px-3 py-1.5 font-mono text-xs uppercase tracking-wider"
+                        className="border border-ink bg-paper px-3 py-1.5 font-mono text-xs"
                       >
                         {tech}
                       </span>
@@ -403,7 +403,7 @@ export default function PortfolioPage() {
                   <div className="mt-6 pt-6 border-t border-rule flex flex-wrap gap-3">
                     <a
                       href="/#consultation"
-                      className="inline-flex items-center gap-2 bg-red text-white font-mono text-xs font-semibold uppercase tracking-[0.14em] px-5 py-3.5 bp-sweep"
+                      className="inline-flex items-center gap-2 bg-red text-white text-sm font-medium hover:bg-ink hover:text-paper h-11 px-5 bp-btn"
                     >
                       Request a similar build
                       <ArrowRight className="w-3.5 h-3.5" />
@@ -413,7 +413,7 @@ export default function PortfolioPage() {
                         href={selected.href}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="inline-flex items-center gap-2 border border-ink bg-paper font-mono text-xs font-semibold uppercase tracking-[0.14em] px-5 py-3.5 bp-sweep"
+                        className="inline-flex items-center gap-2 border border-ink bg-paper text-sm font-medium hover:bg-ink hover:text-paper h-11 px-5 bp-btn"
                       >
                         Open live platform
                         <ArrowUpRight className="w-3.5 h-3.5" />
