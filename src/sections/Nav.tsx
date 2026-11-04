@@ -1,7 +1,6 @@
 import { useEffect, useState } from 'react';
 import { ArrowRight, Menu, X } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
-import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { ThemeToggle } from '../components/ThemeToggle';
 import { useLineProgress } from '../components/blueprint/ProductionLine';
 import { CONTACT_EMAILS, SITE, STATIONS } from '../content/site';
@@ -34,10 +33,8 @@ export function Nav() {
   return (
     <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule">
       <div className="mx-auto max-w-7xl h-16 px-5 sm:px-8 lg:px-10 flex items-center justify-between gap-4">
-        <a href="#top" className="flex items-center gap-2.5 h-11 shrink-0" aria-label="ZYNIQ Studio, back to top">
+        <a href="#top" className="flex items-center h-11 shrink-0" aria-label="ZYNIQ Studio, back to top">
           <LogoIcon className="w-8 h-8" />
-          <ZyniqTextLogo className="h-4 w-auto" />
-          <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
         </a>
 
         <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-xs text-muted">

@@ -1,7 +1,6 @@
 import { useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
-import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { PRIVACY, TERMS } from '../content/legal';
 import { SITE } from '../content/site';
 
@@ -20,10 +19,8 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
       <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule">
         <div className="mx-auto max-w-7xl h-16 px-5 sm:px-8 lg:px-10 flex items-center justify-between gap-4">
-          <a href="/" className="flex items-center gap-2.5 h-11 shrink-0" aria-label="ZYNIQ Studio, back to the website">
+          <a href="/" className="flex items-center h-11 shrink-0" aria-label="ZYNIQ Studio, back to the website">
             <LogoIcon className="w-8 h-8" />
-            <ZyniqTextLogo className="h-4 w-auto" />
-            <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
           </a>
           <a href="/" className="inline-flex items-center gap-2 font-mono text-xs text-muted hover:text-ink transition-colors">
             <ArrowLeft className="w-3.5 h-3.5" /> Back to site

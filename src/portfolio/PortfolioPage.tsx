@@ -2,7 +2,6 @@ import { useEffect, useState } from 'react';
 import { ArrowLeft, ArrowRight, ArrowUpRight, Check, Layers, SlidersHorizontal, X } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
 import { ThemeToggle } from '../components/ThemeToggle';
-import { ZyniqTextLogo } from '../components/ZyniqTextLogo';
 import { LineStatus } from '../components/blueprint/LineStatus';
 import { PortfolioSchematic } from '../components/blueprint/PortfolioSchematic';
 import { PORTFOLIO_CATEGORIES, PORTFOLIO_ITEMS } from '../content/portfolio';
@@ -63,10 +62,8 @@ export default function PortfolioPage() {
       <header className="sticky top-0 z-50 bg-paper/90 backdrop-blur-md border-b border-rule">
         <div className="mx-auto max-w-7xl h-16 px-5 sm:px-8 lg:px-10 flex items-center justify-between gap-4">
           <div className="flex items-center gap-4">
-            <a href="/" className="flex items-center gap-2.5 h-11 shrink-0" aria-label="ZYNIQ Studio, back to home">
+            <a href="/" className="flex items-center h-11 shrink-0" aria-label="ZYNIQ Studio, back to home">
               <LogoIcon className="w-8 h-8" />
-              <ZyniqTextLogo className="h-4 w-auto" />
-              <span className="font-display font-black text-xl leading-none tracking-wide text-red translate-y-px">STUDIO</span>
             </a>
             <span aria-hidden="true" className="hidden sm:inline-block h-4 w-px bg-rule" />
             <span className="hidden sm:inline-block bp-label !text-ink">Sheet P-01 / Portfolio Ledger</span>
