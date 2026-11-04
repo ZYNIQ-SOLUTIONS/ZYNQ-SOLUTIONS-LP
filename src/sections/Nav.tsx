@@ -57,6 +57,15 @@ export function Nav() {
               </a>
             );
           })}
+          <a
+            href="https://zyniq.blog"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="py-1 border-b-2 border-transparent hover:text-ink transition-colors flex items-center gap-1"
+          >
+            <span>Blog</span>
+            <span className="text-[10px] text-muted">↗</span>
+          </a>
         </nav>
 
         <div className="flex items-center sm:gap-3">
@@ -109,6 +118,18 @@ export function Nav() {
                 </li>
               );
             })}
+            <li className="border-b border-rule">
+              <a
+                href="https://zyniq.blog"
+                target="_blank"
+                rel="noopener noreferrer"
+                onClick={() => setOpen(false)}
+                className="flex items-baseline gap-4 py-4 hover:text-red transition-colors"
+              >
+                <span className="font-mono text-xs text-muted">↗</span>
+                <span className="flex-1">Blog</span>
+              </a>
+            </li>
           </ul>
 
           <div className="mt-auto pt-8">

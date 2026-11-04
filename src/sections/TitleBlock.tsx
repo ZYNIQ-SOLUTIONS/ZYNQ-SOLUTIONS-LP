@@ -41,6 +41,12 @@ export function TitleBlock() {
                     <span>Portfolio archive</span>
                   </a>
                 </li>
+                <li>
+                  <a href="https://zyniq.blog" target="_blank" rel="noopener noreferrer" className={LINK}>
+                    <span className="text-muted mr-2">↗</span>
+                    <span>Blog</span>
+                  </a>
+                </li>
               </ul>
             </div>
 
