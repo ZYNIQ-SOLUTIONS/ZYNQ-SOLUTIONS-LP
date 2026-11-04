@@ -18,6 +18,7 @@ export interface Pillar {
   description: string;
   detailTitle: string;
   detailExplanation: string;
+  url?: string;
 }
 
 export interface Service {

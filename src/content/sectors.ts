@@ -8,6 +8,7 @@ export const SECTORS: Pillar[] = [
     description: 'Foundational compute and storage environment engineered for distributed AI and backend operations.',
     detailTitle: 'Scalable Infrastructure',
     detailExplanation: 'Handles data flow and containerized compute pipelines needed to host agent swarms, model inference, and high-throughput production backends.',
+    url: 'https://zyniq.cloud',
   },
   {
     id: 'core',

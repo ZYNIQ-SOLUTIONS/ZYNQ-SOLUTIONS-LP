@@ -85,7 +85,14 @@ export function Sectors() {
               }`}
             >
               <span aria-hidden="true" className={`absolute inset-x-0 top-0 h-0.5 ${isActive ? 'bg-red' : 'bg-transparent'}`} />
-              <span className={`bp-label ${isActive ? '!text-paper/70' : ''}`}>Bay {sector.number}</span>
+              <div className="flex items-center justify-between">
+                <span className={`bp-label ${isActive ? '!text-paper/70' : ''}`}>Bay {sector.number}</span>
+                {sector.url && (
+                  <span className={`font-mono text-[11px] ${isActive ? 'text-red' : 'text-muted'}`}>
+                    zyniq.cloud ↗
+                  </span>
+                )}
+              </div>
               <span className="mt-2 font-display font-semibold uppercase text-xl sm:text-2xl xl:text-3xl leading-none">{sector.title}</span>
               <span className={`hidden sm:block mt-3 text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{sector.description}</span>
             </button>
@@ -110,6 +117,19 @@ export function Sectors() {
               <h3 className="mt-3 font-display font-semibold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.detailTitle}</h3>
               <p className="sm:hidden mt-3 text-sm font-medium leading-relaxed">{active.description}</p>
               <p className="mt-3 text-sm text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>
+              {active.url && (
+                <div className="mt-6">
+                  <a
+                    href={active.url}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 bg-red text-white text-xs font-mono font-semibold px-4 py-2.5 hover:bg-ink hover:text-paper transition-colors"
+                  >
+                    <span>Visit zyniq.cloud</span>
+                    <span className="text-xs">↗</span>
+                  </a>
+                </div>
+              )}
             </div>
             <div className="lg:col-span-5 flex justify-center lg:justify-end">
               <SectorSchematic id={active.id} />
