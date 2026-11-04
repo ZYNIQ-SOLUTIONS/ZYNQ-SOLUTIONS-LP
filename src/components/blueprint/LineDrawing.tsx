@@ -68,7 +68,7 @@ export function LineDrawing() {
     ));
 
   return (
-    <svg viewBox="0 0 1200 262" className="w-full" aria-hidden="true" fill="none" stroke="var(--ink)" strokeWidth="1.5">
+    <svg viewBox="0 -14 1200 276" className="w-full overflow-visible" aria-hidden="true" fill="none" stroke="var(--ink)" strokeWidth="1.5">
       <defs>
         <clipPath id="ld-raw">
           <rect x="40" y="150" width={CENTRES[1] - 40} height="30" />
@@ -80,10 +80,10 @@ export function LineDrawing() {
 
       {/* overall dimension */}
       <g stroke="var(--ink-muted)" strokeWidth="1" className="hidden xl:block">
-        <path className="bp-draw" pathLength={1} d="M100 14H460M100 6v16" />
-        <path className="bp-draw" pathLength={1} d="M1100 14H740M1100 6v16" />
+        <path className="bp-draw" pathLength={1} d="M100 0H460M100 -8v16" />
+        <path className="bp-draw" pathLength={1} d="M1100 0H740M1100 -8v16" />
       </g>
-      <text x="600" y="18" textAnchor="middle" stroke="none" fill="var(--ink-muted)" className="font-mono hidden xl:block" fontSize="10" letterSpacing="2.5">
+      <text x="600" y="4" textAnchor="middle" stroke="none" fill="var(--ink-muted)" className="font-mono hidden xl:block" fontSize="10" letterSpacing="2.5">
         ONE LINE / IDEA TO SHIPPED
       </text>
 
