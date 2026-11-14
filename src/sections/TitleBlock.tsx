@@ -86,9 +86,10 @@ export function TitleBlock() {
 
           <div className="px-6 sm:px-8 py-4 flex flex-col sm:flex-row justify-between items-center gap-3 border-t border-rule bp-label">
             <span>© {new Date().getFullYear()} {SITE.name}. All rights reserved.</span>
-            <span className="flex gap-6">
+            <span className="flex flex-wrap justify-center gap-x-6 gap-y-1">
               <a href="/terms" className={LINK}>Terms of service</a>
               <a href="/privacy" className={LINK}>Privacy policy</a>
+              <a href="/workplace-policy" className={LINK}>Workplace policy</a>
             </span>
           </div>
         </div>

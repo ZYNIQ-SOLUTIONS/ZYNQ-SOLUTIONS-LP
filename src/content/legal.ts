@@ -4,9 +4,15 @@ export interface LegalSection {
   items?: string[];
 }
 
+export type LegalPath = '/terms' | '/privacy' | '/workplace-policy';
+
 export interface LegalDoc {
-  path: '/terms' | '/privacy';
+  path: LegalPath;
   title: string;
+  /** Short name for links and the browser tab, when the heading is not the document name. */
+  name?: string;
+  /** Header label segments. Defaults to "Documentation". */
+  label?: string[];
   updated: string;
   summary: string;
   sections: LegalSection[];
@@ -256,3 +262,40 @@ export const PRIVACY: LegalDoc = {
     },
   ],
 };
+
+export const WORKPLACE: LegalDoc = {
+  path: '/workplace-policy',
+  title: 'How Commanders Operate',
+  name: 'Workplace Policy',
+  label: ['Specification', 'Workplace Policy', '100% Remote'],
+  updated: '14 November 2026',
+  summary: 'How ZYNIQ Studio works as a 100% remote, fully distributed AI software factory.',
+  sections: [
+    {
+      title: 'Borderless Factory',
+      paragraphs: [
+        'ZYNIQ Studio is a 100% remote, fully distributed AI software factory. While our corporate headquarters is in Dubai, UAE, our human engineering leads—whom we call Commanders—operate from wherever they perform best.',
+      ],
+    },
+    {
+      title: 'Asynchronous Execution',
+      paragraphs: [
+        'We prioritize deep architectural focus over performative meetings. Our workflows run on clear written specifications, automated CI/CD validation, and asynchronous collaboration alongside our autonomous agent crews.',
+      ],
+    },
+    {
+      title: 'Mission Ownership',
+      paragraphs: [
+        'Every Commander holds full autonomy over their schedule and environment. We measure performance strictly by shipped systems, architectural integrity, and production velocity—never by hours logged at a desk.',
+      ],
+    },
+    {
+      title: 'Security & Sovereignty',
+      paragraphs: [
+        'All remote environments adhere to strict zero-trust security standards, encrypted communications, and authenticated access across ZYNIQ Core and ZYNIQ Cloud infrastructure.',
+      ],
+    },
+  ],
+};
+
+export const LEGAL_DOCS: LegalDoc[] = [TERMS, PRIVACY, WORKPLACE];

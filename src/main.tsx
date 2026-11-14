@@ -19,7 +19,7 @@ createRoot(document.getElementById('root')!).render(
       <Suspense fallback={null}>
         <PortfolioPage />
       </Suspense>
-    ) : path === '/terms' || path === '/privacy' ? (
+    ) : path === '/terms' || path === '/privacy' || path === '/workplace-policy' ? (
       <Suspense fallback={null}>
         <Legal doc={path} />
       </Suspense>

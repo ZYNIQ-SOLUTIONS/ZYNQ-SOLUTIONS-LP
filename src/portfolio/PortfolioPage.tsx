@@ -436,6 +436,9 @@ export default function PortfolioPage() {
             <a href="/privacy" className="hover:text-red transition-colors">
               Privacy policy
             </a>
+            <a href="/workplace-policy" className="hover:text-red transition-colors">
+              Workplace policy
+            </a>
             <a href={SOCIALS[2].href} target="_blank" rel="noopener noreferrer" className="hover:text-red transition-colors">
               GitHub ↗
             </a>

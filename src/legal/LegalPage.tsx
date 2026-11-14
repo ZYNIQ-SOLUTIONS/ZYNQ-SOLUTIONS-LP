@@ -1,19 +1,20 @@
-import { useEffect } from 'react';
+import { Fragment, useEffect } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { LogoIcon } from '../components/LogoIcon';
-import { PRIVACY, TERMS } from '../content/legal';
+import { LEGAL_DOCS, type LegalPath } from '../content/legal';
 import { SITE } from '../content/site';
 
 const slug = (title: string) => title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
 
-export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
-  const page = doc === '/terms' ? TERMS : PRIVACY;
-  const other = doc === '/terms' ? PRIVACY : TERMS;
+export default function LegalPage({ doc }: { doc: LegalPath }) {
+  const page = LEGAL_DOCS.find((d) => d.path === doc) ?? LEGAL_DOCS[0];
+  const others = LEGAL_DOCS.filter((d) => d !== page);
+  const name = page.name ?? page.title;
 
   useEffect(() => {
-    document.title = `${page.title} | ZYNIQ Studio`;
+    document.title = `${name} | ZYNIQ Studio`;
     window.scrollTo(0, 0);
-  }, [page.title]);
+  }, [name]);
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
@@ -29,9 +30,13 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
       </header>
 
       <main className="mx-auto max-w-7xl px-5 sm:px-8 lg:px-10 py-12 sm:py-16">
-        <p className="bp-label flex items-center gap-3">
-          <span>Documentation</span>
-          <span aria-hidden="true" className="h-px w-6 bg-rule" />
+        <p className="bp-label flex flex-wrap items-center gap-x-3 gap-y-1">
+          {(page.label ?? ['Documentation']).map((part) => (
+            <Fragment key={part}>
+              <span>{part}</span>
+              <span aria-hidden="true" className="h-px w-6 bg-rule" />
+            </Fragment>
+          ))}
           <span>Updated {page.updated}</span>
         </p>
         <h1 className="mt-4 font-display font-semibold uppercase text-4xl sm:text-6xl leading-[0.94] tracking-tight">{page.title}</h1>
@@ -90,10 +95,12 @@ export default function LegalPage({ doc }: { doc: '/terms' | '/privacy' }) {
           <span>
             © {new Date().getFullYear()} {SITE.name}. All rights reserved.
           </span>
-          <span className="flex gap-6">
-            <a href={other.path} className="inline-flex items-center hover:text-red transition-colors">
-              {other.title}
-            </a>
+          <span className="flex flex-wrap gap-x-6 gap-y-2">
+            {others.map((d) => (
+              <a key={d.path} href={d.path} className="inline-flex items-center hover:text-red transition-colors">
+                {d.name ?? d.title}
+              </a>
+            ))}
             <a href="/" className="inline-flex items-center hover:text-red transition-colors">
               Home
             </a>
