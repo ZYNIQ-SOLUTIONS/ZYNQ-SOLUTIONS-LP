@@ -187,7 +187,7 @@ export function Dashboard({ session }: { session: Session }) {
       <header className="flex flex-wrap items-center justify-between gap-4 border-b border-ink pb-5">
         <div>
           <Brand />
-          <h1 className="font-display font-semibold uppercase text-4xl leading-none mt-5">Inquiries</h1>
+          <h1 className="font-display font-bold uppercase text-4xl leading-none mt-5">Inquiries</h1>
         </div>
         <div className="flex flex-wrap items-center gap-3">
           <span className="bp-label hidden md:inline">{session.user.email}</span>
@@ -213,7 +213,7 @@ export function Dashboard({ session }: { session: Session }) {
         ].map(([label, n]) => (
           <div key={label} className="p-4 border-r border-b border-ink bg-raised">
             <p className="bp-label">{label}</p>
-            <p className="font-display font-semibold text-3xl leading-none mt-2">{n}</p>
+            <p className="font-display font-bold text-3xl leading-none mt-2">{n}</p>
           </div>
         ))}
       </div>
@@ -256,7 +256,7 @@ export function Dashboard({ session }: { session: Session }) {
               {upcoming.map((r) => (
                 <li key={r.id} className="py-4 border-b border-rule flex flex-wrap items-center justify-between gap-3">
                   <div className="min-w-0">
-                    <p className="font-display font-semibold uppercase text-xl leading-none">{when(r.meeting_at!)}</p>
+                    <p className="font-display font-bold uppercase text-xl leading-none">{when(r.meeting_at!)}</p>
                     <p className="mt-1 text-sm">
                       {r.first_name} {r.last_name} · <span className="text-muted break-all">{r.email}</span>
                     </p>

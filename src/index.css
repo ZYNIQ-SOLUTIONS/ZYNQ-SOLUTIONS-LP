@@ -11,6 +11,8 @@
   --color-muted: var(--ink-muted);
   --color-rule: var(--rule);
   --color-grid: var(--grid);
+  /* Annotation-only accent: dimension lines, coordinates, drafting notes. Never for actions. */
+  --color-cyan: var(--cyan);
   /* Darkened from #EA2323 so white text on it reaches 4.5:1 */
   --color-red: #D21F1F;
 
@@ -27,6 +29,12 @@
   --grid: rgba(236, 232, 221, 0.04);
   --grid-major: rgba(236, 232, 221, 0.07);
   --red: #D21F1F;
+  --cyan: #6FB7CF;
+  /* Night sheets: the darker second neutral used for inverted bands */
+  --night: #0A0B0C;
+  --night-raised: #131517;
+  --night-ink: #ECE8DD;
+  --night-muted: #9A968B;
   /* Used by the logo SVGs */
   --theme-white: var(--ink);
 }
@@ -39,6 +47,34 @@
   --rule: rgba(21, 20, 15, 0.14);
   --grid: rgba(21, 20, 15, 0.05);
   --grid-major: rgba(21, 20, 15, 0.08);
+  --cyan: #1D5F78;
+  --night: #15140F;
+  --night-raised: #1E1D18;
+  --night-ink: #F2EEE4;
+  --night-muted: #A39F94;
+}
+
+/* An inverted sheet. Tailwind's --color-* tokens are resolved where they are declared,
+   so the scope redefines both layers for bg-paper, text-ink etc. to follow it. */
+.sheet-night {
+  --paper: var(--night);
+  --paper-raised: var(--night-raised);
+  --ink: var(--night-ink);
+  --ink-muted: var(--night-muted);
+  --rule: rgba(236, 232, 221, 0.16);
+  --grid: rgba(236, 232, 221, 0.035);
+  --grid-major: rgba(236, 232, 221, 0.06);
+  --cyan: #6FB7CF;
+  --theme-white: var(--ink);
+  --color-paper: var(--paper);
+  --color-raised: var(--paper-raised);
+  --color-ink: var(--ink);
+  --color-muted: var(--ink-muted);
+  --color-rule: var(--rule);
+  --color-grid: var(--grid);
+  --color-cyan: var(--cyan);
+  background-color: var(--paper);
+  color: var(--ink);
 }
 
 html {
@@ -57,6 +93,18 @@ body {
   overflow-x: hidden;
   overflow-x: clip;
   transition: background-color 0.3s var(--ease-line), color 0.3s var(--ease-line);
+}
+
+/* Paper grain, light theme only: a faint print texture over the whole sheet */
+:root.light body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 70;
+  pointer-events: none;
+  opacity: 0.035;
+  mix-blend-mode: multiply;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0.9 0'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
 }
 
 section[id] {
@@ -163,4 +211,70 @@ section[id] {
 }
 .bp-belt {
   animation: bp-belt linear infinite;
+}
+/* Inspection stamp: presses in once, slightly rotated, like ink on a drawing */
+@keyframes bp-stamp {
+  0% {
+    opacity: 0;
+    transform: rotate(var(--stamp-rot, -6deg)) scale(1.6);
+  }
+  60% {
+    opacity: 1;
+    transform: rotate(var(--stamp-rot, -6deg)) scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: rotate(var(--stamp-rot, -6deg)) scale(1);
+  }
+}
+.bp-stamp {
+  transform: rotate(var(--stamp-rot, -6deg));
+  opacity: 0;
+}
+.bp-stamp[data-on="true"] {
+  animation: bp-stamp 0.42s var(--ease-line) forwards;
+}
+
+/* Intro sheet: drawn once per session, then lifted away */
+.bp-intro {
+  transition: transform 0.6s var(--ease-line), opacity 0.6s var(--ease-line);
+}
+.bp-intro[data-leaving="true"] {
+  transform: translateY(-100%);
+}
+.bp-intro-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  animation: bp-draw-in 0.7s var(--ease-line) forwards;
+}
+@keyframes bp-draw-in {
+  to {
+    stroke-dashoffset: 0;
+  }
+}
+.bp-intro-fade {
+  opacity: 0;
+  animation: bp-fade 0.3s var(--ease-line) forwards;
+}
+@keyframes bp-fade {
+  to {
+    opacity: 1;
+  }
+}
+
+/* Drafting crosshair: fine pointers on wide screens only */
+.bp-crosshair {
+  display: none;
+}
+@media (hover: hover) and (pointer: fine) and (min-width: 1024px) {
+  .bp-crosshair {
+    display: block;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  /* Animations are off, so show the end state directly */
+  .bp-stamp[data-on="true"] {
+    opacity: 1;
+  }
 }

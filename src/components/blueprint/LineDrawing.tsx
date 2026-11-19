@@ -111,7 +111,7 @@ export function LineDrawing() {
         const x = CENTRES[i] - HOUSING.w / 2;
         return (
           <g key={stage.label} className="bp-rise" style={{ animationDelay: `${0.4 + i * 0.1}s` }}>
-            <text x={x} y="42" stroke="none" fill="var(--ink)" className="font-display" fontSize="27" fontWeight="600">
+            <text x={x} y="42" stroke="none" fill="var(--ink)" className="font-display" fontSize="27" fontWeight="700">
               {stage.label.toUpperCase()}
             </text>
             <path d={`M${x} ${HOUSING.y + HOUSING.h}V${FLOOR_Y}M${x + HOUSING.w} ${HOUSING.y + HOUSING.h}V${FLOOR_Y}`} />

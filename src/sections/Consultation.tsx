@@ -3,7 +3,7 @@ import type { ChangeEvent, FormEvent } from 'react';
 import { ArrowRight, Check } from 'lucide-react';
 import { MeetingPicker } from '../components/MeetingPicker';
 import { Station } from '../components/blueprint/Station';
-import { CONTACT_EMAILS, SITE, STAGES, STATIONS } from '../content/site';
+import { CONTACT_EMAILS, SITE, STAGES, station } from '../content/site';
 import { supabase } from '../lib/supabase';
 
 const EMPTY = { firstName: '', lastName: '', email: '', message: '', 'bot-field': '' };
@@ -49,8 +49,10 @@ export function Consultation() {
 
   return (
     <Station
-      {...(STATIONS.find((s) => s.id === 'consultation') ?? STATIONS[5])}
-      title="Initial Consultation"
+      {...station('consultation')}
+      title="Open a work order"
+      spacing="loose"
+      drawn="You"
       intro="Outline your project requirements to schedule a direct technical consultation with our engineering team in Dubai."
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-start">
@@ -65,7 +67,7 @@ export function Consultation() {
               <span className="inline-flex items-center justify-center w-10 h-10 bg-paper border border-ink text-ink">
                 <Check className="w-5 h-5 text-red" />
               </span>
-              <h3 className="mt-5 font-display font-semibold uppercase text-3xl leading-none">Work order received</h3>
+              <h3 className="mt-5 font-display font-bold uppercase text-3xl leading-none">Work order received</h3>
               <p className="mt-3 text-base text-muted leading-relaxed">
                 We'll reply to <span className="text-ink font-medium break-all">{values.email}</span>
                 {meetingAt && (
@@ -184,7 +186,7 @@ export function Consultation() {
             {STAGES.map((stage, i) => (
               <li key={stage.label} className="flex items-baseline gap-4 py-4 border-b border-rule">
                 <span className="font-mono text-xs text-muted">0{i + 1}</span>
-                <span className="font-display font-semibold uppercase text-xl leading-none w-24 shrink-0">{stage.label}</span>
+                <span className="font-display font-bold uppercase text-xl leading-none w-24 shrink-0">{stage.label}</span>
                 <span className="text-sm text-muted">{stage.note}</span>
               </li>
             ))}
@@ -193,7 +195,7 @@ export function Consultation() {
           <h3 className="bp-label mt-10 mb-3">Direct contact</h3>
           <a
             href={`mailto:${contact}`}
-            className="inline-flex items-center min-h-11 font-display font-semibold text-2xl sm:text-3xl leading-none break-all hover:text-red transition-colors"
+            className="inline-flex items-center min-h-11 font-display font-bold text-2xl sm:text-3xl leading-none break-all hover:text-red transition-colors"
           >
             {contact}
           </a>

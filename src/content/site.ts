@@ -6,19 +6,44 @@ export const SITE = {
   hq: 'Dubai, UAE',
 };
 
-// The four stages of the line, shown in the hero diagram and beside the form.
+// The four stages of the line, shown in the hero diagram, The Line section and beside the form.
 export const STAGES = [
-  { label: 'Intake', note: 'Your brief comes in' },
-  { label: 'Crews', note: 'Specialist agents build' },
-  { label: 'Checks', note: 'Commanders review' },
-  { label: 'Ship', note: 'Deployed and holding up' },
+  {
+    label: 'Intake',
+    note: 'Your brief comes in',
+    detail:
+      'We read the brief, map the systems it touches and agree on what done means before anything is built.',
+    outputs: ['Scope and acceptance criteria', 'Architecture sketch', 'Delivery plan'],
+  },
+  {
+    label: 'Crews',
+    note: 'Specialist agents build',
+    detail:
+      'Specialist agent crews take each part of the build: interface, services, data and tests. They work in parallel, in small steps that can be reviewed.',
+    outputs: ['Working increments', 'Automated tests', 'Build logs'],
+  },
+  {
+    label: 'Checks',
+    note: 'Commanders review',
+    detail:
+      'Our engineering leads review every change against the acceptance criteria. Nothing moves down the line without a human sign-off.',
+    outputs: ['Code review', 'Security and performance checks', 'Sign-off record'],
+  },
+  {
+    label: 'Ship',
+    note: 'Deployed and holding up',
+    detail:
+      'We deploy to your infrastructure or ours, watch it in production and stay on the line while it settles.',
+    outputs: ['Production deployment', 'Monitoring and alerts', 'Handover documentation'],
+  },
 ];
 
+// Numbered sheets in page order. The spec band and manifesto sit between them unnumbered.
 export const STATIONS: StationDef[] = [
-  { id: 'output', number: '01', label: 'Output' },
-  { id: 'sectors', number: '02', label: 'Sectors' },
-  { id: 'services', number: '03', label: 'Services' },
-  { id: 'portfolio', number: '04', label: 'Portfolio' },
+  { id: 'line', number: '01', label: 'The line' },
+  { id: 'services', number: '02', label: 'Services' },
+  { id: 'portfolio', number: '03', label: 'Portfolio' },
+  { id: 'sectors', number: '04', label: 'Sectors' },
   { id: 'usecases', number: '05', label: 'Use cases' },
   { id: 'consultation', number: '06', label: 'Consultation' },
 ];
@@ -35,3 +60,9 @@ export const SOCIALS = [
   { name: 'TikTok', href: 'https://www.tiktok.com/@zyniq.solutions' },
   { name: 'Patreon', href: 'https://patreon.com/ZYNIQSolutions' },
 ];
+
+export function station(id: string): StationDef {
+  const found = STATIONS.find((s) => s.id === id);
+  if (!found) throw new Error(`Unknown station: ${id}`);
+  return found;
+}

@@ -5,8 +5,9 @@ import { ThemeToggle } from '../components/ThemeToggle';
 import { useLineProgress } from '../components/blueprint/ProductionLine';
 import { CONTACT_EMAILS, SITE, STATIONS } from '../content/site';
 
-// The Output station is reached by scrolling; the nav lists the four main destinations.
-const LINKS = STATIONS.filter((s) => s.id !== 'output');
+// The mobile menu lists every station; on desktop the consultation button covers the last one.
+const LINKS = STATIONS;
+const DESKTOP_LINKS = STATIONS.filter((s) => s.id !== 'consultation');
 
 export function Nav() {
   const [open, setOpen] = useState(false);
@@ -37,8 +38,8 @@ export function Nav() {
           <LogoIcon className="w-8 h-8" />
         </a>
 
-        <nav aria-label="Main" className="hidden lg:flex items-center gap-7 font-mono text-xs text-muted">
-          {LINKS.map((s) => {
+        <nav aria-label="Main" className="hidden lg:flex items-center gap-6 xl:gap-7 font-mono text-xs text-muted">
+          {DESKTOP_LINKS.map((s) => {
             const isActive = s.id === currentId;
             return (
               <a
@@ -95,7 +96,7 @@ export function Nav() {
           style={{ paddingBottom: 'max(1.25rem, env(safe-area-inset-bottom))' }}
         >
           <p className="bp-label pt-6 pb-2">Stations index</p>
-          <ul className="border-t border-ink font-display font-semibold uppercase text-2xl sm:text-3xl">
+          <ul className="border-t border-ink font-display font-bold uppercase text-2xl sm:text-3xl">
             {LINKS.map((s) => {
               const isActive = s.id === currentId;
               return (

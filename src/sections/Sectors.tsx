@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { AnimatePresence, motion } from 'motion/react';
 import { Station } from '../components/blueprint/Station';
 import { SECTORS } from '../content/sectors';
-import { STATIONS } from '../content/site';
+import { station } from '../content/site';
 
 function SectorSchematic({ id }: { id: string }) {
   const stroke = { fill: 'none', stroke: 'var(--ink)', strokeWidth: 1.5 };
@@ -65,8 +65,9 @@ export function Sectors() {
 
   return (
     <Station
-      {...STATIONS[1]}
-      title="Production Divisions"
+      {...station('sectors')}
+      title="Production divisions"
+      drawn="Floor plan"
       intro="Four operational bays that structure how we build, orchestrate, and deploy software and agent systems."
     >
       {/* Floor plan: four bays */}
@@ -93,7 +94,7 @@ export function Sectors() {
                   </span>
                 )}
               </div>
-              <span className="mt-2 font-display font-semibold uppercase text-xl sm:text-2xl xl:text-3xl leading-none">{sector.title}</span>
+              <span className="mt-2 font-display font-bold uppercase text-xl sm:text-2xl xl:text-3xl leading-none">{sector.title}</span>
               <span className={`hidden sm:block mt-3 text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{sector.description}</span>
             </button>
           );
@@ -114,7 +115,7 @@ export function Sectors() {
               <p className="bp-label">
                 Detail / Bay {active.number} / {active.title}
               </p>
-              <h3 className="mt-3 font-display font-semibold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.detailTitle}</h3>
+              <h3 className="mt-3 font-display font-bold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.detailTitle}</h3>
               <p className="sm:hidden mt-3 text-sm font-medium leading-relaxed">{active.description}</p>
               <p className="mt-3 text-sm text-muted leading-relaxed max-w-xl">{active.detailExplanation}</p>
               {active.url && (

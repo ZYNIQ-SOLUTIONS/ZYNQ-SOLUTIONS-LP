@@ -166,7 +166,7 @@ export const PORTFOLIO_ITEMS: PortfolioItem[] = [
       'RBAC Capability Control Panel, Live CPU/RAM/Disk Studio & Interactive Web Showcase',
     ],
     schematic: 'workflow',
-    href: 'https://tchiko-companion.netlify.app/',
+    href: 'https://zyniq-solutions.github.io/Tchiko-Assistant-Sysadmin-companion/',
   },
   {
     id: 'gnosis-agent-fleet',

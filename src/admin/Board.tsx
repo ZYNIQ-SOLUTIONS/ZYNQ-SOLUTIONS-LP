@@ -24,7 +24,7 @@ export function Board({ rows, patch }: Props) {
         ].map(([label, value, note]) => (
           <div key={label} className="p-4 border-r border-b border-ink bg-raised">
             <p className="bp-label">{label}</p>
-            <p className="font-display font-semibold text-3xl leading-none mt-2">{value}</p>
+            <p className="font-display font-bold text-3xl leading-none mt-2">{value}</p>
             <p className="bp-label mt-1 normal-case tracking-normal">{note}</p>
           </div>
         ))}

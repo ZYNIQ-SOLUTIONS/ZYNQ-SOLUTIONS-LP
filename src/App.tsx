@@ -1,4 +1,6 @@
 import { useEffect } from 'react';
+import { Crosshair } from './components/blueprint/Crosshair';
+import { Intro } from './components/blueprint/Intro';
 import { MobileDock } from './components/blueprint/MobileDock';
 import { ProductionLine } from './components/blueprint/ProductionLine';
 import { STATIONS } from './content/site';
@@ -6,11 +8,11 @@ import { Consultation } from './sections/Consultation';
 import { Hero } from './sections/Hero';
 import { Manifesto } from './sections/Manifesto';
 import { Nav } from './sections/Nav';
-import { Output } from './sections/Output';
-import { PartsStrip } from './sections/PartsStrip';
 import { Portfolio } from './sections/Portfolio';
 import { Sectors } from './sections/Sectors';
 import { Services } from './sections/Services';
+import { SpecBand } from './sections/SpecBand';
+import { TheLine } from './sections/TheLine';
 import { TitleBlock } from './sections/TitleBlock';
 import { UseCases } from './sections/UseCases';
 
@@ -28,6 +30,8 @@ export default function App() {
 
   return (
     <div className="min-h-screen bg-paper text-ink font-sans antialiased bp-grid">
+      <Intro />
+      <Crosshair />
       <a
         href="#top"
         className="sr-only focus:not-sr-only focus:fixed focus:top-3 focus:left-3 focus:z-[60] focus:bg-ink focus:text-paper focus:px-4 focus:py-2 font-mono text-xs"
@@ -38,13 +42,13 @@ export default function App() {
       <ProductionLine stations={STATIONS} />
       <main id="top">
         <Hero />
-        <PartsStrip />
-        <Output />
-        <Sectors />
-        <Manifesto />
+        <SpecBand />
+        <TheLine />
         <Services />
         <Portfolio />
+        <Sectors />
         <UseCases />
+        <Manifesto />
         <Consultation />
       </main>
       <TitleBlock />

@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { Station } from '../components/blueprint/Station';
-import { STATIONS } from '../content/site';
+import { station } from '../content/site';
 import { USE_CASES } from '../content/useCases';
 
 // Height of the nav plus the pinned tab strip
@@ -24,8 +24,10 @@ export function UseCases() {
 
   return (
     <Station
-      {...(STATIONS.find((s) => s.id === 'usecases') ?? STATIONS[4])}
-      title="Operational Use Cases"
+      {...station('usecases')}
+      title="Operational use cases"
+      tone="raised"
+      spacing="tight"
       intro="How engineering teams deploy autonomous agent workflows with strict validation to automate high-friction operational tasks."
     >
       <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 lg:gap-8 items-start">
@@ -77,7 +79,7 @@ export function UseCases() {
                   <span className={`bp-label ${isActive ? '!text-paper/70' : ''}`}>
                     0{i + 1} / {uc.category}
                   </span>
-                  <span className="mt-2 block font-display font-semibold uppercase text-xl leading-snug">{uc.title}</span>
+                  <span className="mt-2 block font-display font-bold uppercase text-xl leading-snug">{uc.title}</span>
                   <span className={`mt-2 block text-sm leading-relaxed ${isActive ? 'text-paper/70' : 'text-muted'}`}>{uc.summary}</span>
                 </button>
               </li>
@@ -95,7 +97,7 @@ export function UseCases() {
           </header>
 
           <div className="px-5 sm:px-8 py-6 sm:py-8">
-            <h3 className="font-display font-semibold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.title}</h3>
+            <h3 className="font-display font-bold uppercase text-2xl sm:text-3xl lg:text-4xl leading-tight">{active.title}</h3>
             <p className="lg:hidden mt-3 text-base font-medium leading-relaxed">{active.summary}</p>
             <p className="mt-3 text-sm text-muted leading-relaxed max-w-2xl">{active.description}</p>
 
@@ -106,7 +108,7 @@ export function UseCases() {
                   className="flex items-center justify-between gap-4 sm:block px-4 py-3 sm:p-4 border-r border-b border-rule"
                 >
                   <dt className="bp-label">{m.label}</dt>
-                  <dd className="sm:mt-1.5 shrink-0 font-display font-semibold text-2xl sm:text-3xl leading-none tabular-nums">{m.value}</dd>
+                  <dd className="sm:mt-1.5 shrink-0 font-display font-bold text-2xl sm:text-3xl leading-none tabular-nums">{m.value}</dd>
                 </div>
               ))}
             </dl>

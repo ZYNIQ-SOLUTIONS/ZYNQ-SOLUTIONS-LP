@@ -107,7 +107,7 @@ export default function PortfolioPage() {
               <p className="bp-label">Production Archive // Systems Ledger</p>
               <h1
                 id="portfolio-heading"
-                className="mt-3 font-display font-semibold uppercase text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight"
+                className="mt-3 font-display font-bold uppercase text-4xl sm:text-6xl lg:text-7xl leading-[0.92] tracking-tight"
               >
                 Engineered Systems.{' '}
                 <span className="text-red">Real-World Proof.</span>
@@ -121,19 +121,19 @@ export default function PortfolioPage() {
               <dl className="grid grid-cols-2 border-l border-t border-ink bg-paper">
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Documented Systems</dt>
-                  <dd className="mt-1 font-display font-semibold text-4xl leading-none tabular-nums">0{PORTFOLIO_ITEMS.length}</dd>
+                  <dd className="mt-1 font-display font-bold text-4xl leading-none tabular-nums">0{PORTFOLIO_ITEMS.length}</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Factory Divisions</dt>
-                  <dd className="mt-1 font-display font-semibold text-4xl leading-none tabular-nums">04</dd>
+                  <dd className="mt-1 font-display font-bold text-4xl leading-none tabular-nums">04</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Gnosis Swarm</dt>
-                  <dd className="mt-1 font-display font-semibold text-3xl leading-none text-red tabular-nums">10 Agents</dd>
+                  <dd className="mt-1 font-display font-bold text-3xl leading-none text-red tabular-nums">10 Agents</dd>
                 </div>
                 <div className="p-4 border-r border-b border-ink">
                   <dt className="bp-label">Routing Latency</dt>
-                  <dd className="mt-1 font-display font-semibold text-3xl leading-none tabular-nums">5–10ms</dd>
+                  <dd className="mt-1 font-display font-bold text-3xl leading-none tabular-nums">5–10ms</dd>
                 </div>
               </dl>
             </div>
@@ -206,7 +206,7 @@ export default function PortfolioPage() {
                   {/* Main Body */}
                   <div className="px-5 sm:px-7 pt-6 pb-5">
                     <p className="bp-label">{item.category}</p>
-                    <h2 className="mt-2 font-display font-semibold uppercase text-2xl sm:text-3xl leading-snug">
+                    <h2 className="mt-2 font-display font-bold uppercase text-2xl sm:text-3xl leading-snug">
                       {item.title}
                     </h2>
                     <p className="mt-1 font-mono text-xs text-muted">{item.subtitle}</p>
@@ -217,7 +217,7 @@ export default function PortfolioPage() {
                       {item.metrics.map((m) => (
                         <div key={m.label} className="p-3 sm:p-3.5 border-r border-b border-rule">
                           <dt className="font-mono text-[10px] text-muted truncate">{m.label}</dt>
-                          <dd className="mt-1 font-display font-semibold text-lg sm:text-xl leading-none tabular-nums">
+                          <dd className="mt-1 font-display font-bold text-lg sm:text-xl leading-none tabular-nums">
                             {m.value}
                           </dd>
                         </div>
@@ -276,7 +276,7 @@ export default function PortfolioPage() {
               <p className="bp-label !text-red font-semibold">Next Work Order</p>
               <h2
                 id="portfolio-cta-heading"
-                className="mt-3 font-display font-semibold uppercase text-4xl sm:text-6xl leading-[0.92]"
+                className="mt-3 font-display font-bold uppercase text-4xl sm:text-6xl leading-[0.92]"
               >
                 Ready to Put Your Build on the Line?
               </h2>
@@ -336,7 +336,7 @@ export default function PortfolioPage() {
                   <p className="bp-label">
                     {selected.category} · {selected.status} ({selected.year})
                   </p>
-                  <h2 id="spec-modal-title" className="mt-2 font-display font-semibold uppercase text-3xl sm:text-4xl leading-tight">
+                  <h2 id="spec-modal-title" className="mt-2 font-display font-bold uppercase text-3xl sm:text-4xl leading-tight">
                     {selected.title}
                   </h2>
                   <p className="mt-2 font-mono text-xs text-muted">{selected.subtitle}</p>
@@ -351,7 +351,7 @@ export default function PortfolioPage() {
                 {selected.metrics.map((m) => (
                   <div key={m.label} className="p-4 border-r border-b border-ink">
                     <dt className="bp-label">{m.label}</dt>
-                    <dd className="mt-1.5 font-display font-semibold text-2xl sm:text-3xl leading-none tabular-nums">{m.value}</dd>
+                    <dd className="mt-1.5 font-display font-bold text-2xl sm:text-3xl leading-none tabular-nums">{m.value}</dd>
                   </div>
                 ))}
               </dl>

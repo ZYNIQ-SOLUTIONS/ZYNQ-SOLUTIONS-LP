@@ -4,7 +4,7 @@ import { ArrowRight, ArrowUpRight } from 'lucide-react';
 import { PortfolioSchematic } from '../components/blueprint/PortfolioSchematic';
 import { Station } from '../components/blueprint/Station';
 import { PORTFOLIO_ITEMS } from '../content/portfolio';
-import { STATIONS } from '../content/site';
+import { station } from '../content/site';
 
 const FEATURED = PORTFOLIO_ITEMS.filter((item) => item.featured);
 
@@ -12,17 +12,15 @@ export function Portfolio() {
   const [activeId, setActiveId] = useState(FEATURED[0].id);
   const reduce = useReducedMotion();
   const active = FEATURED.find((item) => item.id === activeId) ?? FEATURED[0];
-  const station = STATIONS.find((s) => s.id === 'portfolio') ?? {
-    id: 'portfolio',
-    number: '04',
-    label: 'Portfolio',
-  };
 
   return (
     <Station
-      {...station}
-      title="Shipped Systems"
+      {...station('portfolio')}
+      title="Shipped systems"
       intro="Flagship AI infrastructure, autonomous agent frameworks, and enterprise software platforms deployed to production."
+      tone="night"
+      spacing="loose"
+      drawn="Archive"
     >
       {/* Featured project ledger */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 border-l border-t border-ink">
@@ -47,7 +45,7 @@ export function Portfolio() {
                     {item.division}
                   </span>
                 </div>
-                <h3 className="mt-3 font-display font-semibold uppercase text-xl sm:text-2xl leading-none">{item.title}</h3>
+                <h3 className="mt-4 font-display font-black uppercase text-2xl sm:text-3xl leading-[0.9]">{item.title}</h3>
                 <p className={`mt-2.5 text-sm leading-relaxed ${isActive ? 'text-paper/75' : 'text-muted'}`}>{item.summary}</p>
               </div>
 
@@ -80,11 +78,11 @@ export function Portfolio() {
             animate={{ opacity: 1, y: 0 }}
             exit={reduce ? undefined : { opacity: 0 }}
             transition={{ duration: 0.15 }}
-            className="p-5 sm:p-8 lg:p-10 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-10 items-start"
+            className="p-5 sm:p-8 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-start"
           >
-            <div className="lg:col-span-7">
+            <div className="lg:col-span-6">
               <p className="bp-label">{active.division}</p>
-              <h3 className="mt-2 font-display font-semibold uppercase text-2xl sm:text-4xl leading-[0.96]">{active.title}</h3>
+              <h3 className="mt-2 font-display font-black uppercase text-4xl sm:text-6xl leading-[0.86] tracking-tight">{active.title}</h3>
               <p className="mt-1 font-mono text-xs text-muted">{active.subtitle}</p>
 
               <div className="mt-6 grid grid-cols-1 sm:grid-cols-2 gap-6">
@@ -105,7 +103,7 @@ export function Portfolio() {
                     className="flex items-center justify-between gap-4 sm:block px-4 py-3 sm:p-4 border-r border-b border-rule"
                   >
                     <dt className="bp-label">{m.label}</dt>
-                    <dd className="sm:mt-1.5 shrink-0 font-display font-semibold text-2xl sm:text-3xl leading-none tabular-nums">
+                    <dd className="sm:mt-1.5 shrink-0 font-display font-bold text-2xl sm:text-3xl leading-none tabular-nums">
                       {m.value}
                     </dd>
                   </div>
@@ -124,8 +122,9 @@ export function Portfolio() {
               </div>
             </div>
 
-            <div className="lg:col-span-5 flex flex-col gap-5">
-              <div className="border border-rule bg-paper p-4">
+            <div className="lg:col-span-6 flex flex-col gap-5">
+              <div className="relative border border-rule bg-paper p-5 sm:p-8">
+                <span aria-hidden="true" className="absolute top-2 left-3 font-mono text-[10px] text-cyan">DETAIL A</span>
                 <PortfolioSchematic type={active.schematic} code={active.code} />
               </div>
 

@@ -39,7 +39,7 @@ export default function LegalPage({ doc }: { doc: LegalPath }) {
           ))}
           <span>Updated {page.updated}</span>
         </p>
-        <h1 className="mt-4 font-display font-semibold uppercase text-4xl sm:text-6xl leading-[0.94] tracking-tight">{page.title}</h1>
+        <h1 className="mt-4 font-display font-bold uppercase text-4xl sm:text-6xl leading-[0.94] tracking-tight">{page.title}</h1>
         <p className="mt-4 max-w-2xl text-muted text-base leading-relaxed">{page.summary}</p>
         <div aria-hidden="true" className="mt-8 flex items-center">
           <span className="w-1.5 h-1.5 bg-red" />
@@ -65,7 +65,7 @@ export default function LegalPage({ doc }: { doc: LegalPath }) {
           <article className="lg:col-span-8 max-w-3xl">
             {page.sections.map((s, i) => (
               <section key={s.title} id={slug(s.title)} className="scroll-mt-24 pb-10 mb-10 border-b border-rule last:border-b-0">
-                <h2 className="font-display font-semibold uppercase text-2xl sm:text-3xl leading-snug">
+                <h2 className="font-display font-bold uppercase text-2xl sm:text-3xl leading-snug">
                   <span className="text-muted mr-3 font-mono text-sm align-middle">{String(i + 1).padStart(2, '0')}</span>
                   {s.title}
                 </h2>

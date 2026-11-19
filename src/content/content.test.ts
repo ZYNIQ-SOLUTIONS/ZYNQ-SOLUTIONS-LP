@@ -6,7 +6,7 @@ import { SECTORS } from './sectors';
 import { SERVICES } from './services';
 import { USE_CASES } from './useCases';
 import { PORTFOLIO_ITEMS, PORTFOLIO_CATEGORIES } from './portfolio';
-import { STATIONS, SITE, CONTACT_EMAILS, SOCIALS } from './site';
+import { STAGES, STATIONS, SITE, CONTACT_EMAILS, SOCIALS } from './site';
 
 const unique = (ids: string[]) => new Set(ids).size === ids.length;
 
@@ -45,8 +45,19 @@ test('ids are unique and services are numbered 01 to 10 in order', () => {
 test('stations are the six numbered sections', () => {
   assert.deepEqual(
     STATIONS.map((s) => `${s.number}:${s.id}`),
-    ['01:output', '02:sectors', '03:services', '04:portfolio', '05:usecases', '06:consultation'],
+    ['01:line', '02:services', '03:portfolio', '04:sectors', '05:usecases', '06:consultation'],
   );
+});
+
+test('every stage of the line has detail copy and outputs', () => {
+  assert.deepEqual(
+    STAGES.map((s) => s.label),
+    ['Intake', 'Crews', 'Checks', 'Ship'],
+  );
+  for (const s of STAGES) {
+    assert.ok(s.detail.length > 40);
+    assert.ok(s.outputs.length >= 3);
+  }
 });
 
 test('brand is ZYNIQ Studio and contact details are unchanged', () => {
